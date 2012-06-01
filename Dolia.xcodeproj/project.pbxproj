@@ -17,9 +17,9 @@
 		13CA992C15783BD800F90408 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CA990C15783BD700F90408 /* Cocoa.framework */; };
 		13CA993415783BD800F90408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13CA993215783BD800F90408 /* InfoPlist.strings */; };
 		13CA993715783BD800F90408 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA993615783BD800F90408 /* DoliaTests.m */; };
-		13CA994215783CB300F90408 /* SSDoliaStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */; };
 		13CA994415783CBB00F90408 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994315783CBB00F90408 /* statusIcon.png */; };
 		13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994515783D0000F90408 /* DoliaStatusMenu.xib */; };
+		13CA9949157840DA00F90408 /* SSDoliaStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +52,10 @@
 		13CA993315783BD800F90408 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		13CA993515783BD800F90408 /* DoliaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoliaTests.h; sourceTree = "<group>"; };
 		13CA993615783BD800F90408 /* DoliaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoliaTests.m; sourceTree = "<group>"; };
-		13CA994015783CB300F90408 /* SSDoliaStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDoliaStatusMenuController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSDoliaStatusMenuController.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		13CA994315783CBB00F90408 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIcon.png; sourceTree = SOURCE_ROOT; };
 		13CA994515783D0000F90408 /* DoliaStatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoliaStatusMenu.xib; sourceTree = "<group>"; };
+		13CA9947157840DA00F90408 /* SSDoliaStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDoliaStatusMenuController.h; sourceTree = "<group>"; };
+		13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDoliaStatusMenuController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +123,8 @@
 			children = (
 				13CA991E15783BD700F90408 /* SSAppDelegate.h */,
 				13CA991F15783BD700F90408 /* SSAppDelegate.m */,
-				13CA994015783CB300F90408 /* SSDoliaStatusMenuController.h */,
-				13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */,
+				13CA9947157840DA00F90408 /* SSDoliaStatusMenuController.h */,
+				13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */,
 				13CA992115783BD800F90408 /* MainMenu.xib */,
 				13CA994515783D0000F90408 /* DoliaStatusMenu.xib */,
 				13CA991315783BD700F90408 /* Supporting Files */,
@@ -277,7 +277,7 @@
 			files = (
 				13CA991915783BD700F90408 /* main.m in Sources */,
 				13CA992015783BD700F90408 /* SSAppDelegate.m in Sources */,
-				13CA994215783CB300F90408 /* SSDoliaStatusMenuController.m in Sources */,
+				13CA9949157840DA00F90408 /* SSDoliaStatusMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
