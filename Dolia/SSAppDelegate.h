@@ -9,8 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "SSDoliaStatusMenuController.h"
 
-@interface SSAppDelegate : NSObject <NSApplicationDelegate>
+@interface SSAppDelegate : NSObject <NSApplicationDelegate, NSNetServiceDelegate, NSNetServiceBrowserDelegate>
 
-@property (retain) SSDoliaStatusMenuController* statusMenu;
+@property (retain) SSDoliaStatusMenuController *statusMenu;
+@property (retain) NSSocketPort *listeningPort;
+@property (retain) NSNetService *service;
+@property (retain) NSNetServiceBrowser *browser;
 
 @end
