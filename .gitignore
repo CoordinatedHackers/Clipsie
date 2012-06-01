@@ -1,0 +1,7 @@
+# Xcode
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+
+# Vim… bah
+*.un~

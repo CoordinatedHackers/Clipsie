@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13CA990D15783BD700F90408 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CA990C15783BD700F90408 /* Cocoa.framework */; };
+		13CA991715783BD700F90408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13CA991515783BD700F90408 /* InfoPlist.strings */; };
+		13CA991915783BD700F90408 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA991815783BD700F90408 /* main.m */; };
+		13CA991D15783BD700F90408 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 13CA991B15783BD700F90408 /* Credits.rtf */; };
+		13CA992015783BD700F90408 /* SSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA991F15783BD700F90408 /* SSAppDelegate.m */; };
+		13CA992315783BD800F90408 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA992115783BD800F90408 /* MainMenu.xib */; };
+		13CA992B15783BD800F90408 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CA992A15783BD800F90408 /* SenTestingKit.framework */; };
+		13CA992C15783BD800F90408 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CA990C15783BD700F90408 /* Cocoa.framework */; };
+		13CA993415783BD800F90408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13CA993215783BD800F90408 /* InfoPlist.strings */; };
+		13CA993715783BD800F90408 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA993615783BD800F90408 /* DoliaTests.m */; };
+		13CA994215783CB300F90408 /* SSDoliaStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */; };
+		13CA994415783CBB00F90408 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994315783CBB00F90408 /* statusIcon.png */; };
+		13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994515783D0000F90408 /* DoliaStatusMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13CA992D15783BD800F90408 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13CA98FF15783BD700F90408 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13CA990715783BD700F90408;
+			remoteInfo = Dolia;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13CA990815783BD700F90408 /* Dolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13CA990C15783BD700F90408 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		13CA990F15783BD700F90408 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		13CA991015783BD700F90408 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		13CA991115783BD700F90408 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		13CA991415783BD700F90408 /* Dolia-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dolia-Info.plist"; sourceTree = "<group>"; };
+		13CA991615783BD700F90408 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		13CA991815783BD700F90408 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		13CA991A15783BD700F90408 /* Dolia-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dolia-Prefix.pch"; sourceTree = "<group>"; };
+		13CA991C15783BD700F90408 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		13CA991E15783BD700F90408 /* SSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSAppDelegate.h; sourceTree = "<group>"; };
+		13CA991F15783BD700F90408 /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAppDelegate.m; sourceTree = "<group>"; };
+		13CA992215783BD800F90408 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		13CA992915783BD800F90408 /* DoliaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoliaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13CA992A15783BD800F90408 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		13CA993115783BD800F90408 /* DoliaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoliaTests-Info.plist"; sourceTree = "<group>"; };
+		13CA993315783BD800F90408 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		13CA993515783BD800F90408 /* DoliaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoliaTests.h; sourceTree = "<group>"; };
+		13CA993615783BD800F90408 /* DoliaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoliaTests.m; sourceTree = "<group>"; };
+		13CA994015783CB300F90408 /* SSDoliaStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDoliaStatusMenuController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSDoliaStatusMenuController.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		13CA994315783CBB00F90408 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIcon.png; sourceTree = SOURCE_ROOT; };
+		13CA994515783D0000F90408 /* DoliaStatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoliaStatusMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13CA990515783BD700F90408 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA990D15783BD700F90408 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13CA992515783BD800F90408 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA992B15783BD800F90408 /* SenTestingKit.framework in Frameworks */,
+				13CA992C15783BD800F90408 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13CA98FD15783BD700F90408 = {
+			isa = PBXGroup;
+			children = (
+				13CA991215783BD700F90408 /* Dolia */,
+				13CA992F15783BD800F90408 /* DoliaTests */,
+				13CA990B15783BD700F90408 /* Frameworks */,
+				13CA990915783BD700F90408 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		13CA990915783BD700F90408 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13CA990815783BD700F90408 /* Dolia.app */,
+				13CA992915783BD800F90408 /* DoliaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13CA990B15783BD700F90408 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13CA990C15783BD700F90408 /* Cocoa.framework */,
+				13CA992A15783BD800F90408 /* SenTestingKit.framework */,
+				13CA990E15783BD700F90408 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		13CA990E15783BD700F90408 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13CA990F15783BD700F90408 /* AppKit.framework */,
+				13CA991015783BD700F90408 /* CoreData.framework */,
+				13CA991115783BD700F90408 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		13CA991215783BD700F90408 /* Dolia */ = {
+			isa = PBXGroup;
+			children = (
+				13CA991E15783BD700F90408 /* SSAppDelegate.h */,
+				13CA991F15783BD700F90408 /* SSAppDelegate.m */,
+				13CA994015783CB300F90408 /* SSDoliaStatusMenuController.h */,
+				13CA994115783CB300F90408 /* SSDoliaStatusMenuController.m */,
+				13CA992115783BD800F90408 /* MainMenu.xib */,
+				13CA994515783D0000F90408 /* DoliaStatusMenu.xib */,
+				13CA991315783BD700F90408 /* Supporting Files */,
+			);
+			path = Dolia;
+			sourceTree = "<group>";
+		};
+		13CA991315783BD700F90408 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				13CA994315783CBB00F90408 /* statusIcon.png */,
+				13CA991415783BD700F90408 /* Dolia-Info.plist */,
+				13CA991515783BD700F90408 /* InfoPlist.strings */,
+				13CA991815783BD700F90408 /* main.m */,
+				13CA991A15783BD700F90408 /* Dolia-Prefix.pch */,
+				13CA991B15783BD700F90408 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13CA992F15783BD800F90408 /* DoliaTests */ = {
+			isa = PBXGroup;
+			children = (
+				13CA993515783BD800F90408 /* DoliaTests.h */,
+				13CA993615783BD800F90408 /* DoliaTests.m */,
+				13CA993015783BD800F90408 /* Supporting Files */,
+			);
+			path = DoliaTests;
+			sourceTree = "<group>";
+		};
+		13CA993015783BD800F90408 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				13CA993115783BD800F90408 /* DoliaTests-Info.plist */,
+				13CA993215783BD800F90408 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13CA990715783BD700F90408 /* Dolia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13CA993A15783BD800F90408 /* Build configuration list for PBXNativeTarget "Dolia" */;
+			buildPhases = (
+				13CA990415783BD700F90408 /* Sources */,
+				13CA990515783BD700F90408 /* Frameworks */,
+				13CA990615783BD700F90408 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dolia;
+			productName = Dolia;
+			productReference = 13CA990815783BD700F90408 /* Dolia.app */;
+			productType = "com.apple.product-type.application";
+		};
+		13CA992815783BD800F90408 /* DoliaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13CA993D15783BD800F90408 /* Build configuration list for PBXNativeTarget "DoliaTests" */;
+			buildPhases = (
+				13CA992415783BD800F90408 /* Sources */,
+				13CA992515783BD800F90408 /* Frameworks */,
+				13CA992615783BD800F90408 /* Resources */,
+				13CA992715783BD800F90408 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13CA992E15783BD800F90408 /* PBXTargetDependency */,
+			);
+			name = DoliaTests;
+			productName = DoliaTests;
+			productReference = 13CA992915783BD800F90408 /* DoliaTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13CA98FF15783BD700F90408 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SS;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Sam and Sidney";
+			};
+			buildConfigurationList = 13CA990215783BD700F90408 /* Build configuration list for PBXProject "Dolia" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 13CA98FD15783BD700F90408;
+			productRefGroup = 13CA990915783BD700F90408 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13CA990715783BD700F90408 /* Dolia */,
+				13CA992815783BD800F90408 /* DoliaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13CA990615783BD700F90408 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA991715783BD700F90408 /* InfoPlist.strings in Resources */,
+				13CA991D15783BD700F90408 /* Credits.rtf in Resources */,
+				13CA992315783BD800F90408 /* MainMenu.xib in Resources */,
+				13CA994415783CBB00F90408 /* statusIcon.png in Resources */,
+				13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13CA992615783BD800F90408 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA993415783BD800F90408 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13CA992715783BD800F90408 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13CA990415783BD700F90408 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA991915783BD700F90408 /* main.m in Sources */,
+				13CA992015783BD700F90408 /* SSAppDelegate.m in Sources */,
+				13CA994215783CB300F90408 /* SSDoliaStatusMenuController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13CA992415783BD800F90408 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13CA993715783BD800F90408 /* DoliaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13CA992E15783BD800F90408 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13CA990715783BD700F90408 /* Dolia */;
+			targetProxy = 13CA992D15783BD800F90408 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13CA991515783BD700F90408 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13CA991615783BD700F90408 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		13CA991B15783BD700F90408 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13CA991C15783BD700F90408 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		13CA992115783BD800F90408 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13CA992215783BD800F90408 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		13CA993215783BD800F90408 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13CA993315783BD800F90408 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		13CA993815783BD800F90408 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		13CA993915783BD800F90408 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		13CA993B15783BD800F90408 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dolia/Dolia-Prefix.pch";
+				INFOPLIST_FILE = "Dolia/Dolia-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		13CA993C15783BD800F90408 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dolia/Dolia-Prefix.pch";
+				INFOPLIST_FILE = "Dolia/Dolia-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		13CA993E15783BD800F90408 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dolia.app/Contents/MacOS/Dolia";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dolia/Dolia-Prefix.pch";
+				INFOPLIST_FILE = "DoliaTests/DoliaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		13CA993F15783BD800F90408 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dolia.app/Contents/MacOS/Dolia";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dolia/Dolia-Prefix.pch";
+				INFOPLIST_FILE = "DoliaTests/DoliaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13CA990215783BD700F90408 /* Build configuration list for PBXProject "Dolia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13CA993815783BD800F90408 /* Debug */,
+				13CA993915783BD800F90408 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13CA993A15783BD800F90408 /* Build configuration list for PBXNativeTarget "Dolia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13CA993B15783BD800F90408 /* Debug */,
+				13CA993C15783BD800F90408 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		13CA993D15783BD800F90408 /* Build configuration list for PBXNativeTarget "DoliaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13CA993E15783BD800F90408 /* Debug */,
+				13CA993F15783BD800F90408 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 13CA98FF15783BD700F90408 /* Project object */;
+}
