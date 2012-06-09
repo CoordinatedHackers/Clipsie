@@ -11,10 +11,14 @@
 @interface SSDoliaStatusMenuController : NSObject {
 	NSStatusItem *statusItem;
 	IBOutlet NSMenu *menu;
-	
 }
+
+-(void)addNewFoundComputer:(NSNetService *)computer;
+-(void)removeFoundComputer:(NSNetService *)computer;
+-(void)printSomeStuff:(NSString *)stuff;
 
 @property(retain) NSStatusItem *statusItem;
 @property(retain) IBOutlet NSMenu *menu;
+@property(retain) NSMutableDictionary *servicesDictionary;
 
 @end

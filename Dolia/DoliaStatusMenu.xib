@@ -35,36 +35,6 @@
 			<object class="NSMenu" id="950494064">
 				<string key="NSTitle"/>
 				<array class="NSMutableArray" key="NSMenuItems">
-					<object class="NSMenuItem" id="1026199857">
-						<reference key="NSMenu" ref="950494064"/>
-						<string key="NSTitle">Item 1</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="404956663">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="813526524">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
-					</object>
-					<object class="NSMenuItem" id="554341913">
-						<reference key="NSMenu" ref="950494064"/>
-						<string key="NSTitle">Item 2</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="404956663"/>
-						<reference key="NSMixedImage" ref="813526524"/>
-					</object>
-					<object class="NSMenuItem" id="606846237">
-						<reference key="NSMenu" ref="950494064"/>
-						<string key="NSTitle">Item 3</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="404956663"/>
-						<reference key="NSMixedImage" ref="813526524"/>
-					</object>
 					<object class="NSMenuItem" id="803388672">
 						<reference key="NSMenu" ref="950494064"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -72,16 +42,22 @@
 						<string key="NSTitle"/>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="404956663"/>
-						<reference key="NSMixedImage" ref="813526524"/>
+						<object class="NSCustomResource" key="NSOnImage" id="1055044596">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="350207142">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
 					</object>
 					<object class="NSMenuItem" id="532669013">
 						<reference key="NSMenu" ref="950494064"/>
 						<string key="NSTitle">Quit</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="404956663"/>
-						<reference key="NSMixedImage" ref="813526524"/>
+						<reference key="NSOnImage" ref="1055044596"/>
+						<reference key="NSMixedImage" ref="350207142"/>
 					</object>
 				</array>
 			</object>
@@ -135,28 +111,10 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="950494064"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1026199857"/>
-							<reference ref="554341913"/>
-							<reference ref="606846237"/>
 							<reference ref="532669013"/>
 							<reference ref="803388672"/>
 						</array>
 						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2</int>
-						<reference key="object" ref="1026199857"/>
-						<reference key="parent" ref="950494064"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="554341913"/>
-						<reference key="parent" ref="950494064"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="606846237"/>
-						<reference key="parent" ref="950494064"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
@@ -175,9 +133,6 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>

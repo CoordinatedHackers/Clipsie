@@ -12,17 +12,19 @@
 
 @implementation SSAppDelegate
 
-@synthesize statusMenu, listeningPort, service, browser;
+@synthesize statusMenu, listeningPort, service, browser, foundServices;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	self.statusMenu = [SSDoliaStatusMenuController new];
     self.listeningPort = [[NSSocketPort alloc] initWithTCPPort:0];
-
+    self.foundServices = [NSMutableSet new];
+    
     struct sockaddr *addr;
     UInt16 port;
 
     addr = (struct sockaddr *)[[self.listeningPort address] bytes];
+    
     if(addr->sa_family == AF_INET)
     {
         port = ntohs(((struct sockaddr_in *)addr)->sin_port);
@@ -60,13 +62,27 @@
     //Search for other Dolia instances
     self.browser = [NSNetServiceBrowser new];
     [self.browser setDelegate:self];
-    [self.browser searchForServicesOfType:@"_dolia._tcp" inDomain:@""];
+    [self.browser searchForServicesOfType:@"_dolia._tcp" inDomain:@"local"];
 
 }
 
+#pragma mark(NSNetServiceBrowserDelegate Methods)
+
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    NSLog(@"%@", aNetService);
+    NSLog(@"Added: %@", aNetService);
+    [self.foundServices addObject:aNetService];
+    
+    NSLog(@"foundServices: %@", self.foundServices);
+    [self.statusMenu addNewFoundComputer:aNetService];
+}
+
+-(void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
+{
+    NSLog(@"Removed: %@", aNetService);
+    
+    [self.foundServices removeObject:aNetService];
+    [self.statusMenu removeFoundComputer:aNetService];
 }
 
 @end

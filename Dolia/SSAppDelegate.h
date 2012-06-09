@@ -15,5 +15,6 @@
 @property (retain) NSSocketPort *listeningPort;
 @property (retain) NSNetService *service;
 @property (retain) NSNetServiceBrowser *browser;
+@property (retain) NSMutableSet *foundServices;
 
 @end
