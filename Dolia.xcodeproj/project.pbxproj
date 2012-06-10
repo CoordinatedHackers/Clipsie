@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134D93ED1585099500E34BC8 /* dolia.png in Resources */ = {isa = PBXBuildFile; fileRef = 134D93EC1585099500E34BC8 /* dolia.png */; };
 		13CA990D15783BD700F90408 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CA990C15783BD700F90408 /* Cocoa.framework */; };
 		13CA991715783BD700F90408 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13CA991515783BD700F90408 /* InfoPlist.strings */; };
 		13CA991915783BD700F90408 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA991815783BD700F90408 /* main.m */; };
@@ -19,7 +20,6 @@
 		13CA993715783BD800F90408 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA993615783BD800F90408 /* DoliaTests.m */; };
 		13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994515783D0000F90408 /* DoliaStatusMenu.xib */; };
 		13CA9949157840DA00F90408 /* SSDoliaStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */; };
-		220960C5158408C2003DC606 /* dolia.png in Resources */ = {isa = PBXBuildFile; fileRef = 220960C4158408C2003DC606 /* dolia.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		134D93EC1585099500E34BC8 /* dolia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dolia.png; sourceTree = "<group>"; };
 		13CA990815783BD700F90408 /* Dolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CA990C15783BD700F90408 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		13CA990F15783BD700F90408 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,7 +56,6 @@
 		13CA994515783D0000F90408 /* DoliaStatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoliaStatusMenu.xib; sourceTree = "<group>"; };
 		13CA9947157840DA00F90408 /* SSDoliaStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDoliaStatusMenuController.h; sourceTree = "<group>"; };
 		13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDoliaStatusMenuController.m; sourceTree = "<group>"; };
-		220960C4158408C2003DC606 /* dolia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dolia.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			children = (
 				13CA991415783BD700F90408 /* Dolia-Info.plist */,
 				13CA991515783BD700F90408 /* InfoPlist.strings */,
-				220960C4158408C2003DC606 /* dolia.png */,
+				134D93EC1585099500E34BC8 /* dolia.png */,
 				13CA991815783BD700F90408 /* main.m */,
 				13CA991A15783BD700F90408 /* Dolia-Prefix.pch */,
 				13CA991B15783BD700F90408 /* Credits.rtf */,
@@ -240,7 +240,7 @@
 				13CA991D15783BD700F90408 /* Credits.rtf in Resources */,
 				13CA992315783BD800F90408 /* MainMenu.xib in Resources */,
 				13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */,
-				220960C5158408C2003DC606 /* dolia.png in Resources */,
+				134D93ED1585099500E34BC8 /* dolia.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
