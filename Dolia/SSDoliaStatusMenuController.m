@@ -42,7 +42,7 @@
     NSMenuItem *menuItem = [NSMenuItem new];
     
     //Use CFDictionary method to set value to avoid copying issue
-    CFDictionarySetValue((__bridge CFMutableDictionaryRef)self.servicesDictionary, (__bridge NSNetService *)computer, (__bridge NSMenuItem *)menuItem);
+    CFDictionarySetValue((__bridge CFMutableDictionaryRef)self.servicesDictionary, (__bridge void *)computer, (__bridge void *)menuItem);
 
     [menuItem setTitle:[computer name]];
     [menuItem setAction:@selector(printSomeStuff:)];
