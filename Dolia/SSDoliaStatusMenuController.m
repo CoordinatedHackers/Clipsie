@@ -7,6 +7,7 @@
 //
 
 #import "SSDoliaStatusMenuController.h"
+#import "SSDoliaSendWindowController.h"
 
 @implementation SSDoliaStatusMenuController
 
@@ -64,7 +65,11 @@
 
 -(void)printSomeStuff:(NSString *)stuff
 {
+    SSDoliaSendWindowController *foo = [SSDoliaSendWindowController new];
+    [foo showWindow:self];
+    [[foo window] makeKeyAndOrderFront:self];
     NSLog(@"Print some stuff: %@", stuff);
+    NSLog(@"This is running");
 }
 
 - (void)dealloc

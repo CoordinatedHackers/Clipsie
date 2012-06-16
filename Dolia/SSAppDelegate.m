@@ -19,12 +19,12 @@
 	self.statusMenu = [SSDoliaStatusMenuController new];
     self.listeningPort = [[NSSocketPort alloc] initWithTCPPort:0];
     self.foundServices = [NSMutableSet new];
-    
+
     struct sockaddr *addr;
     UInt16 port;
 
     addr = (struct sockaddr *)[[self.listeningPort address] bytes];
-    
+
     if(addr->sa_family == AF_INET)
     {
         port = ntohs(((struct sockaddr_in *)addr)->sin_port);
@@ -71,8 +71,11 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
     NSLog(@"Added: %@", aNetService);
+
+    [self willChangeValueForKey:@"foundServices"];
     [self.foundServices addObject:aNetService];
-    
+    [self didChangeValueForKey:@"foundServices"];
+
     NSLog(@"foundServices: %@", self.foundServices);
     [self.statusMenu addNewFoundComputer:aNetService];
 }
@@ -80,9 +83,13 @@
 -(void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
     NSLog(@"Removed: %@", aNetService);
-    
+
+    [self willChangeValueForKey:@"foundServices"];
     [self.foundServices removeObject:aNetService];
+    [self didChangeValueForKey:@"foundServices"];
+
     [self.statusMenu removeFoundComputer:aNetService];
+
 }
 
 @end

@@ -20,6 +20,8 @@
 		13CA993715783BD800F90408 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA993615783BD800F90408 /* DoliaTests.m */; };
 		13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA994515783D0000F90408 /* DoliaStatusMenu.xib */; };
 		13CA9949157840DA00F90408 /* SSDoliaStatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */; };
+		22393C86158D14D60019615A /* SSDoliaSendWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22393C84158D14D60019615A /* SSDoliaSendWindowController.m */; };
+		22393C87158D14D60019615A /* SSDoliaSendWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22393C85158D14D60019615A /* SSDoliaSendWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		13CA994515783D0000F90408 /* DoliaStatusMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoliaStatusMenu.xib; sourceTree = "<group>"; };
 		13CA9947157840DA00F90408 /* SSDoliaStatusMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDoliaStatusMenuController.h; sourceTree = "<group>"; };
 		13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDoliaStatusMenuController.m; sourceTree = "<group>"; };
+		22393C83158D14D60019615A /* SSDoliaSendWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDoliaSendWindowController.h; sourceTree = "<group>"; };
+		22393C84158D14D60019615A /* SSDoliaSendWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDoliaSendWindowController.m; sourceTree = "<group>"; };
+		22393C85158D14D60019615A /* SSDoliaSendWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSDoliaSendWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +130,9 @@
 				13CA991F15783BD700F90408 /* SSAppDelegate.m */,
 				13CA9947157840DA00F90408 /* SSDoliaStatusMenuController.h */,
 				13CA9948157840DA00F90408 /* SSDoliaStatusMenuController.m */,
+				22393C83158D14D60019615A /* SSDoliaSendWindowController.h */,
+				22393C84158D14D60019615A /* SSDoliaSendWindowController.m */,
+				22393C85158D14D60019615A /* SSDoliaSendWindow.xib */,
 				13CA992115783BD800F90408 /* MainMenu.xib */,
 				13CA994515783D0000F90408 /* DoliaStatusMenu.xib */,
 				13CA991315783BD700F90408 /* Supporting Files */,
@@ -241,6 +249,7 @@
 				13CA992315783BD800F90408 /* MainMenu.xib in Resources */,
 				13CA994615783D0000F90408 /* DoliaStatusMenu.xib in Resources */,
 				134D93ED1585099500E34BC8 /* dolia.png in Resources */,
+				22393C87158D14D60019615A /* SSDoliaSendWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +287,7 @@
 				13CA991915783BD700F90408 /* main.m in Sources */,
 				13CA992015783BD700F90408 /* SSAppDelegate.m in Sources */,
 				13CA9949157840DA00F90408 /* SSDoliaStatusMenuController.m in Sources */,
+				22393C86158D14D60019615A /* SSDoliaSendWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
