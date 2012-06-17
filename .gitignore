@@ -4,6 +4,7 @@
 xcuserdata
 *.pbxuser
 *.perspectivev3
+/build
 
 # Vim… bah
 *.un~
