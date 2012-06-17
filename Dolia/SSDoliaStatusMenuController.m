@@ -16,8 +16,8 @@
 - (SSDoliaStatusMenuController*)init
 {
 	self = [super init];
-    //Use CFDictionary because NSNetService can't be copied (a requirement to be a key in NSDictionarys)
-    self.servicesDictionary = (__bridge_transfer NSMutableDictionary *)CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+	//Use CFDictionary because NSNetService can't be copied (a requirement to be a key in NSDictionarys)
+	self.servicesDictionary = (__bridge_transfer NSMutableDictionary *)CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 	self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
 	[NSBundle loadNibNamed:@"DoliaStatusMenu" owner:self];
 	return self;
@@ -38,38 +38,38 @@
 
 - (void)addNewFoundComputer:(NSNetService *)computer
 {
-    //[self.menu addItemWithTitle:computerName action:@selector(printSomeStuff:) keyEquivalent:@""];
-    
-    NSMenuItem *menuItem = [NSMenuItem new];
-    
-    //Use CFDictionary method to set value to avoid copying issue
-    CFDictionarySetValue((__bridge CFMutableDictionaryRef)self.servicesDictionary, (__bridge void *)computer, (__bridge void *)menuItem);
+	//[self.menu addItemWithTitle:computerName action:@selector(printSomeStuff:) keyEquivalent:@""];
+	
+	NSMenuItem *menuItem = [NSMenuItem new];
+	
+	//Use CFDictionary method to set value to avoid copying issue
+	CFDictionarySetValue((__bridge CFMutableDictionaryRef)self.servicesDictionary, (__bridge void *)computer, (__bridge void *)menuItem);
 
-    [menuItem setTitle:[computer name]];
-    [menuItem setAction:@selector(printSomeStuff:)];
-    [menuItem setTarget:self];
-    [menuItem setEnabled:YES];
-    [self.menu insertItem:menuItem atIndex:0];
+	[menuItem setTitle:[computer name]];
+	[menuItem setAction:@selector(printSomeStuff:)];
+	[menuItem setTarget:self];
+	[menuItem setEnabled:YES];
+	[self.menu insertItem:menuItem atIndex:0];
 }
 
 - (void)removeFoundComputer:(NSNetService *)computer
 {
-    //[self.menu addItemWithTitle:computerName action:@selector(printSomeStuff:) keyEquivalent:@""];
-    
-    NSMenuItem *menuItem = [self.servicesDictionary objectForKey:computer];
-    [self.servicesDictionary removeObjectForKey:computer];
-    
-    [self.menu removeItem:menuItem];
+	//[self.menu addItemWithTitle:computerName action:@selector(printSomeStuff:) keyEquivalent:@""];
+	
+	NSMenuItem *menuItem = [self.servicesDictionary objectForKey:computer];
+	[self.servicesDictionary removeObjectForKey:computer];
+	
+	[self.menu removeItem:menuItem];
 }
 
 
 -(void)printSomeStuff:(NSString *)stuff
 {
-    SSDoliaSendWindowController *foo = [SSDoliaSendWindowController new];
-    [foo showWindow:self];
-    [[foo window] makeKeyAndOrderFront:self];
-    NSLog(@"Print some stuff: %@", stuff);
-    NSLog(@"This is running");
+	SSDoliaSendWindowController *foo = [SSDoliaSendWindowController new];
+	[foo showWindow:self];
+	[[foo window] makeKeyAndOrderFront:self];
+	NSLog(@"Print some stuff: %@", stuff);
+	NSLog(@"This is running");
 }
 
 - (void)dealloc

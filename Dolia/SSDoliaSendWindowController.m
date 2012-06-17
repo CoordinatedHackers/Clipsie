@@ -16,28 +16,28 @@
 @synthesize selfReference,delegate;
 - (id)init
 {
-    self = [super initWithWindowNibName:@"SSDoliaSendWindow"];
-    if (self) {
-        self.selfReference = self;
-        self.delegate = [NSApp delegate];
-        NSLog(@"SendWindowController INIT!!");
-    }
+	self = [super initWithWindowNibName:@"SSDoliaSendWindow"];
+	if (self) {
+		self.selfReference = self;
+		self.delegate = [NSApp delegate];
+		NSLog(@"SendWindowController INIT!!");
+	}
 
-    return self;
+	return self;
 }
 
 - (void)windowDidLoad
 {
-    [super windowDidLoad];
+	[super windowDidLoad];
 
-    NSLog(@"Yo WINDOW DONE LOADED!");
+	NSLog(@"Yo WINDOW DONE LOADED!");
 
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+	// Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    self.selfReference = nil;
+	self.selfReference = nil;
 }
 
 //TODO: Convience method for initWithDelegate
