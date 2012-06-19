@@ -20,7 +20,7 @@
 	if (self) {
 		self.selfReference = self;
 		self.delegate = [NSApp delegate];
-		NSLog(@"SendWindowController INIT!!");
+		[[self window] makeKeyAndOrderFront:self];
 	}
 
 	return self;
