@@ -14,23 +14,29 @@
 
 @implementation SSDoliaSendWindowController
 @synthesize selfReference,delegate;
-- (id)init
-{
-	self = [super initWithWindowNibName:@"SSDoliaSendWindow"];
-	if (self) {
-		self.selfReference = self;
-		self.delegate = [NSApp delegate];
-		[[self window] makeKeyAndOrderFront:self];
-	}
 
-	return self;
+//MAYBE make an init method that just throws an error?
+- (id)initWithObjectToSend:(id)objectToSend
+{
+    if ((self = [super initWithWindowNibName:@"SSDoliaSendWindow"]) && objectToSend) {
+        _objectToSend = objectToSend;
+        self.selfReference = self;
+		self.delegate = [NSApp delegate];
+        [[self window] setLevel:NSFloatingWindowLevel];
+		[[self window] makeKeyAndOrderFront:self];
+    }
+
+    return self;
+}
+
+- (IBAction)send:(id)sender
+{
+    NSLog(@"I made it so");
 }
 
 - (void)windowDidLoad
 {
 	[super windowDidLoad];
-
-	NSLog(@"Yo WINDOW DONE LOADED!");
 
 	// Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }

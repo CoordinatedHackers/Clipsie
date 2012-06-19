@@ -61,7 +61,7 @@
 
 -(void)printSomeStuff:(NSString *)stuff
 {
-	[SSDoliaSendWindowController new];
+	(void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:@"HELLO WORLD"];
 	[NSApp activateIgnoringOtherApps:YES];
 	NSLog(@"Print some stuff: %@", stuff);
 	NSLog(@"This is running");

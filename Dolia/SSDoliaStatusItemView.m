@@ -10,6 +10,7 @@
 //  http://stackoverflow.com/a/6493240/84745
 
 #import "SSDoliaStatusItemView.h"
+#import "SSDoliaSendWindowController.h"
 #import <QuartzCore/QuartzCore.h>
 
 static CIImage *statusImage = nil;
@@ -43,8 +44,7 @@ static CIImage *statusImage = nil;
 	NSRect imageRect = [statusImage extent];
 	NSRect destRect = imageRect;
 	destRect.origin.x = dirtyRect.size.width / 2 - imageRect.size.width / 2;
-	// With the current image, I think it looks better 1px above center
-	destRect.origin.y = dirtyRect.size.height / 2 - imageRect.size.height / 2 + 1;
+	destRect.origin.y = dirtyRect.size.height / 2 - imageRect.size.height / 2;
 	CIImage *imageToDraw;
 	if (menuOpen) {
 		// Man, I thought this was the point of template images
@@ -91,18 +91,26 @@ static CIImage *statusImage = nil;
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pasteboard = [sender draggingPasteboard];
-	NSArray* types = [pasteboard types];
-	
+	NSArray *types = [pasteboard types];
+    id drop = nil;
+    
+	NSLog(@"%@", types);
+    
 	if ([types containsObject:NSFilenamesPboardType]) {
-		NSLog(@"Files: %@", [pasteboard propertyListForType:NSFilenamesPboardType]);
+        drop = [pasteboard propertyListForType:NSFilenamesPboardType];
 	} else if ([types containsObject:NSURLPboardType]) {
-		NSLog(@"URL: %@", [pasteboard propertyListForType:NSURLPboardType]);
+		drop = [pasteboard propertyListForType:NSURLPboardType];
 	} else if ([types containsObject:NSPasteboardTypeString]) {
-		NSLog(@"String: %@", [pasteboard propertyListForType:NSPasteboardTypeString]);
-	} else {
-		return NO;
+		drop = [pasteboard propertyListForType:NSPasteboardTypeString];
 	}
-	return YES;
+    
+    if (drop) {
+        (void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:drop];
+        [NSApp activateIgnoringOtherApps:YES];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

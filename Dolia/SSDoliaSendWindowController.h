@@ -8,7 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SSDoliaSendWindowController : NSWindowController
+@interface SSDoliaSendWindowController : NSWindowController {
+    id _objectToSend;
+}
 @property (retain) id delegate;
+
+- (id)initWithObjectToSend:(id)objectToSend;
+- (IBAction)send:(id)sender;
 
 @end
