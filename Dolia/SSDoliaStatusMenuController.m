@@ -8,6 +8,7 @@
 
 #import "SSDoliaStatusMenuController.h"
 #import "SSDoliaSendWindowController.h"
+#import "SSDoliaStatusItemView.h"
 
 @implementation SSDoliaStatusMenuController
 
@@ -26,14 +27,9 @@
 - (void)awakeFromNib
 {
 	NSLog(@"Status menu controller is awake");
-	NSImage *statusImage =
-	[[NSImage alloc] initWithContentsOfFile:
-		[[NSBundle mainBundle] pathForImageResource:@"dolia"]
-	];
-	[statusImage setTemplate:YES];
-	[self.statusItem setImage:statusImage];
 	[self.statusItem setMenu:self.menu];
 	[self.statusItem setHighlightMode:YES];
+	[self.statusItem setView:[[SSDoliaStatusItemView alloc] initWithStatusItem:self.statusItem]];
 }
 
 - (void)addNewFoundComputer:(NSNetService *)computer
