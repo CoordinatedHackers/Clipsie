@@ -31,7 +31,10 @@
 
 - (IBAction)send:(id)sender
 {
-    NSLog(@"I made it so");
+	for (id recipient in [_recipientController selectedObjects]) {
+		[self.delegate offerItem:_objectToSend toUser:recipient];
+	}
+	[[self window] close];
 }
 
 - (void)windowDidLoad

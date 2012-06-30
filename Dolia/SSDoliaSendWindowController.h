@@ -8,10 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class NSNetService;
+
+@protocol SSDoliaSendWindowDelegate
+
+- (void)offerItem:(id)item toUser:(NSNetService *)user;
+
+@end
+
 @interface SSDoliaSendWindowController : NSWindowController {
     id _objectToSend;
+	IBOutlet NSArrayController* _recipientController;
 }
-@property (retain) id delegate;
+@property (retain) id<SSDoliaSendWindowDelegate> delegate;
 
 - (id)initWithObjectToSend:(id)objectToSend;
 - (IBAction)send:(id)sender;

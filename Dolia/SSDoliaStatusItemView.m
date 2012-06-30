@@ -10,7 +10,7 @@
 //  http://stackoverflow.com/a/6493240/84745
 
 #import "SSDoliaStatusItemView.h"
-#import "SSDoliaSendWindowController.h"
+#import "SSAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 static CIImage *statusImage = nil;
@@ -90,21 +90,11 @@ static CIImage *statusImage = nil;
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
-	BOOL sentStuff = NO;
 	NSArray* types = [NSArray arrayWithObjects:[NSURL class], [NSString class], nil];
 	NSArray* pasteboardItems = [[sender draggingPasteboard] readObjectsForClasses:types options:[NSDictionary dictionary]];
 
-	for (id item in pasteboardItems) {
-		if ([item isKindOfClass:[NSURL class]]) {
-			(void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:item];
-			sentStuff = YES;
-		} else if ([item isKindOfClass:[NSString class]]) {
-			(void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:item];
-			sentStuff = YES;
-		}
-	}
-    if (sentStuff) {
-        [NSApp activateIgnoringOtherApps:YES];
+	[(SSAppDelegate*)[NSApp delegate] offerItems:pasteboardItems]; // FIXME: HAX
+    if ([pasteboardItems count]) {
         return YES;
     } else {
         return NO;
