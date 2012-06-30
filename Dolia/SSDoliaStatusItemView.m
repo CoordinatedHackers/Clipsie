@@ -90,22 +90,20 @@ static CIImage *statusImage = nil;
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
-	NSPasteboard *pasteboard = [sender draggingPasteboard];
-	NSArray *types = [pasteboard types];
-    id drop = nil;
-    
-	NSLog(@"%@", types);
-    
-	if ([types containsObject:NSFilenamesPboardType]) {
-        drop = [pasteboard propertyListForType:NSFilenamesPboardType];
-	} else if ([types containsObject:NSURLPboardType]) {
-		drop = [pasteboard propertyListForType:NSURLPboardType];
-	} else if ([types containsObject:NSPasteboardTypeString]) {
-		drop = [pasteboard propertyListForType:NSPasteboardTypeString];
+	BOOL sentStuff = NO;
+	NSArray* types = [NSArray arrayWithObjects:[NSURL class], [NSString class], nil];
+	NSArray* pasteboardItems = [[sender draggingPasteboard] readObjectsForClasses:types options:[NSDictionary dictionary]];
+
+	for (id item in pasteboardItems) {
+		if ([item isKindOfClass:[NSURL class]]) {
+			(void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:item];
+			sentStuff = YES;
+		} else if ([item isKindOfClass:[NSString class]]) {
+			(void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:item];
+			sentStuff = YES;
+		}
 	}
-    
-    if (drop) {
-        (void)[[SSDoliaSendWindowController alloc] initWithObjectToSend:drop];
+    if (sentStuff) {
         [NSApp activateIgnoringOtherApps:YES];
         return YES;
     } else {
