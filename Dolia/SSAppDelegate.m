@@ -68,6 +68,11 @@
 	NSLog(@"Now offering: %@", self.offers);
 }
 
+- (void)receiveItem:(NSString *)id fromClient:(NSString *)address onPort:(NSString *)port metadata:(NSDictionary *)metadata
+{
+	NSLog(@"DERP");
+}
+
 #pragma mark(NSNetServiceBrowserDelegate Methods)
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
