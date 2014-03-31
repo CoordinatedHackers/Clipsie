@@ -1,42 +1,36 @@
-from Foundation import NSNetService, NSNetServiceBrowser, NSObject
-from PyObjCTools import AppHelper
+MCAST_GROUP = '224.5.5.6'
+MCAST_PORT = 5008
 
-class BrowserDelegate(NSObject):
+class scanner(object):
+    def __init__(self):
+        import socket
+        import struct
 
-	def init(self):
-		self = super(BrowserDelegate, self).init()
+        self.sock = socket.socket(
+            socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP
+        )
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.sock.bind(('', MCAST_PORT))
+        self.sock.setsockopt(
+            socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP,
+            struct.pack(
+                "4sl", socket.inet_aton(MCAST_GROUP), socket.INADDR_ANY
+            )
+        )
 
-		self.services = set()
+        self.sock.recv()
 
-		return self
+class cli(object):
 
-	def netServiceBrowser_didFindService_moreComing_(
-		self, browser, aNetService, moreComing
-	):
-		self.services.add(aNetService)
-		if not moreComing and hasattr(self, 'found_cb'):
-			self.found_cb(self.services)
+    def __init__(self):
+        from optparse import OptionParser
 
-	def netServiceBrowser_didRemoveService_moreComing_(
-		self, browser, aNetService, moreComing
-	):
-		self.services.remove(aNetService)
-	
+        parser = OptionParser(usage="%prog [options] [file [...]|text]")
+        options, args = parser.parse_args()
 
-def gogogo():
-	def onSearched(services):
-		for service in services:
-			print NSNetService.dictionaryFromTXTRecordData_(service.TXTRecordData())
-
-
-	browserDelegate = BrowserDelegate.new()
-	browserDelegate.found_cb = onSearched
-	browser = NSNetServiceBrowser.new()
-	browser._.delegate = browserDelegate
-	browser.searchForServicesOfType_inDomain_("_dolia._tcp", "local.")
-
-
-	AppHelper.runConsoleEventLoop(installInterrupt=True)
-
-if __name__ == "__main__":
-    gogogo()
+        if len(args) > 1:
+            parser.error("TODO: file support (incl. multiple arguments)");
+        elif args:
+            parser.error("TODO");
+        else:
+            scanner()

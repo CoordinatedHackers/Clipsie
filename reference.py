@@ -1,3 +1,0 @@
-import dolia
-
-dolia.gogogo()
