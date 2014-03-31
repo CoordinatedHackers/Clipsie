@@ -1,0 +1,3 @@
+import dolia
+
+dolia.gogogo()
