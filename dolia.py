@@ -50,7 +50,7 @@ class jsont(object):
             if boundary != -1:
                 message = self.buf[:boundary]
                 self.buf = self.buf[boundary + 1:]
-        return json.loads(message.decode('utf-8'))
+        return address[0], json.loads(message.decode('utf-8'))
 
 class listener(object):
     def __init__(self, port, name=socket.gethostname()):
@@ -62,7 +62,7 @@ class listener(object):
 
     def listen(self):
         while True:
-            message = self.transport.recv()
+            address, message = self.transport.recv()
             if 'scan' in message and message['scan'] is True:
                 self.transport.send(
                     name=self.name,
@@ -86,12 +86,13 @@ class client(object):
 
 
 class dest(object):
-    def __init__(self, desc):
+    def __init__(self, ip, desc):
+        self.ip = ip
         self.desc = desc
 
     def send(self, data):
         conn = socket.socket()
-        conn.connect(('127.0.0.1', self.desc['port']))
+        conn.connect((self.ip, self.desc['port']))
         conn.sendall(data.encode('utf-8'))
 
 class scanner(object):
@@ -112,11 +113,11 @@ class scanner(object):
             if not pollres: break
             scantime -= time.time() - start
 
-            message = self.transport.recv()
+            ip, message = self.transport.recv()
             if 'scan' in message:
                 continue
             elif 'name' in message:
-                res.append(dest(message))
+                res.append(dest(ip, message))
             else:
                 print('scanner: ignoring unknown message:', message)
 
