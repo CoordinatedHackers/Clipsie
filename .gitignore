@@ -1,4 +1,3 @@
-# Xcode
 *.xcworkspace
 !default.xcworkspace
 xcuserdata
@@ -6,5 +5,5 @@ xcuserdata
 *.perspectivev3
 /build
 
-# Vim… bah
-*.un~
+*.pyc
+__pycache__
