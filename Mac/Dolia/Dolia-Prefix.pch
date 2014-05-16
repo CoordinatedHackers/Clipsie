@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'Dolia' target in the 'Dolia' project
-//
-
-#ifdef __OBJC__
-	#import <Cocoa/Cocoa.h>
-#endif
