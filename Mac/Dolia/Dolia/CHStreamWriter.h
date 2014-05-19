@@ -10,8 +10,9 @@
 
 @interface CHStreamWriter : NSObject <NSStreamDelegate>
 
-//+ (void)writeData:(NSData *)data toStream:(NSOutputStream *)stream withCompletionBlock:(void (^)(bool))block;
++ (void)writeData:(NSData *)data toStream:(NSOutputStream *)stream withCompletionBlock:(void (^)(bool))block;
 
+@property (retain) CHStreamWriter *holdSelf;
 @property (retain) NSData *data;
 @property (retain) NSOutputStream *stream;
 @property (nonatomic, copy) void (^completionBlock)(bool);

@@ -41,14 +41,14 @@
                 [stream read:(uint8_t *)&_length maxLength:2];
                 self.data = [NSMutableData dataWithLength:self.length];
                 self.position = 0;
-                NSLog(@"Will read data of length: %d", self.length);
+                NSLog(@"Will read data of length: %llu", self.length);
                 
             }
+            NSLog(@"Reading up to %llu bytes", self.length - self.position);
             self.position += [stream read:([self.data mutableBytes]+self.position) maxLength:(self.length - self.position)];
             
             if (self.position == self.length) {
                 [stream close];
-                NSLog(@"We get data: %@", self.data);
                 NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil];
                 if (pbData) {
                     NSPasteboard *pb = [NSPasteboard generalPasteboard];

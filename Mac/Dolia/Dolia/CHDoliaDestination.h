@@ -12,9 +12,6 @@
 @interface CHDoliaDestination : NSObject
 
 @property (retain) NSNetService *service;
-@property (retain) NSInputStream *inputStream;
-@property (retain) NSOutputStream *outputStream;
-@property (retain) CHStreamWriter *writer; // Fuckin' hax
 
 - (id)initWithService:(NSNetService*)service;
 - (NSString *)name;

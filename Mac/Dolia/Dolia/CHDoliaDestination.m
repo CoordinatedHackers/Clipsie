@@ -25,12 +25,11 @@
 
 - (void)offerData:(NSData *)data
 {
-    if ([self.service getInputStream:&_inputStream outputStream:&_outputStream]) {
-//        [CHStreamWriter writeData:data toStream:self.outputStream withCompletionBlock:^void (bool worked){
-        self.writer = [[CHStreamWriter alloc] initWithData:data stream:self.outputStream completionBlock:^void (bool worked){
+    NSOutputStream *outputStream;
+    if ([self.service getInputStream:NULL outputStream:&outputStream]) {
+        [CHStreamWriter writeData:data toStream:outputStream withCompletionBlock:^void (bool worked){
             NSLog(@"Hey, making an offer %s", worked ? "worked" : "didn't work");
         }];
-        [self.writer write];
     }
 }
 

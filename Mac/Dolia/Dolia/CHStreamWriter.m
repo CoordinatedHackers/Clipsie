@@ -10,17 +10,17 @@
 
 @implementation CHStreamWriter
 
-//+ (void)writeData:(NSData *)data toStream:(NSOutputStream *)stream withCompletionBlock:(void (^)(bool))block
-//{
-//    CHStreamWriter *writer = [CHStreamWriter new];
-//    writer.data = data;
-//    writer.stream = stream;
-//    writer.completionBlock = ^void (bool worked) {
-//        block(worked);
-//    };
-//    [writer write];
-//}
-//
++ (void)writeData:(NSData *)data toStream:(NSOutputStream *)stream withCompletionBlock:(void (^)(bool))block
+{
+    CHStreamWriter *writer = [CHStreamWriter new];
+    writer.data = data;
+    writer.stream = stream;
+    writer.completionBlock = ^void (bool worked) {
+        block(worked);
+    };
+    [writer write];
+}
+
 - (id)initWithData:(NSData *)data stream:(NSOutputStream *)stream completionBlock:(void (^)(bool))block
 {
     if ((self = [super init])) {
@@ -33,6 +33,7 @@
 
 - (void)write
 {
+    self.holdSelf = self;
     self.stream.delegate = self;
     [self.stream open];
     [self.stream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
@@ -45,10 +46,12 @@
             break;
         case NSStreamEventHasSpaceAvailable:
             NSLog(@"SPACE SPACE SPACE");
-            self.position += [self.stream write:[self.data bytes] maxLength:(self.data.length - self.position)];
+            NSLog(@"Writing up to %lu bytes", self.data.length - self.position);
+            self.position += [self.stream write:[self.data bytes] + self.position maxLength:(self.data.length - self.position)];
             if (self.position == self.data.length) {
                 [self.stream close];
                 self.completionBlock(true);
+                self.holdSelf = nil;
                 NSLog(@"DONE SO DONE");
             }
             break;

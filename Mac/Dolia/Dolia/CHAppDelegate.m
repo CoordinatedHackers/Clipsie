@@ -68,11 +68,8 @@
     
     
     NSMutableData *offerData = [NSMutableData dataWithLength:2];
-    *(uint16_t *)[offerData mutableBytes] = pbData.length;
+    *(uint64_t *)[offerData mutableBytes] = pbData.length;
     [offerData appendData:pbData];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:pbData encoding:NSUTF8StringEncoding];
-    NSLog(@"Got teh datas: %@", jsonString);
     
     [destination offerData:offerData];
     
