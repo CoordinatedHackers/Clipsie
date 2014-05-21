@@ -19,9 +19,5 @@
 
 @property (retain) NSNetService *service;
 @property NSObject<CHDoliaListenerDelegate> *delegate;
-@property (retain) NSMutableData *data;
-@property uint64_t length;
-@property NSUInteger position;
-- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CHStreamWriter.h"
+#import "CHStreamInterface.h"
 
 @interface CHDoliaDestination : NSObject
 

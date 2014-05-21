@@ -7,6 +7,7 @@
 //
 
 #import "CHDoliaListener.h"
+#import "CHStreamInterface.h"
 
 @implementation CHDoliaListener
 
@@ -26,46 +27,17 @@
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
     NSLog(@"gotz a connection");
-    inputStream.delegate = self;
-    [inputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    [inputStream open];
-    // - Handle getting an offer
-    // - Give the offer to my delegate
-}
-
-- (void)stream:(NSInputStream *)stream handleEvent:(NSStreamEvent)streamEvent
-{
-    switch (streamEvent) {
-        case NSStreamEventHasBytesAvailable:
-            if (!self.data) {
-                [stream read:(uint8_t *)&_length maxLength:2];
-                self.data = [NSMutableData dataWithLength:self.length];
-                self.position = 0;
-                NSLog(@"Will read data of length: %llu", self.length);
-                
+    [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
+        NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (pbData) {
+            NSPasteboard *pb = [NSPasteboard generalPasteboard];
+            [pb clearContents];
+            for (NSString *key in pbData) {
+                NSData *data = [[NSData alloc] initWithBase64EncodedString:[pbData objectForKey:key] options:0];
+                [pb setData:data forType:key];
             }
-            NSLog(@"Reading up to %llu bytes", self.length - self.position);
-            self.position += [stream read:([self.data mutableBytes]+self.position) maxLength:(self.length - self.position)];
-            
-            if (self.position == self.length) {
-                [stream close];
-                NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil];
-                if (pbData) {
-                    NSPasteboard *pb = [NSPasteboard generalPasteboard];
-                    [pb clearContents];
-                    for (NSString *key in pbData) {
-                        NSData *data = [[NSData alloc] initWithBase64EncodedString:[pbData objectForKey:key] options:0];
-                        [pb setData:data forType:key];
-                    }
-                }
-                self.data = nil;
-            }
-            break;
-            
-        default:
-            NSLog(@"Some event, %ld", streamEvent);
-            break;
-    }
+        }
+    }];
 }
 
 @end

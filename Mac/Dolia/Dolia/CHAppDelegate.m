@@ -65,13 +65,7 @@
     }
     
     NSData *pbData = [NSJSONSerialization dataWithJSONObject:pasteboardContents options:0 error:nil];
-    
-    
-    NSMutableData *offerData = [NSMutableData dataWithLength:2];
-    *(uint64_t *)[offerData mutableBytes] = pbData.length;
-    [offerData appendData:pbData];
-    
-    [destination offerData:offerData];
+    [destination offerData:pbData];
     
 }
 

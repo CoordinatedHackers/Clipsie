@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90116BD192A53B8005E83E9 /* CHStreamInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E90116BC192A53B8005E83E9 /* CHStreamInterface.m */; };
 		E9085601191AF34400E7A91D /* CHDoliaDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = E9085600191AF34400E7A91D /* CHDoliaDestination.m */; };
 		E9085604191AF5B600E7A91D /* CHDoliaOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9085603191AF5B600E7A91D /* CHDoliaOffer.m */; };
-		E918C77219267DD900C42664 /* CHStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E918C77119267DD900C42664 /* CHStreamWriter.m */; };
 		E9420970191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
 		E942097A191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420978191570C1008DC784 /* InfoPlist.strings */; };
 		E942097C191570C1008DC784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E942097B191570C1008DC784 /* main.m */; };
@@ -36,12 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90116BB192A53B8005E83E9 /* CHStreamInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHStreamInterface.h; sourceTree = "<group>"; };
+		E90116BC192A53B8005E83E9 /* CHStreamInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHStreamInterface.m; sourceTree = "<group>"; };
 		E90855FF191AF34400E7A91D /* CHDoliaDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaDestination.h; sourceTree = "<group>"; };
 		E9085600191AF34400E7A91D /* CHDoliaDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaDestination.m; sourceTree = "<group>"; };
 		E9085602191AF5B600E7A91D /* CHDoliaOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaOffer.h; sourceTree = "<group>"; };
 		E9085603191AF5B600E7A91D /* CHDoliaOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaOffer.m; sourceTree = "<group>"; };
-		E918C77019267DD900C42664 /* CHStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHStreamWriter.h; sourceTree = "<group>"; };
-		E918C77119267DD900C42664 /* CHStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHStreamWriter.m; sourceTree = "<group>"; };
 		E942096C191570C1008DC784 /* Dolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E942096F191570C1008DC784 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9420972191570C1008DC784 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -140,8 +140,8 @@
 				E94209A41915984B008DC784 /* CHDoliaBrowser.m */,
 				E94209A6191598B8008DC784 /* CHDoliaListener.h */,
 				E94209A7191598B8008DC784 /* CHDoliaListener.m */,
-				E918C77019267DD900C42664 /* CHStreamWriter.h */,
-				E918C77119267DD900C42664 /* CHStreamWriter.m */,
+				E90116BB192A53B8005E83E9 /* CHStreamInterface.h */,
+				E90116BC192A53B8005E83E9 /* CHStreamInterface.m */,
 				E9420984191570C1008DC784 /* MainMenu.xib */,
 				E9420987191570C1008DC784 /* Images.xcassets */,
 				E9420976191570C1008DC784 /* Supporting Files */,
@@ -283,7 +283,7 @@
 				E9420983191570C1008DC784 /* CHAppDelegate.m in Sources */,
 				E9085604191AF5B600E7A91D /* CHDoliaOffer.m in Sources */,
 				E94209A8191598B8008DC784 /* CHDoliaListener.m in Sources */,
-				E918C77219267DD900C42664 /* CHStreamWriter.m in Sources */,
+				E90116BD192A53B8005E83E9 /* CHStreamInterface.m in Sources */,
 				E94209A51915984B008DC784 /* CHDoliaBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
