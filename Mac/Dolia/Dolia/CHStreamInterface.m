@@ -48,22 +48,19 @@
                 [stream read:(uint8_t *)&_length maxLength:sizeof(_length)];
                 self.data = [NSMutableData dataWithLength:self.length];
                 self.position = 0;
-                NSLog(@"Read length: %llu", self.length);
                 
             }
-            NSLog(@"Reading up to %llu bytes", self.length - self.position);
             self.position += [stream read:([self.data mutableBytes]+self.position) maxLength:(self.length - self.position)];
             
             if (self.position == self.length) {
                 [stream close];
                 self.completionBlock(self.data);
                 [self end];
-                NSLog(@"Done reading");
             }
             break;
             
         default:
-            NSLog(@"Some event, %ld", streamEvent);
+            NSLog(@"Unhandled read stream event, %ld", streamEvent);
             break;
     }
 }
@@ -97,30 +94,21 @@
         case NSStreamEventHasSpaceAvailable:
             if (self.position == 0) {
                 uint64_t length = self.data.length;
-                NSLog(@"Writing length: %lld", length);
                 [self.stream write:(uint8_t*)&length maxLength:sizeof(length)];
             }
-            NSLog(@"Writing up to %lu bytes", self.data.length - self.position);
             self.position += [self.stream write:[self.data bytes] + self.position maxLength:(self.data.length - self.position)];
             if (self.position == self.data.length) {
                 [self.stream close];
                 self.completionBlock(true);
                 [self end];
-                NSLog(@"DONE SO DONE");
             }
             break;
         case NSStreamEventEndEncountered:
-            NSLog(@"END END END");
             break;
         default:
-            NSLog(@"A stream event occurred that we don't handle: %lu", streamEvent);
+            NSLog(@"Unhandled write stream event: %lu", streamEvent);
             break;
     }
-}
-
-- (void)dealloc
-{
-    NSLog(@"CHStreamWriter going away");
 }
 
 @end

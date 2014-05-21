@@ -28,7 +28,6 @@
     NSOutputStream *outputStream;
     if ([self.service getInputStream:NULL outputStream:&outputStream]) {
         [CHStreamWriter writeData:data toStream:outputStream withCompletionBlock:^void (){
-            NSLog(@"Hey, making an offer finished");
         }];
     }
 }

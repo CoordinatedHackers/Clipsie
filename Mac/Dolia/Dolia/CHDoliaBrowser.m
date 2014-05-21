@@ -23,7 +23,6 @@
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    NSLog(@"Add: %@", aNetService);
     CHDoliaDestination *dest = [[CHDoliaDestination alloc] initWithService:aNetService];
     // Very hax
     [self.destinations setObject:dest forKey:[NSValue valueWithPointer:(__bridge void *)aNetService]];
@@ -33,7 +32,6 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
     // Hax hax hax
-    NSLog(@"Remove: %@", aNetService);
     NSValue *key = [NSValue valueWithPointer:(__bridge void *)aNetService];
     CHDoliaDestination *dest = [self.destinations objectForKey:key];
     [self.destinations removeObjectForKey:key];

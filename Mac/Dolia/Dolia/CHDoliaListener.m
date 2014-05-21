@@ -26,7 +26,6 @@
 
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
-    NSLog(@"gotz a connection");
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
         NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         if (pbData) {
