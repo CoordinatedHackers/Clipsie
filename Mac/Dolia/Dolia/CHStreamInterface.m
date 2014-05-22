@@ -58,7 +58,8 @@
                 [self end];
             }
             break;
-            
+        case NSStreamEventOpenCompleted:
+            break;
         default:
             NSLog(@"Unhandled read stream event, %ld", streamEvent);
             break;
