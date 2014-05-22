@@ -66,7 +66,10 @@
         // It might be that there was actually some content in there, but I lost that
         // clipboard and haven't been able to reproduce it. For now, just check for data.
         NSData *data = [pb dataForType:type];
-        if (!data) { continue; }
+        if (!data) {
+            NSLog(@"Pasteboard type \"%@\" had no data, skipping", type);
+            continue;
+        }
         [pasteboardContents setObject:[data base64EncodedStringWithOptions:0] forKey:type];
     }
     
