@@ -29,12 +29,7 @@
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
         NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         if (pbData) {
-            NSPasteboard *pb = [NSPasteboard generalPasteboard];
-            [pb clearContents];
-            for (NSString *key in pbData) {
-                NSData *data = [[NSData alloc] initWithBase64EncodedString:[pbData objectForKey:key] options:0];
-                [pb setData:data forType:key];
-            }
+            [self.delegate gotOffer:[[CHDoliaClipboardOffer alloc] initWithData:pbData]];
         }
     }];
 }

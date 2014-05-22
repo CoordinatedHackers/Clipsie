@@ -10,4 +10,14 @@
 
 @interface CHDoliaOffer : NSObject
 
+- (void)accept;
+
+@end
+
+@interface CHDoliaClipboardOffer : CHDoliaOffer
+
+@property (retain) NSDictionary *data;
+
+- (id)initWithData:(NSDictionary *)data;
+
 @end

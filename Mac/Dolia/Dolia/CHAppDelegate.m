@@ -27,6 +27,7 @@
 
 - (void)gotOffer:(CHDoliaOffer *)offer
 {
+    [offer accept];
 }
 
 - (void)foundDestination:(CHDoliaDestination *)destination moreComing:(BOOL)moreComing
