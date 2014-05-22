@@ -61,7 +61,12 @@
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
     
     for (NSString *type in pb.types) {
-        [pasteboardContents setObject:[[pb dataForType:type] base64EncodedStringWithOptions:0] forKey:type];
+        // Once, ever, I've seen -[NSPasteboard dataForType:] return nil for a type.
+        // It might be that there was actually some content in there, but I lost that
+        // clipboard and haven't been able to reproduce it. For now, just check for data.
+        NSData *data = [pb dataForType:type];
+        if (!data) { continue; }
+        [pasteboardContents setObject:[data base64EncodedStringWithOptions:0] forKey:type];
     }
     
     NSData *pbData = [NSJSONSerialization dataWithJSONObject:pasteboardContents options:0 error:nil];
