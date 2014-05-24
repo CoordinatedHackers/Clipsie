@@ -10,14 +10,21 @@
 #import "CHDoliaListener.h"
 #import "CHDoliaBrowser.h"
 
-@interface CHAppDelegate : NSObject <NSApplicationDelegate,CHDoliaListenerDelegate,CHDoliaBrowserDelegate>
+@interface CHAppDelegate : NSObject <
+    NSApplicationDelegate,CHDoliaListenerDelegate,CHDoliaBrowserDelegate,
+    NSUserNotificationCenterDelegate
+>
 
 @property (assign) IBOutlet NSMenu *statusMenu;
 @property (assign) IBOutlet CHDoliaListener *listener;
 @property (assign) IBOutlet CHDoliaBrowser *browser;
 @property (retain) NSStatusItem *statusItem;
+
 @property (retain) NSMutableDictionary *menuItemsByDestination;
 @property (retain) NSMutableDictionary *destinationsByMenuItem;
+
+@property (retain) NSMutableArray *pendingOffers;
+@property (retain) NSMutableDictionary *pendingOffersByHash;
 
 - (void)menuItemClicked:(NSMenuItem*)menuItem;
 

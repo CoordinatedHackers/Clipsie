@@ -11,6 +11,7 @@
 @implementation CHDoliaOffer
 
 - (void)accept {}
+- (NSString *)preview { return nil; }
 
 @end
 
@@ -32,6 +33,21 @@
         NSData *data = [[NSData alloc] initWithBase64EncodedString:[self.data objectForKey:key] options:0];
         [pb setData:data forType:key];
     }
+}
+
+- (NSString *)preview
+{
+    NSString *encodedPreview;
+    if ((encodedPreview = [self.data objectForKey:NSPasteboardTypeString])) {
+        NSString *decodedPreview = [[NSString alloc] initWithData:[[NSData alloc] initWithBase64EncodedString:encodedPreview options:0] encoding:NSUTF8StringEncoding];
+        NSRange truncatedRange = [decodedPreview rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, MIN(50, [decodedPreview length]))];
+        if (truncatedRange.length < [decodedPreview length]) {
+            return [NSString stringWithFormat:@"“%@…”", [decodedPreview substringWithRange:truncatedRange]];
+        } else {
+            return [NSString stringWithFormat:@"“%@”", decodedPreview];
+        }
+    }
+    return nil;
 }
 
 @end

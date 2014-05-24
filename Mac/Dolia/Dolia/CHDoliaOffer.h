@@ -11,6 +11,7 @@
 @interface CHDoliaOffer : NSObject
 
 - (void)accept;
+- (NSString *)preview; // Maybe make me a readonly property?
 
 @end
 
