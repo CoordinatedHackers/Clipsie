@@ -42,9 +42,9 @@
         NSString *decodedPreview = [[NSString alloc] initWithData:[[NSData alloc] initWithBase64EncodedString:encodedPreview options:0] encoding:NSUTF8StringEncoding];
         NSRange truncatedRange = [decodedPreview rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, MIN(50, [decodedPreview length]))];
         if (truncatedRange.length < [decodedPreview length]) {
-            return [NSString stringWithFormat:@"“%@…”", [decodedPreview substringWithRange:truncatedRange]];
+            return [[decodedPreview substringWithRange:truncatedRange] stringByAppendingString:@"…"];
         } else {
-            return [NSString stringWithFormat:@"“%@”", decodedPreview];
+            return decodedPreview;
         }
     }
     return nil;

@@ -27,9 +27,15 @@
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
-        NSDictionary *pbData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        if (pbData) {
-            [self.delegate gotOffer:[[CHDoliaClipboardOffer alloc] initWithData:pbData]];
+        NSDictionary *offerData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSString *type = [offerData objectForKey:@"type"];
+        if ([type isEqualToString:@"clipboard"]) {
+            NSDictionary *pbData = [offerData objectForKey:@"data"];
+            if (pbData) {
+                [self.delegate gotOffer:[[CHDoliaClipboardOffer alloc] initWithData:pbData]];
+            }
+        } else {
+            NSLog(@"Unknown offer type: %@", type);
         }
     }];
 }
