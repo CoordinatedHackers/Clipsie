@@ -23,12 +23,15 @@
     return self.service.name;
 }
 
-- (void)offerData:(NSData *)data
+- (void)offerJSON:(id)obj
 {
     NSOutputStream *outputStream;
-    if ([self.service getInputStream:NULL outputStream:&outputStream]) {
-        [CHStreamWriter writeData:data toStream:outputStream withCompletionBlock:^void (){}];
+    if (![self.service getInputStream:NULL outputStream:&outputStream]) {
+        return;
     }
+    [outputStream open];
+    [NSJSONSerialization writeJSONObject:obj toStream:outputStream options:0 error:NULL];
+    [outputStream close];
 }
 
 @end

@@ -117,9 +117,7 @@
         [pasteboardContents setObject:[data base64EncodedStringWithOptions:0] forKey:type];
     }
     
-    NSDictionary *offerData = @{@"type": @"clipboard", @"data": pasteboardContents};
-    NSData *pbData = [NSJSONSerialization dataWithJSONObject:offerData options:0 error:nil];
-    [destination offerData:pbData];
+    [destination offerJSON:@{@"type": @"clipboard", @"data": pasteboardContents}];
     
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "CHDoliaListener.h"
-#import "CHStreamInterface.h"
 
 @implementation CHDoliaListener
 
@@ -26,18 +25,19 @@
 
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
-    [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
-        NSDictionary *offerData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSString *type = [offerData objectForKey:@"type"];
-        if ([type isEqualToString:@"clipboard"]) {
-            NSDictionary *pbData = [offerData objectForKey:@"data"];
-            if (pbData) {
-                [self.delegate gotOffer:[[CHDoliaClipboardOffer alloc] initWithData:pbData]];
-            }
-        } else {
-            NSLog(@"Unknown offer type: %@", type);
+    [inputStream open];
+    NSDictionary *offerData = [NSJSONSerialization JSONObjectWithStream:inputStream options:0 error:nil];
+    [inputStream close];
+    if (!offerData) { return; }
+    NSString *type = [offerData objectForKey:@"type"];
+    if ([type isEqualToString:@"clipboard"]) {
+        NSDictionary *pbData = [offerData objectForKey:@"data"];
+        if (pbData) {
+            [self.delegate gotOffer:[[CHDoliaClipboardOffer alloc] initWithData:pbData]];
         }
-    }];
+    } else {
+        NSLog(@"Unknown offer type: %@", type);
+    }
 }
 
 @end

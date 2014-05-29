@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CHStreamInterface.h"
 
 @interface CHDoliaDestination : NSObject
 
@@ -15,6 +14,6 @@
 
 - (id)initWithService:(NSNetService*)service;
 - (NSString *)name;
-- (void)offerData:(NSData *)data;
+- (void)offerJSON:(id)obj;
 
 @end
