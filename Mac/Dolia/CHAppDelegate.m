@@ -101,25 +101,8 @@
 - (void)menuItemClicked:(NSMenuItem*)menuItem
 {
     CHDoliaDestination *destination = [self.destinationsByMenuItem objectForKey:[NSValue valueWithPointer:(__bridge const void *)(menuItem)]];
-    
-    NSMutableDictionary *pasteboardContents = [NSMutableDictionary new];
-    NSPasteboard *pb = [NSPasteboard generalPasteboard];
-    
-    for (NSString *type in pb.types) {
-        // Once, ever, I've seen -[NSPasteboard dataForType:] return nil for a type.
-        // It might be that there was actually some content in there, but I lost that
-        // clipboard and haven't been able to reproduce it. For now, just check for data.
-        NSData *data = [pb dataForType:type];
-        if (!data) {
-            NSLog(@"Pasteboard type \"%@\" had no data, skipping", type);
-            continue;
-        }
-        [pasteboardContents setObject:[data base64EncodedStringWithOptions:0] forKey:type];
-    }
-    
-    NSDictionary *offerData = @{@"type": @"clipboard", @"data": pasteboardContents};
-    NSData *pbData = [NSJSONSerialization dataWithJSONObject:offerData options:0 error:nil];
-    [destination offerData:pbData];
+
+    [destination sendOffer:[CHDoliaOffer offerWithClipboard]];
     
 }
 

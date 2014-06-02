@@ -10,15 +10,36 @@
 
 @interface CHDoliaOffer : NSObject
 
++ (CHDoliaOffer *)offerWithClipboard;
+
+@property (readonly, getter = getData) NSData *data;
+@property NSString *type;
+@property NSObject *content;
+
 - (void)accept;
 - (NSString *)preview; // Maybe make me a readonly property?
 
 @end
 
-@interface CHDoliaClipboardOffer : CHDoliaOffer
+@interface CHDoliaTextOffer : CHDoliaOffer
 
-@property (retain) NSDictionary *data;
+@property NSString *content;
+- (instancetype)initWithString:(NSString *)string;
 
-- (id)initWithData:(NSDictionary *)data;
+@end
+
+@interface CHDoliaURLOffer : CHDoliaOffer
+
+@property NSString *content;
+- (instancetype)initWithURL:(NSURL *)url;
+
+@end
+
+@interface CHDoliaFileOffer : CHDoliaOffer
+
+@property NSString *content;
+@property NSString *filename; // FIXME: sending more than one file?
+- (instancetype)initWithURL:(NSURL *)url;
+- (NSData *)getData;
 
 @end

@@ -1,4 +1,4 @@
-
+//
 //  CHDoliaDestination.m
 //  Dolia
 //
@@ -23,11 +23,11 @@
     return self.service.name;
 }
 
-- (void)offerData:(NSData *)data
+- (void)sendOffer:(CHDoliaOffer *)offer
 {
     NSOutputStream *outputStream;
     if ([self.service getInputStream:NULL outputStream:&outputStream]) {
-        [CHStreamWriter writeData:data toStream:outputStream withCompletionBlock:^void (){}];
+        [CHStreamWriter writeData:offer.data toStream:outputStream withCompletionBlock:^void (){}];
     }
 }
 

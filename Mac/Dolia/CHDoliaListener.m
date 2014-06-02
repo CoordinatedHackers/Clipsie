@@ -23,7 +23,7 @@
     }
     return self;
 }
-
+/*
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
@@ -39,5 +39,5 @@
         }
     }];
 }
-
+*/
 @end
