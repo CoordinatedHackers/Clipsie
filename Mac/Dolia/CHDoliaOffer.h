@@ -11,6 +11,7 @@
 @interface CHDoliaOffer : NSObject
 
 + (CHDoliaOffer *)offerWithClipboard;
++ (CHDoliaOffer *)deserializeWithData:(NSData *)data;
 
 @property (readonly, getter = getData) NSData *data;
 @property NSString *type;
@@ -41,5 +42,7 @@
 @property NSString *filename; // FIXME: sending more than one file?
 - (instancetype)initWithURL:(NSURL *)url;
 - (NSData *)getData;
+
+- (NSString *)preview; // Maybe make me a readonly property?
 
 @end

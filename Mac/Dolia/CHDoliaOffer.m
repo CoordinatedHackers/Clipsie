@@ -41,6 +41,29 @@
     return [[CHDoliaTextOffer alloc] initWithString:pbItem];
 }
 
+
++ (CHDoliaOffer *)deserializeWithData:(NSData *)data
+{
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSString *type = json[@"type"];
+
+    if (![json[@"content"] length]) {
+        return nil;
+    }
+
+    if ([type isEqualToString:@"text"]) {
+        return [[CHDoliaTextOffer alloc] initWithString:json[@"content"]];
+    } else if ([type isEqualToString:@"url"]) {
+        return [[CHDoliaURLOffer alloc] initWithURL:[NSURL URLWithString:json[@"content"]]];
+    } else if ([type isEqualToString:@"file"]) {
+        //FIXME actually implement this
+        return [[CHDoliaTextOffer alloc] initWithString:json[@"filename"]];
+    } else {
+        NSLog(@"Unknown Type: %@", type);
+        return nil;
+    }
+}
+
 - (NSData *)getData
 {
     NSDictionary *json = @{@"type": self.type,
@@ -49,7 +72,10 @@
 }
 
 - (void)accept {}
-- (NSString *)preview { return nil; }
+- (NSString *)preview
+{
+    return (NSString *)self.content;
+}
 
 @end
 
@@ -106,6 +132,11 @@
                            @"filename": self.filename,
                            @"content": self.content};
     return [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+}
+
+- (NSString *)preview
+{
+    return self.filename;
 }
 
 @end
