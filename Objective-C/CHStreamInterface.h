@@ -21,7 +21,7 @@
 @property (retain) NSMutableData *data;
 @property (retain) NSInputStream *stream;
 @property (nonatomic, copy) void (^completionBlock)(NSData *);
-@property uint64_t length;
+@property NSUInteger length;
 @property NSUInteger position;
 
 @end

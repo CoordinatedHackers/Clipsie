@@ -10,7 +10,6 @@
 
 @interface CHDoliaOffer : NSObject
 
-+ (CHDoliaOffer *)offerWithClipboard;
 + (CHDoliaOffer *)deserializeWithData:(NSData *)data;
 
 @property (readonly, getter = getData) NSData *data;

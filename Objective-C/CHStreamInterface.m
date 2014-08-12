@@ -45,7 +45,9 @@
     switch (streamEvent) {
         case NSStreamEventHasBytesAvailable:
             if (!self.data) {
-                [stream read:(uint8_t *)&_length maxLength:sizeof(_length)];
+                uint64_t length;
+                [stream read:(uint8_t *)&length maxLength:sizeof(length)];
+                self.length = (NSUInteger)length;
                 self.data = [NSMutableData dataWithLength:self.length];
                 self.position = 0;
                 
@@ -61,7 +63,7 @@
         case NSStreamEventOpenCompleted:
             break;
         default:
-            NSLog(@"Unhandled read stream event, %ld", streamEvent);
+            NSLog(@"Unhandled read stream event, %u", streamEvent);
             break;
     }
 }
@@ -107,7 +109,7 @@
         case NSStreamEventEndEncountered:
             break;
         default:
-            NSLog(@"Unhandled write stream event: %lu", streamEvent);
+            NSLog(@"Unhandled write stream event: %u", streamEvent);
             break;
     }
 }

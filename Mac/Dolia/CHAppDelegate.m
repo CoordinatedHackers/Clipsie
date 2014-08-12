@@ -7,6 +7,7 @@
 //
 
 #import "CHAppDelegate.h"
+#import "CHDoliaMacAdditions.h"
 
 @interface CHDoliaOfferAndNotification : NSObject
 

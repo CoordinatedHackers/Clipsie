@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E90116BD192A53B8005E83E9 /* CHStreamInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E90116BC192A53B8005E83E9 /* CHStreamInterface.m */; };
-		E9085601191AF34400E7A91D /* CHDoliaDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = E9085600191AF34400E7A91D /* CHDoliaDestination.m */; };
-		E9085604191AF5B600E7A91D /* CHDoliaOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9085603191AF5B600E7A91D /* CHDoliaOffer.m */; };
+		E94135D8194CB1A90030BF9C /* CHDoliaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D1194CB1A90030BF9C /* CHDoliaBrowser.m */; };
+		E94135D9194CB1A90030BF9C /* CHDoliaDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D3194CB1A90030BF9C /* CHDoliaDestination.m */; };
+		E94135DA194CB1A90030BF9C /* CHDoliaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D5194CB1A90030BF9C /* CHDoliaListener.m */; };
+		E94135DB194CB1A90030BF9C /* CHDoliaOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D7194CB1A90030BF9C /* CHDoliaOffer.m */; };
+		E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135EC194CB2270030BF9C /* CHStreamInterface.m */; };
 		E9420970191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
 		E942097A191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420978191570C1008DC784 /* InfoPlist.strings */; };
 		E942097C191570C1008DC784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E942097B191570C1008DC784 /* main.m */; };
@@ -21,8 +23,7 @@
 		E9420990191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
 		E9420998191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420996191570C1008DC784 /* InfoPlist.strings */; };
 		E942099A191570C1008DC784 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9420999191570C1008DC784 /* DoliaTests.m */; };
-		E94209A51915984B008DC784 /* CHDoliaBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E94209A41915984B008DC784 /* CHDoliaBrowser.m */; };
-		E94209A8191598B8008DC784 /* CHDoliaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E94209A7191598B8008DC784 /* CHDoliaListener.m */; };
+		E98ED615196461E800AF9F24 /* CHDoliaMacAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +37,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E90116BB192A53B8005E83E9 /* CHStreamInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHStreamInterface.h; sourceTree = "<group>"; };
-		E90116BC192A53B8005E83E9 /* CHStreamInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHStreamInterface.m; sourceTree = "<group>"; };
-		E90855FF191AF34400E7A91D /* CHDoliaDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaDestination.h; sourceTree = "<group>"; };
-		E9085600191AF34400E7A91D /* CHDoliaDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaDestination.m; sourceTree = "<group>"; };
-		E9085602191AF5B600E7A91D /* CHDoliaOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaOffer.h; sourceTree = "<group>"; };
-		E9085603191AF5B600E7A91D /* CHDoliaOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaOffer.m; sourceTree = "<group>"; };
+		E94135D0194CB1A90030BF9C /* CHDoliaBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaBrowser.h; path = "../Objective-C/CHDoliaBrowser.h"; sourceTree = "<group>"; };
+		E94135D1194CB1A90030BF9C /* CHDoliaBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHDoliaBrowser.m; path = "../Objective-C/CHDoliaBrowser.m"; sourceTree = "<group>"; };
+		E94135D2194CB1A90030BF9C /* CHDoliaDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaDestination.h; path = "../Objective-C/CHDoliaDestination.h"; sourceTree = "<group>"; };
+		E94135D3194CB1A90030BF9C /* CHDoliaDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHDoliaDestination.m; path = "../Objective-C/CHDoliaDestination.m"; sourceTree = "<group>"; };
+		E94135D4194CB1A90030BF9C /* CHDoliaListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaListener.h; path = "../Objective-C/CHDoliaListener.h"; sourceTree = "<group>"; };
+		E94135D5194CB1A90030BF9C /* CHDoliaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHDoliaListener.m; path = "../Objective-C/CHDoliaListener.m"; sourceTree = "<group>"; };
+		E94135D6194CB1A90030BF9C /* CHDoliaOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaOffer.h; path = "../Objective-C/CHDoliaOffer.h"; sourceTree = "<group>"; };
+		E94135D7194CB1A90030BF9C /* CHDoliaOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHDoliaOffer.m; path = "../Objective-C/CHDoliaOffer.m"; sourceTree = "<group>"; };
+		E94135EB194CB2270030BF9C /* CHStreamInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHStreamInterface.h; path = "../Objective-C/CHStreamInterface.h"; sourceTree = "<group>"; };
+		E94135EC194CB2270030BF9C /* CHStreamInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHStreamInterface.m; path = "../Objective-C/CHStreamInterface.m"; sourceTree = "<group>"; };
 		E942096C191570C1008DC784 /* Dolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E942096F191570C1008DC784 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9420972191570C1008DC784 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,10 +66,8 @@
 		E9420995191570C1008DC784 /* DoliaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoliaTests-Info.plist"; sourceTree = "<group>"; };
 		E9420997191570C1008DC784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9420999191570C1008DC784 /* DoliaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoliaTests.m; sourceTree = "<group>"; };
-		E94209A31915984B008DC784 /* CHDoliaBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaBrowser.h; sourceTree = "<group>"; };
-		E94209A41915984B008DC784 /* CHDoliaBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaBrowser.m; sourceTree = "<group>"; };
-		E94209A6191598B8008DC784 /* CHDoliaListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaListener.h; sourceTree = "<group>"; };
-		E94209A7191598B8008DC784 /* CHDoliaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaListener.m; sourceTree = "<group>"; };
+		E98ED613196461E800AF9F24 /* CHDoliaMacAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaMacAdditions.h; sourceTree = "<group>"; };
+		E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaMacAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +91,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E94135DC194CB1AF0030BF9C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E94135D0194CB1A90030BF9C /* CHDoliaBrowser.h */,
+				E94135D1194CB1A90030BF9C /* CHDoliaBrowser.m */,
+				E94135D2194CB1A90030BF9C /* CHDoliaDestination.h */,
+				E94135D3194CB1A90030BF9C /* CHDoliaDestination.m */,
+				E94135D4194CB1A90030BF9C /* CHDoliaListener.h */,
+				E94135D5194CB1A90030BF9C /* CHDoliaListener.m */,
+				E94135D6194CB1A90030BF9C /* CHDoliaOffer.h */,
+				E94135D7194CB1A90030BF9C /* CHDoliaOffer.m */,
+				E94135EB194CB2270030BF9C /* CHStreamInterface.h */,
+				E94135EC194CB2270030BF9C /* CHStreamInterface.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		E9420963191570C1008DC784 = {
 			isa = PBXGroup;
 			children = (
+				E94135DC194CB1AF0030BF9C /* Shared */,
 				E9420975191570C1008DC784 /* Dolia */,
 				E9420993191570C1008DC784 /* DoliaTests */,
 				E942096E191570C1008DC784 /* Frameworks */,
@@ -130,18 +151,10 @@
 		E9420975191570C1008DC784 /* Dolia */ = {
 			isa = PBXGroup;
 			children = (
+				E98ED613196461E800AF9F24 /* CHDoliaMacAdditions.h */,
+				E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */,
 				E9420981191570C1008DC784 /* CHAppDelegate.h */,
 				E9420982191570C1008DC784 /* CHAppDelegate.m */,
-				E90855FF191AF34400E7A91D /* CHDoliaDestination.h */,
-				E9085600191AF34400E7A91D /* CHDoliaDestination.m */,
-				E9085602191AF5B600E7A91D /* CHDoliaOffer.h */,
-				E9085603191AF5B600E7A91D /* CHDoliaOffer.m */,
-				E94209A31915984B008DC784 /* CHDoliaBrowser.h */,
-				E94209A41915984B008DC784 /* CHDoliaBrowser.m */,
-				E94209A6191598B8008DC784 /* CHDoliaListener.h */,
-				E94209A7191598B8008DC784 /* CHDoliaListener.m */,
-				E90116BB192A53B8005E83E9 /* CHStreamInterface.h */,
-				E90116BC192A53B8005E83E9 /* CHStreamInterface.m */,
 				E9420984191570C1008DC784 /* MainMenu.xib */,
 				E9420987191570C1008DC784 /* Images.xcassets */,
 				E9420976191570C1008DC784 /* Supporting Files */,
@@ -278,13 +291,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9085601191AF34400E7A91D /* CHDoliaDestination.m in Sources */,
+				E94135D9194CB1A90030BF9C /* CHDoliaDestination.m in Sources */,
 				E942097C191570C1008DC784 /* main.m in Sources */,
+				E94135DA194CB1A90030BF9C /* CHDoliaListener.m in Sources */,
 				E9420983191570C1008DC784 /* CHAppDelegate.m in Sources */,
-				E9085604191AF5B600E7A91D /* CHDoliaOffer.m in Sources */,
-				E94209A8191598B8008DC784 /* CHDoliaListener.m in Sources */,
-				E90116BD192A53B8005E83E9 /* CHStreamInterface.m in Sources */,
-				E94209A51915984B008DC784 /* CHDoliaBrowser.m in Sources */,
+				E98ED615196461E800AF9F24 /* CHDoliaMacAdditions.m in Sources */,
+				E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */,
+				E94135DB194CB1A90030BF9C /* CHDoliaOffer.m in Sources */,
+				E94135D8194CB1A90030BF9C /* CHDoliaBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
