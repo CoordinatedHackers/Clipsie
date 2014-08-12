@@ -24,17 +24,14 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
     CHDoliaDestination *dest = [[CHDoliaDestination alloc] initWithService:aNetService];
-    // Very hax
-    [self.destinations setObject:dest forKey:[NSValue valueWithPointer:(__bridge void *)aNetService]];
+    [self.destinations setObject:dest forKey:aNetService.name];
     [self.delegate foundDestination:dest moreComing:moreComing];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    // Hax hax hax
-    NSValue *key = [NSValue valueWithPointer:(__bridge void *)aNetService];
-    CHDoliaDestination *dest = [self.destinations objectForKey:key];
-    [self.destinations removeObjectForKey:key];
+    CHDoliaDestination *dest = [self.destinations objectForKey:aNetService.name];
+    [self.destinations removeObjectForKey:aNetService.name];
     if (dest) {
         [self.delegate lostDestination:dest moreComing:moreComing];
     }
