@@ -22,14 +22,10 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSString *type = json[@"type"];
 
-    if (![json[@"content"] length]) {
-        return nil;
-    }
-
     if ([type isEqualToString:@"text"]) {
         return [[CHDoliaTextOffer alloc] initWithString:json[@"content"]];
     } else if ([type isEqualToString:@"url"]) {
-        return [[CHDoliaURLOffer alloc] initWithURL:[NSURL URLWithString:json[@"content"]]];
+        return [[CHDoliaURLOffer alloc] initWithURL:[NSURL URLWithString:json[@"url"]]];
     } else if ([type isEqualToString:@"file"]) {
         // TODO: actually implement this
         return [[CHDoliaTextOffer alloc] initWithString:json[@"filename"]];
