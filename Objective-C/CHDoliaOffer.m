@@ -8,8 +8,14 @@
 
 #import "CHDoliaOffer.h"
 
-@implementation CHDoliaOffer
+__attribute__((noreturn)) static void raiseUnimplementedException(const char *method) {
+    [[NSException exceptionWithName:[NSString stringWithFormat:@"%s called on base CHDoliaOffer", method]
+                             reason:@"Subclasses of CHDoliaOffer must implement this method"
+                           userInfo:nil] raise];
+    __builtin_unreachable();
+}
 
+@implementation CHDoliaOffer
 
 + (CHDoliaOffer *)deserializeWithData:(NSData *)data
 {
@@ -25,7 +31,7 @@
     } else if ([type isEqualToString:@"url"]) {
         return [[CHDoliaURLOffer alloc] initWithURL:[NSURL URLWithString:json[@"content"]]];
     } else if ([type isEqualToString:@"file"]) {
-        //FIXME actually implement this
+        // TODO: actually implement this
         return [[CHDoliaTextOffer alloc] initWithString:json[@"filename"]];
     } else {
         NSLog(@"Unknown Type: %@", type);
@@ -33,17 +39,21 @@
     }
 }
 
-- (NSData *)getData
+- (id)type { raiseUnimplementedException(__PRETTY_FUNCTION__); }
+- (NSDictionary *)json { raiseUnimplementedException(__PRETTY_FUNCTION__); }
+- (NSString *)preview { raiseUnimplementedException(__PRETTY_FUNCTION__); }
+- (void)accept { raiseUnimplementedException(__PRETTY_FUNCTION__); }
+
+- (NSDictionary *)jsonPlus:(NSDictionary *)extra
 {
-    NSDictionary *json = @{@"type": self.type,
-                           @"content": self.content};
-    return [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+    NSMutableDictionary *ret = [@{ @"type": self.type } mutableCopy];
+    [ret addEntriesFromDictionary:extra];
+    return ret;
 }
 
-- (void)accept {}
-- (NSString *)preview
+- (NSData *)data
 {
-    return (NSString *)self.content;
+    return [NSJSONSerialization dataWithJSONObject:self.json options:0 error:nil];
 }
 
 @end
@@ -53,11 +63,21 @@
 - (instancetype) initWithString:(NSString *)string
 {
     if (self = [self init]){
-        self.type = @"text";
-        self.content = string;
+        self.string = string;
     }
     return self;
 }
+
+- (NSString *)type { return @"text"; }
+
+- (NSDictionary *)json
+{
+    return [super jsonPlus:@{
+        @"content": self.string
+    }];
+}
+
+- (NSString *)preview { return self.string; }
 
 @end
 
@@ -66,11 +86,21 @@
 - (instancetype) initWithURL:(NSURL *)url
 {
     if (self = [self init]){
-        self.type = @"url";
-        self.content = [url absoluteString];
+        self.url = url;
     }
     return self;
 }
+
+- (NSString *)type { return @"url"; }
+
+- (NSDictionary *)json
+{
+    return [super jsonPlus:@{
+        @"url": [self.url absoluteString]
+    }];
+}
+
+- (NSString *)preview { return [self.url absoluteString]; }
 
 @end
 
@@ -79,10 +109,8 @@
 - (instancetype) initWithURL:(NSURL *)url
 {
     if (self = [self init]){
-        self.type = @"file";
-        
         NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:url error:nil];
-        self.content = [[handle availableData] base64EncodedStringWithOptions:0];
+        self.contents = [handle availableData];
         
         NSString *filename;
         if ([url getResourceValue:&filename forKey:NSURLNameKey error:nil]) {
@@ -90,22 +118,20 @@
         } else {
             NSLog(@"Bad news bears, couldn't get filename for %@", url);
         }
-        NSLog(@"Data: %@", [[NSString alloc] initWithData:[[NSData alloc] initWithBase64EncodedString:self.content options:0] encoding:NSUTF8StringEncoding]);
     }
     return self;
 }
 
-- (NSData *)getData
+- (NSString *)type { return @"file"; }
+
+- (NSDictionary *)json
 {
-    NSDictionary *json = @{@"type": self.type,
-                           @"filename": self.filename,
-                           @"content": self.content};
-    return [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+    return [super jsonPlus:@{
+        @"filename": self.filename,
+        @"contents": [self.contents base64EncodedStringWithOptions:0]
+    }];
 }
 
-- (NSString *)preview
-{
-    return self.filename;
-}
+- (NSString *)preview { return self.filename; }
 
 @end

@@ -42,3 +42,25 @@
 }
 
 @end
+
+@implementation CHDoliaTextOffer (CHDoliaMacAdditions)
+
+- (void)accept
+{
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb writeObjects:@[self.string]];
+}
+
+@end
+
+@implementation CHDoliaURLOffer (CHDoliaMacAdditions)
+
+- (void)accept
+{
+    NSPasteboard *pb = [NSPasteboard generalPasteboard];
+    [pb clearContents];
+    [pb writeObjects:@[self.url]];
+}
+
+@end

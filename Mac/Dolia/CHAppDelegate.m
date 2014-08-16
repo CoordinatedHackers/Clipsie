@@ -72,7 +72,6 @@
     notification.userInfo = @{@"key": key};
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-    [offer accept];
 }
 
 - (void)foundDestination:(CHDoliaDestination *)destination moreComing:(BOOL)moreComing

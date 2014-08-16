@@ -12,36 +12,34 @@
 
 + (CHDoliaOffer *)deserializeWithData:(NSData *)data;
 
-@property (readonly, getter = getData) NSData *data;
-@property NSString *type;
-@property NSObject *content;
+@property (readonly) NSString *type;
+@property (readonly) NSDictionary *json;
+@property (readonly) NSString *preview;
+@property (readonly) NSData *data;
 
 - (void)accept;
-- (NSString *)preview; // Maybe make me a readonly property?
 
 @end
 
 @interface CHDoliaTextOffer : CHDoliaOffer
 
-@property NSString *content;
+@property NSString *string;
 - (instancetype)initWithString:(NSString *)string;
 
 @end
 
 @interface CHDoliaURLOffer : CHDoliaOffer
 
-@property NSString *content;
+@property NSURL *url;
 - (instancetype)initWithURL:(NSURL *)url;
 
 @end
 
 @interface CHDoliaFileOffer : CHDoliaOffer
 
-@property NSString *content;
 @property NSString *filename; // FIXME: sending more than one file?
-- (instancetype)initWithURL:(NSURL *)url;
-- (NSData *)getData;
+@property NSData *contents;
 
-- (NSString *)preview; // Maybe make me a readonly property?
+- (instancetype)initWithURL:(NSURL *)url;
 
 @end
