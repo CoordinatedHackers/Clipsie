@@ -36,27 +36,23 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         let destination = self.destinations[indexPath.row]
-        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet);
-        actionController.addAction(UIAlertAction(title: "Send clipboard", style: .Default, { (action: UIAlertAction!) in
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            if let offer = offerWithClipboard() {
-                destination.sendOffer(offer)
-                return
-            }
-            // TODO: Handle this more gracefully, e.g. by disabling sending if nothing's on your clipboard
-            let alertController = UIAlertController(title: "Nothing to send", message: "The clipboard is empty.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil));
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }))
-        actionController.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction!) in
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        })
         
-        if let popoverPresentationController = actionController.popoverPresentationController {
-            popoverPresentationController.sourceView = cell
-            popoverPresentationController.sourceRect = cell.bounds
-        }
-        self.presentViewController(actionController, animated: true, completion: nil)
+        
+        showAlert(self, style: .ActionSheet, sourceView: cell, completion: {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        },
+            (.Default, "Send clipboard", {
+                if let offer = offerWithClipboard() {
+                    destination.sendOffer(offer)
+                    return
+                }
+                // TODO: Handle this more gracefully, e.g. by disabling sending if nothing's on your clipboard
+                showAlert(self, title: "Nothing to send", message: "The clipboard is empty.", completion: nil,
+                    (.Cancel, "OK", nil)
+                )
+            }),
+            (.Cancel, "Cancel", nil)
+        )
     }
     
     // MARK: CHDoliaBrowser delegate
