@@ -115,11 +115,7 @@
 {
     NSNumber *key = [notification.userInfo objectForKey:@"key"];
     CHDoliaOfferAndNotification *offerAndNotification = [self.pendingOffersByHash objectForKey:key];
-    if (notification.activationType == NSUserNotificationActivationTypeActionButtonClicked) {
-        [offerAndNotification.offer accept];
-    } else {
-        NSLog(@"Clicked");
-    }
+    [offerAndNotification.offer accept];
 }
 
 @end
