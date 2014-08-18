@@ -7,15 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @interface CHDoliaOffer : NSObject
 
 + (CHDoliaOffer *)deserializeWithData:(NSData *)data;
++ (CHDoliaOffer *)offerFromManagedObject:(NSManagedObject *)managedObject;
+
+@property NSDate *received;
 
 @property (readonly) NSString *type;
 @property (readonly) NSDictionary *json;
 @property (readonly) NSString *preview;
 @property (readonly) NSData *data;
+
+@property (readonly) NSString *entityName;
+- (void)saveToManagedObject:(NSManagedObject *)managedObject;
+- (BOOL)savetoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext error:(NSError **)error;
 
 - (void)accept;
 

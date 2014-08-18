@@ -38,6 +38,7 @@
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
         CHDoliaOffer *offer = [CHDoliaOffer deserializeWithData:data];
         if (offer) {
+            offer.received = [NSDate date];
             [self.delegate gotOffer:offer];
         }
     }];

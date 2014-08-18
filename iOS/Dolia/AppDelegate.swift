@@ -7,12 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CHDoliaListenerDelegate {
                             
     var window: UIWindow?
     let listener = CHDoliaListener()
+    
+    var managedObjectContext: NSManagedObjectContext = {
+        let managedObjectModel = NSManagedObjectModel(
+            contentsOfURL: NSBundle.mainBundle().URLForResource("Dolia", withExtension: "momd")
+        )
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
+        persistentStoreCoordinator.addPersistentStoreWithType(
+            NSSQLiteStoreType,
+            configuration: nil,
+            URL: NSFileManager.defaultManager().URLsForDirectory(
+                .DocumentDirectory, inDomains: .UserDomainMask
+            )[0].URLByAppendingPathComponent("Dolia.sqlite"),
+            options: nil,
+            error: nil
+        )
+        
+        let managedObjectContext = NSManagedObjectContext()
+        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        return managedObjectContext
+    }()
     
     override init() {
         super.init()
@@ -35,7 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CHDoliaListenerDelegate {
     // MARK: CHDoliaListener delegate
     
     func gotOffer(offer: CHDoliaOffer) {
-        println("Got an offer: \(offer)")
+        println("Did it work? \(offer.savetoManagedObjectContext(managedObjectContext, error: nil))")
     }
 }
 
+func appDelegate() -> AppDelegate {
+    return UIApplication.sharedApplication().delegate as AppDelegate
+}

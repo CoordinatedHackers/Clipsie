@@ -35,6 +35,10 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
     }
 }
 
++ (CHDoliaOffer *)offerFromManagedObject:(NSManagedObject *)managedObject
+{
+    return [CHDoliaOffer new];
+}
 - (id)type { raiseUnimplementedException(__PRETTY_FUNCTION__); }
 - (NSDictionary *)json { raiseUnimplementedException(__PRETTY_FUNCTION__); }
 - (NSString *)preview { raiseUnimplementedException(__PRETTY_FUNCTION__); }
@@ -50,6 +54,20 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 - (NSData *)data
 {
     return [NSJSONSerialization dataWithJSONObject:self.json options:0 error:nil];
+}
+
+- (NSString *)entityName { raiseUnimplementedException(__PRETTY_FUNCTION__); }
+
+- (void)saveToManagedObject:(NSManagedObject *)managedObject
+{
+    [managedObject setValue:self.received forKey:@"received"];
+}
+
+- (BOOL)savetoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext error:(NSError **)error
+{
+    NSManagedObject *managedObject = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:managedObjectContext];
+    [self saveToManagedObject:managedObject];
+    return [managedObjectContext save:error];
 }
 
 @end
@@ -75,6 +93,14 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 
 - (NSString *)preview { return self.string; }
 
+- (NSString *)entityName { return @"TextOffer"; }
+
+- (void)saveToManagedObject:(NSManagedObject *)managedObject
+{
+    [super saveToManagedObject:managedObject];
+    [managedObject setValue:self.string forKey:@"string"];
+}
+
 @end
 
 @implementation CHDoliaURLOffer
@@ -97,6 +123,14 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 }
 
 - (NSString *)preview { return [self.url absoluteString]; }
+
+- (NSString *)entityName { return @"URLOffer"; }
+
+- (void)saveToManagedObject:(NSManagedObject *)managedObject
+{
+    [super saveToManagedObject:managedObject];
+    [managedObject setValue:self.url forKey:@"url"];
+}
 
 @end
 
@@ -124,10 +158,19 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 {
     return [super jsonPlus:@{
         @"filename": self.filename,
-        @"contents": [self.contents base64EncodedStringWithOptions:0]
+        @"data": [self.data base64EncodedStringWithOptions:0]
     }];
 }
 
 - (NSString *)preview { return self.filename; }
+
+- (NSString *)entityName { return @"FileOffer"; }
+
+- (void)saveToManagedObject:(NSManagedObject *)managedObject
+{
+    [super saveToManagedObject:managedObject];
+    [managedObject setValue:self.filename forKey:@"filename"];
+    [managedObject setValue:self.data forKey:@"data"];
+}
 
 @end

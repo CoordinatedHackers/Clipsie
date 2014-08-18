@@ -56,7 +56,7 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         },
             (.Default, "Send clipboard", {
-                if let offer = offerWithClipboard() {
+                if let offer = CHDoliaOffer.offerWithClipboard() {
                     destination.sendOffer(offer)
                     return
                 }
@@ -74,10 +74,15 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
     func foundDestination(destination: CHDoliaDestination, moreComing: Bool) {
         self.destinations.append(destination)
         self.tableView.reloadData()
+        if !moreComing {
+            self.tableView.reloadData()
+        }
     }
     
     func lostDestination(destination: CHDoliaDestination, moreComing: Bool) {
-        self.destinations = self.destinations.filter({$0 != destination})
-        self.tableView.reloadData()
+        self.destinations = self.destinations.filter({$0 !== destination})
+        if !moreComing {
+            self.tableView.reloadData()
+        }
     }
 }

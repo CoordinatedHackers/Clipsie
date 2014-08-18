@@ -21,6 +21,7 @@
 		E9616DE7199885770015CFEB /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9616DE6199885770015CFEB /* Inbox.swift */; };
 		E966F61419988CF800AFCAE1 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966F61319988CF800AFCAE1 /* Browser.swift */; };
 		E9B978DD199AFAC400341197 /* DoliaiOSAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */; };
+		E9E3CBF219A158CF00BE68A8 /* Dolia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		E9616DE6199885770015CFEB /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		E966F61319988CF800AFCAE1 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoliaiOSAdditions.swift; sourceTree = "<group>"; };
+		E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dolia.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		E94135B0194BE8E40030BF9C /* Dolia */ = {
 			isa = PBXGroup;
 			children = (
+				E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */,
 				E94135B7194BE8E50030BF9C /* Main.storyboard */,
 				E95D4519199FE09900F52242 /* Util.swift */,
 				E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */,
@@ -259,6 +262,7 @@
 				E95D451A199FE09900F52242 /* Util.swift in Sources */,
 				E94135E9194CB1D90030BF9C /* CHDoliaListener.m in Sources */,
 				E94135E7194CB1D90030BF9C /* CHDoliaBrowser.m in Sources */,
+				E9E3CBF219A158CF00BE68A8 /* Dolia.xcdatamodeld in Sources */,
 				E966F61419988CF800AFCAE1 /* Browser.swift in Sources */,
 				E9B978DD199AFAC400341197 /* DoliaiOSAdditions.swift in Sources */,
 				E9616DE7199885770015CFEB /* Inbox.swift in Sources */,
@@ -474,6 +478,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */,
+			);
+			currentVersion = E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */;
+			path = Dolia.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E94135A6194BE8E40030BF9C /* Project object */;
 }
