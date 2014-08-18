@@ -106,7 +106,7 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 {
     if (self = [self init]){
         NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:url error:nil];
-        self.contents = [handle availableData];
+        self.data = [handle availableData];
         
         NSString *filename;
         if ([url getResourceValue:&filename forKey:NSURLNameKey error:nil]) {
