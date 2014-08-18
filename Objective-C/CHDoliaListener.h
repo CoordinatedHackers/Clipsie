@@ -20,4 +20,7 @@
 @property (retain) NSNetService *service;
 @property NSObject<CHDoliaListenerDelegate> *delegate;
 
+- (void)start;
+- (void)stop;
+
 @end

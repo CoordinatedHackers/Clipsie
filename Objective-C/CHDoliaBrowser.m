@@ -16,9 +16,23 @@
         self.browser = [NSNetServiceBrowser new];
         self.destinations = [NSMutableDictionary new];
         [self.browser setDelegate:self];
-        [self.browser searchForServicesOfType:@"_dolia._tcp" inDomain:@"local."];
     }
     return self;
+}
+
+- (void)start
+{
+    [self.browser searchForServicesOfType:@"_dolia._tcp" inDomain:@"local."];
+}
+
+- (void)stop
+{
+    [self.browser stop];
+    NSUInteger totalDestinations = self.destinations.count;
+    for (CHDoliaDestination *dest in self.destinations) {
+        [self.delegate lostDestination:[self.destinations objectForKey:dest] moreComing:--totalDestinations > 0];
+    }
+    [self.destinations removeAllObjects];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing

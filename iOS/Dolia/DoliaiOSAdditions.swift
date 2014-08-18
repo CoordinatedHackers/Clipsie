@@ -8,12 +8,28 @@
 
 import UIKit
 
-func offerWithClipboard() -> CHDoliaOffer? {
-    let pasteboard = UIPasteboard.generalPasteboard()
-    if let url = pasteboard.URL {
-        return CHDoliaURLOffer(URL: url)
-    } else if let string = pasteboard.string {
-        return CHDoliaTextOffer(string: string)
+extension CHDoliaOffer {
+    class func offerWithClipboard() -> CHDoliaOffer? {
+        let pasteboard = UIPasteboard.generalPasteboard()
+        if let url = pasteboard.URL {
+            return CHDoliaURLOffer(URL: url)
+        } else if let string = pasteboard.string {
+            return CHDoliaTextOffer(string: string)
+        }
+        return nil
     }
-    return nil
+}
+
+extension CHDoliaTextOffer {
+    override public func accept() {
+        let pasteboard = UIPasteboard.generalPasteboard()
+        pasteboard.string = string
+    }
+}
+
+extension CHDoliaURLOffer {
+    override public func accept() {
+        let pasteboard = UIPasteboard.generalPasteboard()
+        pasteboard.URL = url
+    }
 }

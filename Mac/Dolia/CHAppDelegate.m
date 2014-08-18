@@ -31,7 +31,10 @@
     [self.statusItem setAlternateImage:[NSImage imageNamed:@"status-menu-inverted"]];
     
     self.listener.delegate = self;
+    [self.listener start];
+    
     self.browser.delegate = self;
+    [self.browser start];
     
     self.menuItemsByDestination = [NSMutableDictionary new];
     self.destinationsByMenuItem = [NSMutableDictionary new];

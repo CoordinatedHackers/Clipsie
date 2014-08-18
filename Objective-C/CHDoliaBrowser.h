@@ -22,4 +22,7 @@
 @property (assign) id<CHDoliaBrowserDelegate> delegate;
 @property (retain) NSMutableDictionary *destinations;
 
+- (void)start;
+- (void)stop;
+
 @end

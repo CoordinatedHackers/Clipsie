@@ -19,9 +19,18 @@
                                                        name:@""
                                                        port:0];
         self.service.delegate = self;
-        [self.service publishWithOptions:NSNetServiceListenForConnections];
     }
     return self;
+}
+
+- (void)start
+{
+    [self.service publishWithOptions:NSNetServiceListenForConnections];
+}
+
+- (void)stop
+{
+    [self.service stop];
 }
 
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream

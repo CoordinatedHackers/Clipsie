@@ -15,10 +15,24 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         browser.delegate = self
+        browser.start()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillEnterForeground", name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     @IBAction func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
+    // MARK: Notifications
+    
+    func applicationDidEnterBackground() {
+        browser.stop()
+    }
+    
+    func applicationWillEnterForeground() {
+        browser.start()
     }
     
     // MARK: Table view data source
