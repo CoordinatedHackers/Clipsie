@@ -23,6 +23,7 @@
 		E9420990191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
 		E9420998191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420996191570C1008DC784 /* InfoPlist.strings */; };
 		E942099A191570C1008DC784 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9420999191570C1008DC784 /* DoliaTests.m */; };
+		E96E70BE19A132F800547FFA /* NSString+CHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */; };
 		E98ED615196461E800AF9F24 /* CHDoliaMacAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		E9420995191570C1008DC784 /* DoliaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoliaTests-Info.plist"; sourceTree = "<group>"; };
 		E9420997191570C1008DC784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9420999191570C1008DC784 /* DoliaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoliaTests.m; sourceTree = "<group>"; };
+		E96E70BC19A132F800547FFA /* NSString+CHAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CHAdditions.h"; sourceTree = "<group>"; };
+		E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CHAdditions.m"; sourceTree = "<group>"; };
 		E98ED613196461E800AF9F24 /* CHDoliaMacAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaMacAdditions.h; sourceTree = "<group>"; };
 		E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaMacAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +154,8 @@
 		E9420975191570C1008DC784 /* Dolia */ = {
 			isa = PBXGroup;
 			children = (
+				E96E70BC19A132F800547FFA /* NSString+CHAdditions.h */,
+				E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */,
 				E98ED613196461E800AF9F24 /* CHDoliaMacAdditions.h */,
 				E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */,
 				E9420981191570C1008DC784 /* CHAppDelegate.h */,
@@ -295,6 +300,7 @@
 				E942097C191570C1008DC784 /* main.m in Sources */,
 				E94135DA194CB1A90030BF9C /* CHDoliaListener.m in Sources */,
 				E9420983191570C1008DC784 /* CHAppDelegate.m in Sources */,
+				E96E70BE19A132F800547FFA /* NSString+CHAdditions.m in Sources */,
 				E98ED615196461E800AF9F24 /* CHDoliaMacAdditions.m in Sources */,
 				E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */,
 				E94135DB194CB1A90030BF9C /* CHDoliaOffer.m in Sources */,

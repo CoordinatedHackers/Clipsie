@@ -8,6 +8,7 @@
 
 #import "CHAppDelegate.h"
 #import "CHDoliaMacAdditions.h"
+#import "NSString+CHAdditions.h"
 
 @interface CHDoliaOfferAndNotification : NSObject
 
@@ -68,7 +69,7 @@
     [self.pendingOffersByHash setObject:offerAndNotification forKey:key];
 
     notification.title = @"Incoming clipboard!";
-    notification.informativeText = offer.preview;
+    notification.informativeText = [NSString stringWithFormat:@"Click to copy “%@”", [offer.preview truncate:20 overflow:@"…"]];
     notification.hasActionButton = YES;
     notification.actionButtonTitle = @"Accept";
     notification.otherButtonTitle = @"Ignore";
