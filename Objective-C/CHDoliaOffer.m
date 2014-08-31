@@ -140,7 +140,7 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 {
     if (self = [self init]){
         NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:url error:nil];
-        self.data = [handle availableData];
+        self.content = [handle availableData];
         
         NSString *filename;
         if ([url getResourceValue:&filename forKey:NSURLNameKey error:nil]) {
@@ -158,7 +158,7 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 {
     return [super jsonPlus:@{
         @"filename": self.filename,
-        @"data": [self.data base64EncodedStringWithOptions:0]
+        @"content": [self.content base64EncodedStringWithOptions:0]
     }];
 }
 
@@ -170,7 +170,7 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 {
     [super saveToManagedObject:managedObject];
     [managedObject setValue:self.filename forKey:@"filename"];
-    [managedObject setValue:self.data forKey:@"data"];
+    [managedObject setValue:self.content forKey:@"content"];
 }
 
 @end

@@ -46,7 +46,7 @@
 @interface CHDoliaFileOffer : CHDoliaOffer
 
 @property NSString *filename; // FIXME: sending more than one file?
-@property NSData *data;
+@property NSData *content;
 
 - (instancetype)initWithURL:(NSURL *)url;
 
