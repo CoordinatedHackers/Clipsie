@@ -22,6 +22,7 @@ class InboxViewController: UITableViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.fetchedResultsController.performFetch(nil)
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -38,5 +39,9 @@ class InboxViewController: UITableViewController {
         cell.textLabel.text = object.valueForKey("received").description
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        println("BOOP")
     }
 }

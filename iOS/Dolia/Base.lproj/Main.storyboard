@@ -60,6 +60,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Inbox" id="yDI-tt-dxs">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="MLM-pZ-seO" userLabel="Edit (placeholder)"/>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="zg6-6l-Ra2">
                             <connections>
                                 <segue destination="vCI-QS-m6H" kind="modal" id="AJ4-y3-xqH"/>
