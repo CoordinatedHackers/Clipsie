@@ -12,7 +12,7 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
     var browser = CHDoliaBrowser()
     var destinations = [CHDoliaDestination]()
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         browser.delegate = self
         browser.start()

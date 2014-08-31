@@ -19,7 +19,7 @@ class InboxViewController: UITableViewController {
         )
     }()
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.fetchedResultsController.performFetch(nil)
     }
