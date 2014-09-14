@@ -54,6 +54,7 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         appDelegate().managedObjectContext.deleteObject(
             self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         )
+        appDelegate().managedObjectContext.save(nil)
     }
     
     func configureCell(cell: UITableViewCell, withOffer offer: CHDoliaOffer) {
