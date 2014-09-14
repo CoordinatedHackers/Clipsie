@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CHDoliaListenerDelegate {
             error: &err
         )
         
-        let managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         return managedObjectContext
     }()

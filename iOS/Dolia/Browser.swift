@@ -54,12 +54,14 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
         
         showAlert(self, style: .ActionSheet, sourceView: cell, completion: {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.dismiss()
         },
             (.Default, "Send clipboard", {
-                let managedObjectContext = appDelegate().managedObjectContext
+                // Use a temporary managed object context. Right now we don't care about saving sent offers
+                let managedObjectContext = NSManagedObjectContext()
+                managedObjectContext.parentContext = appDelegate().managedObjectContext
                 if let offer = CHDoliaOffer.offerWithClipboard(managedObjectContext) {
                     destination.sendOffer(offer)
-                    managedObjectContext.save(nil)
                     return
                 }
                 // TODO: Handle this more gracefully, e.g. by disabling sending if nothing's on your clipboard
