@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CHDoliaListenerDelegate {
             configuration: nil,
             URL: NSFileManager.defaultManager().URLsForDirectory(
                 .DocumentDirectory, inDomains: .UserDomainMask
-            )[0].URLByAppendingPathComponent("Dolia/Dolia.sqlite"),
+            )[0].URLByAppendingPathComponent("Dolia.sqlite"),
             options: nil,
             error: &err
         )
