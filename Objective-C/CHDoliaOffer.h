@@ -34,7 +34,7 @@
 
 @interface CHDoliaURLOffer : CHDoliaOffer
 
-@property NSURL *url;
+@property NSString *url;
 
 @end
 

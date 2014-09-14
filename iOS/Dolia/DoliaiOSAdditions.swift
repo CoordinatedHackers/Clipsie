@@ -13,7 +13,7 @@ extension CHDoliaOffer {
         let pasteboard = UIPasteboard.generalPasteboard()
         if let url = pasteboard.URL {
             let offer = CHDoliaURLOffer(inManagedObjectContext: managedObjectContext)
-            offer.url = url
+            offer.url = url.absoluteString
             return offer
         } else if let string = pasteboard.string {
             let offer = CHDoliaTextOffer(inManagedObjectContext: managedObjectContext)
@@ -33,7 +33,7 @@ extension CHDoliaTextOffer {
 
 extension CHDoliaURLOffer {
     override public func accept() {
-        UIApplication.sharedApplication().openURL(url)
+        UIApplication.sharedApplication().openURL(NSURL(string: url))
 
     }
 }

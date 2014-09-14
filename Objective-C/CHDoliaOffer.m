@@ -35,7 +35,7 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
         return offer;
     } else if ([type isEqualToString:@"url"]) {
         CHDoliaURLOffer *offer = [CHDoliaURLOffer offerInManagedObjectContext:managedObjectContext];
-        offer.url = [NSURL URLWithString:json[@"url"]];
+        offer.url = json[@"url"];
         return offer;
     } else if ([type isEqualToString:@"file"]) {
         // TODO: actually implement this
@@ -97,11 +97,11 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 - (NSDictionary *)json
 {
     return [super jsonPlus:@{
-        @"url": [self.url absoluteString]
+        @"url": self.url
     }];
 }
 
-- (NSString *)preview { return [self.url absoluteString]; }
+- (NSString *)preview { return self.url; }
 
 + (NSString *)entityName { return @"URLOffer"; }
 
