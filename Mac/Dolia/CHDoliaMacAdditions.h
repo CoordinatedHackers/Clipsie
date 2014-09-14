@@ -10,6 +10,6 @@
 
 @interface CHDoliaOffer (CHDoliaMacAdditions)
 
-+ (CHDoliaOffer *)offerWithClipboard;
++ (CHDoliaOffer *)offerWithClipboardWithManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

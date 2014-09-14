@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface CHDoliaOffer : NSObject
+@interface CHDoliaOffer : NSManagedObject
 
-+ (CHDoliaOffer *)deserializeWithData:(NSData *)data;
-+ (CHDoliaOffer *)offerFromManagedObject:(NSManagedObject *)managedObject;
++ (instancetype)offerInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (CHDoliaOffer *)deserializeWithData:(NSData *)data managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSString *)entityName;
 
 @property NSDate *received;
 
@@ -21,10 +22,6 @@
 @property (readonly) NSString *preview;
 @property (readonly) NSData *data;
 
-@property (readonly) NSString *entityName;
-- (void)saveToManagedObject:(NSManagedObject *)managedObject;
-- (BOOL)savetoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext error:(NSError **)error;
-
 - (void)accept;
 
 @end
@@ -32,22 +29,19 @@
 @interface CHDoliaTextOffer : CHDoliaOffer
 
 @property NSString *string;
-- (instancetype)initWithString:(NSString *)string;
 
 @end
 
 @interface CHDoliaURLOffer : CHDoliaOffer
 
 @property NSURL *url;
-- (instancetype)initWithURL:(NSURL *)url;
 
 @end
 
 @interface CHDoliaFileOffer : CHDoliaOffer
 
+@property (retain) NSURL *file;
 @property NSString *filename; // FIXME: sending more than one file?
 @property NSData *content;
-
-- (instancetype)initWithURL:(NSURL *)url;
 
 @end

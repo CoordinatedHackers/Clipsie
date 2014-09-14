@@ -9,12 +9,16 @@
 import UIKit
 
 extension CHDoliaOffer {
-    class func offerWithClipboard() -> CHDoliaOffer? {
+    class func offerWithClipboard(managedObjectContext: NSManagedObjectContext) -> CHDoliaOffer? {
         let pasteboard = UIPasteboard.generalPasteboard()
         if let url = pasteboard.URL {
-            return CHDoliaURLOffer(URL: url)
+            let offer = CHDoliaURLOffer(inManagedObjectContext: managedObjectContext)
+            offer.url = url
+            return offer
         } else if let string = pasteboard.string {
-            return CHDoliaTextOffer(string: string)
+            let offer = CHDoliaTextOffer(inManagedObjectContext: managedObjectContext)
+            offer.string = string
+            return offer
         }
         return nil
     }
@@ -29,7 +33,7 @@ extension CHDoliaTextOffer {
 
 extension CHDoliaURLOffer {
     override public func accept() {
-        let pasteboard = UIPasteboard.generalPasteboard()
-        pasteboard.URL = url
+        UIApplication.sharedApplication().openURL(url)
+
     }
 }

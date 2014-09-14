@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class InboxViewController: UITableViewController {
+class InboxViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
     let fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "Offer")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "received", ascending: false)]
@@ -22,6 +23,7 @@ class InboxViewController: UITableViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.fetchedResultsController.performFetch(nil)
+        self.fetchedResultsController.delegate = self
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
@@ -29,19 +31,59 @@ class InboxViewController: UITableViewController {
         return 1
     }
     
+    // MARK: - Table view stuff
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fetchedResultsController.fetchedObjects.count
+        return self.fetchedResultsController.fetchedObjects!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as UITableViewCell
-        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = object.valueForKey("received").description
-
+        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as CHDoliaOffer
+        configureCell(cell, withOffer: offer)
         return cell
     }
     
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-        println("BOOP")
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as CHDoliaOffer
+        offer.accept()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        appDelegate().managedObjectContext.deleteObject(
+            self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        )
+    }
+    
+    func configureCell(cell: UITableViewCell, withOffer offer: CHDoliaOffer) {
+        cell.textLabel?.text = offer.preview
+    }
+    
+    // MARK: - Core data stuff
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: CHDoliaOffer, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        case .Update:
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, withOffer: anObject)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        default:
+            return
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
 }

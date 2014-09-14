@@ -12,6 +12,47 @@ import UIKit
 // - You must explicitly weak link to UIKit to support iOS 7
 // - Action sheets on iOS 7 only show a title
 
+class Helper: NSObject {
+    
+    var holdSelf: Helper?
+    var cb: (Int) -> ()
+    
+    init(cb: (Int) -> ()) {
+        self.cb = cb
+        super.init()
+        self.holdSelf = self
+    }
+    
+    func finish(index: Int) {
+        self.cb(index)
+        self.holdSelf = nil
+    }
+}
+
+class ActionSheetHelper : Helper, UIActionSheetDelegate {
+    init(_ actionSheet: UIActionSheet, cb: (Int) -> ()) {
+        super.init(cb: cb)
+        actionSheet.delegate = self
+        
+    }
+    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+        actionSheet.delegate = nil
+        self.finish(buttonIndex)
+    }
+}
+
+class AlertHelper : Helper, UIAlertViewDelegate {
+    init(_ alertView: UIAlertView, cb: (Int) -> ()) {
+        super.init(cb: cb)
+        alertView.delegate = self
+        
+    }
+    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+        alertView.delegate = nil
+        self.finish(buttonIndex)
+    }
+}
+
 func showAlert(viewController: UIViewController, style: UIAlertControllerStyle = .Alert, title: String? = nil, message: String? = nil, sourceView: UIView? = nil, completion: (() -> ())? = nil, buttons: (UIAlertActionStyle, String, (() -> ())?)...) {
     
     if (NSClassFromString("UIAlertController") != nil) {
@@ -34,36 +75,9 @@ func showAlert(viewController: UIViewController, style: UIAlertControllerStyle =
         
     } else {
         // iOS 7
-        class Helper: NSObject {
-            
-            var holdSelf: Helper?
-            var cb: (Int) -> ()
-            
-            init(cb: (Int) -> ()) {
-                self.cb = cb
-                super.init()
-                self.holdSelf = self
-            }
-            
-            func finish(index: Int) {
-                self.cb(index)
-                self.holdSelf = nil
-            }
-        }
 
         switch style {
         case .ActionSheet:
-            class ActionSheetHelper : Helper, UIActionSheetDelegate {
-                init(_ actionSheet: UIActionSheet, cb: (Int) -> ()) {
-                    super.init(cb: cb)
-                    actionSheet.delegate = self
-                    
-                }
-                func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
-                    actionSheet.delegate = nil
-                    self.finish(buttonIndex)
-                }
-            }
             let actionSheet = UIActionSheet()
             if let title = title {
                 actionSheet.title = title
@@ -89,17 +103,6 @@ func showAlert(viewController: UIViewController, style: UIAlertControllerStyle =
                 actionSheet.showInView(viewController.view)
             }
         case .Alert:
-            class AlertHelper : Helper, UIAlertViewDelegate {
-                init(_ alertView: UIAlertView, cb: (Int) -> ()) {
-                    super.init(cb: cb)
-                    alertView.delegate = self
-                    
-                }
-                func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-                    alertView.delegate = nil
-                    self.finish(buttonIndex)
-                }
-            }
             let alertView = UIAlertView()
             if let title = title {
                 alertView.title = title

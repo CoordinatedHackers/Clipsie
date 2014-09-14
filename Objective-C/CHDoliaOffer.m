@@ -17,28 +17,37 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 
 @implementation CHDoliaOffer
 
-+ (CHDoliaOffer *)deserializeWithData:(NSData *)data
+@dynamic received;
+
++ (instancetype)offerInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    return [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:managedObjectContext];
+}
+
++ (CHDoliaOffer *)deserializeWithData:(NSData *)data managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSString *type = json[@"type"];
 
     if ([type isEqualToString:@"text"]) {
-        return [[CHDoliaTextOffer alloc] initWithString:json[@"content"]];
+        CHDoliaTextOffer *offer = [CHDoliaTextOffer offerInManagedObjectContext:managedObjectContext];
+        offer.string = json[@"content"];
+        return offer;
     } else if ([type isEqualToString:@"url"]) {
-        return [[CHDoliaURLOffer alloc] initWithURL:[NSURL URLWithString:json[@"url"]]];
+        CHDoliaURLOffer *offer = [CHDoliaURLOffer offerInManagedObjectContext:managedObjectContext];
+        offer.url = [NSURL URLWithString:json[@"url"]];
+        return offer;
     } else if ([type isEqualToString:@"file"]) {
         // TODO: actually implement this
-        return [[CHDoliaTextOffer alloc] initWithString:json[@"filename"]];
+        CHDoliaFileOffer *offer = [CHDoliaFileOffer offerInManagedObjectContext:managedObjectContext];
+        offer.filename = json[@"filename"];
+        return offer;
     } else {
         NSLog(@"Unknown Type: %@", type);
         return nil;
     }
 }
 
-+ (CHDoliaOffer *)offerFromManagedObject:(NSManagedObject *)managedObject
-{
-    return [CHDoliaOffer new];
-}
 - (id)type { raiseUnimplementedException(__PRETTY_FUNCTION__); }
 - (NSDictionary *)json { raiseUnimplementedException(__PRETTY_FUNCTION__); }
 - (NSString *)preview { raiseUnimplementedException(__PRETTY_FUNCTION__); }
@@ -56,31 +65,13 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
     return [NSJSONSerialization dataWithJSONObject:self.json options:0 error:nil];
 }
 
-- (NSString *)entityName { raiseUnimplementedException(__PRETTY_FUNCTION__); }
-
-- (void)saveToManagedObject:(NSManagedObject *)managedObject
-{
-    [managedObject setValue:self.received forKey:@"received"];
-}
-
-- (BOOL)savetoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext error:(NSError **)error
-{
-    NSManagedObject *managedObject = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:managedObjectContext];
-    [self saveToManagedObject:managedObject];
-    return [managedObjectContext save:error];
-}
++ (NSString *)entityName { raiseUnimplementedException(__PRETTY_FUNCTION__); }
 
 @end
 
 @implementation CHDoliaTextOffer
 
-- (instancetype) initWithString:(NSString *)string
-{
-    if (self = [self init]){
-        self.string = string;
-    }
-    return self;
-}
+@dynamic string;
 
 - (NSString *)type { return @"text"; }
 
@@ -93,25 +84,13 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 
 - (NSString *)preview { return self.string; }
 
-- (NSString *)entityName { return @"TextOffer"; }
-
-- (void)saveToManagedObject:(NSManagedObject *)managedObject
-{
-    [super saveToManagedObject:managedObject];
-    [managedObject setValue:self.string forKey:@"string"];
-}
++ (NSString *)entityName { return @"TextOffer"; }
 
 @end
 
 @implementation CHDoliaURLOffer
 
-- (instancetype) initWithURL:(NSURL *)url
-{
-    if (self = [self init]){
-        self.url = url;
-    }
-    return self;
-}
+@dynamic url;
 
 - (NSString *)type { return @"url"; }
 
@@ -124,32 +103,33 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 
 - (NSString *)preview { return [self.url absoluteString]; }
 
-- (NSString *)entityName { return @"URLOffer"; }
-
-- (void)saveToManagedObject:(NSManagedObject *)managedObject
-{
-    [super saveToManagedObject:managedObject];
-    [managedObject setValue:self.url forKey:@"url"];
-}
++ (NSString *)entityName { return @"URLOffer"; }
 
 @end
 
 @implementation CHDoliaFileOffer
 
-- (instancetype) initWithURL:(NSURL *)url
+@synthesize file;
+@dynamic filename;
+@dynamic content;
+
+- (NSURL *)file
 {
-    if (self = [self init]){
-        NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:url error:nil];
-        self.content = [handle availableData];
-        
-        NSString *filename;
-        if ([url getResourceValue:&filename forKey:NSURLNameKey error:nil]) {
-            self.filename = filename;
-        } else {
-            NSLog(@"Bad news bears, couldn't get filename for %@", url);
-        }
+    return file;
+}
+- (void)setFile:(NSURL *)newFile
+{
+    file = newFile;
+    
+    NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:file error:nil];
+    self.content = [handle availableData];
+    
+    NSString *filename;
+    if ([file getResourceValue:&filename forKey:NSURLNameKey error:nil]) {
+        self.filename = filename;
+    } else {
+        NSLog(@"Bad news bears, couldn't get filename for %@", file);
     }
-    return self;
 }
 
 - (NSString *)type { return @"file"; }
@@ -164,13 +144,6 @@ __attribute__((noreturn)) static void raiseUnimplementedException(const char *me
 
 - (NSString *)preview { return self.filename; }
 
-- (NSString *)entityName { return @"FileOffer"; }
-
-- (void)saveToManagedObject:(NSManagedObject *)managedObject
-{
-    [super saveToManagedObject:managedObject];
-    [managedObject setValue:self.filename forKey:@"filename"];
-    [managedObject setValue:self.content forKey:@"content"];
-}
++ (NSString *)entityName { return @"FileOffer"; }
 
 @end

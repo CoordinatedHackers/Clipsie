@@ -11,6 +11,9 @@
 
 @protocol CHDoliaListenerDelegate <NSObject>
 
+- (NSManagedObjectContext *)managedObjectContextForOffer;
+
+@optional
 - (void)gotOffer:(CHDoliaOffer*)offer;
 
 @end

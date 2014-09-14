@@ -26,6 +26,10 @@
 @property (retain) NSMutableArray *pendingOffers;
 @property (retain) NSMutableDictionary *pendingOffersByHash;
 
+@property (retain) NSManagedObjectContext *managedObjectContext;
+
 - (void)menuItemClicked:(NSMenuItem*)menuItem;
+
+- (NSManagedObjectContext *)managedObjectContextForOffer;
 
 @end

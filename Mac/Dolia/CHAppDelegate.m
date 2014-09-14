@@ -31,6 +31,25 @@
     [self.statusItem setImage:[NSImage imageNamed:@"status-menu"]];
     [self.statusItem setAlternateImage:[NSImage imageNamed:@"status-menu-inverted"]];
     
+    NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Dolia" withExtension:@"momd"]];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
+    NSError *err;
+    
+    NSURL *applicationSupportDirectory = [[[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] firstObject] URLByAppendingPathComponent:@"Dolia"];
+    [[NSFileManager defaultManager] createDirectoryAtURL:applicationSupportDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                             configuration:nil
+                                                       URL:[applicationSupportDirectory URLByAppendingPathComponent:@"Dolia.sqlite"]
+                                                   options:nil
+                                                     error:&err];
+    if (err != nil) {
+        NSLog(@"%@", err);
+    }
+    
+    self.managedObjectContext = [NSManagedObjectContext new];
+    self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
+    
     self.listener.delegate = self;
     [self.listener start];
     
@@ -106,7 +125,7 @@
 {
     CHDoliaDestination *destination = [self.destinationsByMenuItem objectForKey:[NSValue valueWithPointer:(__bridge const void *)(menuItem)]];
 
-    [destination sendOffer:[CHDoliaOffer offerWithClipboard]];
+    [destination sendOffer:[CHDoliaOffer offerWithClipboardWithManagedObjectContext:self.managedObjectContext]];
     
 }
 
@@ -120,6 +139,10 @@
     NSNumber *key = [notification.userInfo objectForKey:@"key"];
     CHDoliaOfferAndNotification *offerAndNotification = [self.pendingOffersByHash objectForKey:key];
     [offerAndNotification.offer accept];
+}
+
+- (NSManagedObjectContext *)managedObjectContextForOffer {
+    return self.managedObjectContext;
 }
 
 @end

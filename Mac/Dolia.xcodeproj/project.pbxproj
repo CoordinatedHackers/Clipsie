@@ -25,6 +25,7 @@
 		E942099A191570C1008DC784 /* DoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9420999191570C1008DC784 /* DoliaTests.m */; };
 		E96E70BE19A132F800547FFA /* NSString+CHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */; };
 		E98ED615196461E800AF9F24 /* CHDoliaMacAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */; };
+		E9EFF02619C64341004B5A7E /* Dolia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9EFF02419C64341004B5A7E /* Dolia.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CHAdditions.m"; sourceTree = "<group>"; };
 		E98ED613196461E800AF9F24 /* CHDoliaMacAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDoliaMacAdditions.h; sourceTree = "<group>"; };
 		E98ED614196461E800AF9F24 /* CHDoliaMacAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDoliaMacAdditions.m; sourceTree = "<group>"; };
+		E9EFF02519C64341004B5A7E /* Dolia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dolia.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				E94135D7194CB1A90030BF9C /* CHDoliaOffer.m */,
 				E94135EB194CB2270030BF9C /* CHStreamInterface.h */,
 				E94135EC194CB2270030BF9C /* CHStreamInterface.m */,
+				E9EFF02419C64341004B5A7E /* Dolia.xcdatamodeld */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */,
 				E94135DB194CB1A90030BF9C /* CHDoliaOffer.m in Sources */,
 				E94135D8194CB1A90030BF9C /* CHDoliaBrowser.m in Sources */,
+				E9EFF02619C64341004B5A7E /* Dolia.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +533,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E9EFF02419C64341004B5A7E /* Dolia.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9EFF02519C64341004B5A7E /* Dolia.xcdatamodel */,
+			);
+			currentVersion = E9EFF02519C64341004B5A7E /* Dolia.xcdatamodel */;
+			name = Dolia.xcdatamodeld;
+			path = "../Objective-C/Dolia.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E9420964191570C1008DC784 /* Project object */;
 }

@@ -37,17 +37,17 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
     
     // MARK: Table view data source
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("destination", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = destinations[indexPath.row].name()
+        cell.textLabel?.text = destinations[indexPath.row].name()
         return cell
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.destinations.count
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         let destination = self.destinations[indexPath.row]
         
@@ -56,8 +56,10 @@ class BrowserViewController: UITableViewController, CHDoliaBrowserDelegate {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         },
             (.Default, "Send clipboard", {
-                if let offer = CHDoliaOffer.offerWithClipboard() {
+                let managedObjectContext = appDelegate().managedObjectContext
+                if let offer = CHDoliaOffer.offerWithClipboard(managedObjectContext) {
                     destination.sendOffer(offer)
+                    managedObjectContext.save(nil)
                     return
                 }
                 // TODO: Handle this more gracefully, e.g. by disabling sending if nothing's on your clipboard

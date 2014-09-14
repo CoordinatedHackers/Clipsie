@@ -10,7 +10,7 @@
 
 @implementation CHDoliaOffer (CHDoliaMacAdditions)
 
-+ (CHDoliaOffer *)offerWithClipboard
++ (CHDoliaOffer *)offerWithClipboardWithManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
     
@@ -24,9 +24,13 @@
     
     if ([pbItem isKindOfClass:[NSURL class]]) {
         if ([pbItem isFileReferenceURL]) {
-            return [[CHDoliaFileOffer alloc] initWithURL:(NSURL *)pbItem];
+            CHDoliaFileOffer *offer = [CHDoliaFileOffer offerInManagedObjectContext:context];
+            offer.file = pbItem;
+            return offer;
         }
-        return [[CHDoliaURLOffer alloc] initWithURL:(NSURL *)pbItem];
+        CHDoliaURLOffer *offer = [CHDoliaURLOffer offerInManagedObjectContext:context];
+        offer.url = pbItem;
+        return offer;
     }
     
     NSRegularExpression *urlRegex = [NSRegularExpression regularExpressionWithPattern:@"https?:.*" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -34,11 +38,15 @@
     if ([urlRegex numberOfMatchesInString:pbItem options:0 range:NSMakeRange(0, [pbItem length])]) {
         NSURL *url = [NSURL URLWithString:pbItem];
         if (url) {
-            return [[CHDoliaURLOffer alloc] initWithURL:url];
+            CHDoliaURLOffer *offer = [CHDoliaURLOffer offerInManagedObjectContext:context];
+            offer.url = pbItem;
+            return offer;
         }
     }
     
-    return [[CHDoliaTextOffer alloc] initWithString:pbItem];
+    CHDoliaTextOffer *offer = [CHDoliaTextOffer offerInManagedObjectContext:context];
+    offer.string = pbItem;
+    return offer;
 }
 
 @end

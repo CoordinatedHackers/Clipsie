@@ -36,10 +36,14 @@
 - (void)netService:(NSNetService *)sender didAcceptConnectionWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
     [CHStreamReader readFromStream:inputStream withCompletionBlock:^void (NSData *data) {
-        CHDoliaOffer *offer = [CHDoliaOffer deserializeWithData:data];
+        NSManagedObjectContext *managedObjectContext = [self.delegate managedObjectContextForOffer];
+        CHDoliaOffer *offer = [CHDoliaOffer deserializeWithData:data managedObjectContext:managedObjectContext];
         if (offer) {
             offer.received = [NSDate date];
-            [self.delegate gotOffer:offer];
+            [managedObjectContext save:nil];
+            if ([self.delegate respondsToSelector:@selector(gotOffer:)]) {
+                [self.delegate gotOffer:offer];
+            }
         }
     }];
 }

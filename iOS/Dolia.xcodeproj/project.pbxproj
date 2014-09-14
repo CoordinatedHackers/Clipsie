@@ -21,7 +21,7 @@
 		E9616DE7199885770015CFEB /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9616DE6199885770015CFEB /* Inbox.swift */; };
 		E966F61419988CF800AFCAE1 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966F61319988CF800AFCAE1 /* Browser.swift */; };
 		E9B978DD199AFAC400341197 /* DoliaiOSAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */; };
-		E9E3CBF219A158CF00BE68A8 /* Dolia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */; };
+		E9EFF02319C642E8004B5A7E /* Dolia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9EFF02119C642E8004B5A7E /* Dolia.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		E94135C0194BE8E50030BF9C /* DoliaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoliaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94135C5194BE8E50030BF9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94135C6194BE8E50030BF9C /* DoliaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoliaTests.swift; sourceTree = "<group>"; };
-		E94135DE194CB1D80030BF9C /* Dolia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dolia-Bridging-Header.h"; sourceTree = "<group>"; };
+		E94135DE194CB1D80030BF9C /* Dolia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dolia-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		E94135DF194CB1D90030BF9C /* CHDoliaBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaBrowser.h; path = "../Objective-C/CHDoliaBrowser.h"; sourceTree = "<group>"; };
 		E94135E0194CB1D90030BF9C /* CHDoliaBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHDoliaBrowser.m; path = "../Objective-C/CHDoliaBrowser.m"; sourceTree = "<group>"; };
 		E94135E1194CB1D90030BF9C /* CHDoliaDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHDoliaDestination.h; path = "../Objective-C/CHDoliaDestination.h"; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		E9616DE6199885770015CFEB /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		E966F61319988CF800AFCAE1 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoliaiOSAdditions.swift; sourceTree = "<group>"; };
-		E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dolia.xcdatamodel; sourceTree = "<group>"; };
+		E9EFF02219C642E8004B5A7E /* Dolia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dolia.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +104,13 @@
 		E94135B0194BE8E40030BF9C /* Dolia */ = {
 			isa = PBXGroup;
 			children = (
-				E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */,
 				E94135B7194BE8E50030BF9C /* Main.storyboard */,
 				E95D4519199FE09900F52242 /* Util.swift */,
 				E9B978DC199AFAC400341197 /* DoliaiOSAdditions.swift */,
 				E94135B3194BE8E50030BF9C /* AppDelegate.swift */,
 				E966F61319988CF800AFCAE1 /* Browser.swift */,
 				E9616DE6199885770015CFEB /* Inbox.swift */,
+				E94135DE194CB1D80030BF9C /* Dolia-Bridging-Header.h */,
 				E94135BA194BE8E50030BF9C /* Images.xcassets */,
 				E94135B1194BE8E40030BF9C /* Supporting Files */,
 			);
@@ -155,7 +155,7 @@
 				E94135E6194CB1D90030BF9C /* CHDoliaOffer.m */,
 				E94135EE194CB2320030BF9C /* CHStreamInterface.h */,
 				E94135EF194CB2320030BF9C /* CHStreamInterface.m */,
-				E94135DE194CB1D80030BF9C /* Dolia-Bridging-Header.h */,
+				E9EFF02119C642E8004B5A7E /* Dolia.xcdatamodeld */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 				E95D451A199FE09900F52242 /* Util.swift in Sources */,
 				E94135E9194CB1D90030BF9C /* CHDoliaListener.m in Sources */,
 				E94135E7194CB1D90030BF9C /* CHDoliaBrowser.m in Sources */,
-				E9E3CBF219A158CF00BE68A8 /* Dolia.xcdatamodeld in Sources */,
+				E9EFF02319C642E8004B5A7E /* Dolia.xcdatamodeld in Sources */,
 				E966F61419988CF800AFCAE1 /* Browser.swift in Sources */,
 				E9B978DD199AFAC400341197 /* DoliaiOSAdditions.swift in Sources */,
 				E9616DE7199885770015CFEB /* Inbox.swift in Sources */,
@@ -478,14 +478,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E9E3CBF019A158CF00BE68A8 /* Dolia.xcdatamodeld */ = {
+		E9EFF02119C642E8004B5A7E /* Dolia.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */,
+				E9EFF02219C642E8004B5A7E /* Dolia.xcdatamodel */,
 			);
-			currentVersion = E9E3CBF119A158CF00BE68A8 /* Dolia.xcdatamodel */;
-			path = Dolia.xcdatamodeld;
-			sourceTree = SOURCE_ROOT;
+			currentVersion = E9EFF02219C642E8004B5A7E /* Dolia.xcdatamodel */;
+			name = Dolia.xcdatamodeld;
+			path = "../Objective-C/Dolia.xcdatamodeld";
+			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

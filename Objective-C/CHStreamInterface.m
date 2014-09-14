@@ -63,7 +63,7 @@
         case NSStreamEventOpenCompleted:
             break;
         default:
-            NSLog(@"Unhandled read stream event, %u", streamEvent);
+            NSLog(@"Unhandled read stream event, %lu", streamEvent);
             break;
     }
 }
@@ -109,7 +109,7 @@
         case NSStreamEventEndEncountered:
             break;
         default:
-            NSLog(@"Unhandled write stream event: %u", streamEvent);
+            NSLog(@"Unhandled write stream event: %lu", streamEvent);
             break;
     }
 }
