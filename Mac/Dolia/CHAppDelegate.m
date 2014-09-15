@@ -47,8 +47,12 @@
         NSLog(@"%@", err);
     }
     
-    self.managedObjectContext = [NSManagedObjectContext new];
+    self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
+    
+    [self.inboxArrayController addObserver:self forKeyPath:@"arrangedObjects" options:0 context:nil];
+    
+    self.inboxMenuItems = [NSMutableArray new];
     
     self.listener.delegate = self;
     [self.listener start];
@@ -64,6 +68,33 @@
     NSUserNotificationCenter *nc = [NSUserNotificationCenter defaultUserNotificationCenter];
     nc.delegate = self;
     [nc removeAllDeliveredNotifications];
+}
+
+- (BOOL)isInboxEmpty
+{
+    return ((NSArray *)self.inboxArrayController.arrangedObjects).count == 0;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self willChangeValueForKey:@"isInboxEmpty"];
+    [self didChangeValueForKey:@"isInboxEmpty"];
+    
+    NSLog(@"Change object: %@", change);
+    for (NSMenuItem *menuItem in self.inboxMenuItems) {
+        [self.statusMenu removeItem:menuItem];
+    }
+    [self.inboxMenuItems removeAllObjects];
+    
+    for (CHDoliaOffer *offer in self.inboxArrayController.arrangedObjects) {
+        NSMenuItem *offerMenuItem = [NSMenuItem new];
+        offerMenuItem.representedObject = offer;
+        offerMenuItem.title = [offer.preview truncate:20 overflow:@"…"];
+        offerMenuItem.target = self;
+        offerMenuItem.action = @selector(offerMenuItemClicked:);
+        [self.inboxMenuItems addObject:offerMenuItem];
+        [self.statusMenu insertItem:offerMenuItem atIndex:[self.statusMenu indexOfItem:self.inboxTitleMenuItem] + 1];
+    }
 }
 
 - (void)gotOffer:(CHDoliaOffer *)offer
@@ -107,7 +138,7 @@
     
     [menuItem setTitle:destination.name];
     menuItem.target = self;
-    menuItem.action = @selector(menuItemClicked:);
+    menuItem.action = @selector(sendMenuItemClicked:);
     [self.statusMenu insertItem:menuItem atIndex:0];
 }
 
@@ -121,11 +152,18 @@
     [self.statusMenu removeItem:menuItem];
 }
 
-- (void)menuItemClicked:(NSMenuItem*)menuItem
+- (void)offerMenuItemClicked:(NSMenuItem*)menuItem
+{
+    [((CHDoliaOffer *)menuItem.representedObject) accept];
+}
+
+- (void)sendMenuItemClicked:(NSMenuItem*)menuItem
 {
     CHDoliaDestination *destination = [self.destinationsByMenuItem objectForKey:[NSValue valueWithPointer:(__bridge const void *)(menuItem)]];
 
-    [destination sendOffer:[CHDoliaOffer offerWithClipboardWithManagedObjectContext:self.managedObjectContext]];
+    NSManagedObjectContext *managedObjectContext = [NSManagedObjectContext new];
+    managedObjectContext.parentContext = self.managedObjectContext;
+    [destination sendOffer:[CHDoliaOffer offerWithClipboardWithManagedObjectContext:managedObjectContext]];
     
 }
 

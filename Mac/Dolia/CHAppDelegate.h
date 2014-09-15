@@ -18,6 +18,11 @@
 @property (assign) IBOutlet NSMenu *statusMenu;
 @property (assign) IBOutlet CHDoliaListener *listener;
 @property (assign) IBOutlet CHDoliaBrowser *browser;
+@property (assign) IBOutlet NSArrayController *inboxArrayController;
+@property (assign) IBOutlet NSMenuItem *inboxTitleMenuItem;
+
+@property (retain) NSManagedObjectContext *managedObjectContext;
+
 @property (retain) NSStatusItem *statusItem;
 
 @property (retain) NSMutableDictionary *menuItemsByDestination;
@@ -25,11 +30,14 @@
 
 @property (retain) NSMutableArray *pendingOffers;
 @property (retain) NSMutableDictionary *pendingOffersByHash;
+@property (retain) NSMutableArray *inboxMenuItems;
 
-@property (retain) NSManagedObjectContext *managedObjectContext;
-
-- (void)menuItemClicked:(NSMenuItem*)menuItem;
 
 - (NSManagedObjectContext *)managedObjectContextForOffer;
+
+- (BOOL)isInboxEmpty;
+
+// When we data bind any property of a menu item, it becomes enabled, unless we bind its enabled property.
+@property (assign, readonly) BOOL no;
 
 @end
