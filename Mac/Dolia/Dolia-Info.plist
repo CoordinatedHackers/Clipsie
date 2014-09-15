@@ -34,7 +34,7 @@
 	<string>NSApplication</string>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>LSUIElement</key>
+	<key>LSBackgroundOnly</key>
 	<true/>
 	<key>NSUserNotificationAlertStyle</key>
 	<string>alert</string>
