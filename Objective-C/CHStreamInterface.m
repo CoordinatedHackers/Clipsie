@@ -1,6 +1,6 @@
 //
 //  CHStreamReader.m
-//  Dolia
+//  Clipsie
 //
 //  Created by Sidney San Martín on 5/19/14.
 //  Copyright (c) 2014 Coordinated Hackers. All rights reserved.
