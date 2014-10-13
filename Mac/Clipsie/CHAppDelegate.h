@@ -26,10 +26,6 @@
 @property (retain) NSStatusItem *statusItem;
 
 @property (retain) NSMutableDictionary *menuItemsByDestination;
-@property (retain) NSMutableDictionary *destinationsByMenuItem;
-
-@property (retain) NSMutableArray *pendingOffers;
-@property (retain) NSMutableDictionary *pendingOffersByHash;
 @property (retain) NSMutableArray *inboxMenuItems;
 
 

@@ -54,7 +54,12 @@
                                                       object:self.managedObjectContext
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note) {
-                                                      NSFetchRequest *fetchRequest = [self.managedObjectContext fetchRequestTemplateForName:@"AllOffers"];
+                                                      NSFetchRequest *fetchRequest = [self.managedObjectContext.persistentStoreCoordinator.managedObjectModel fetchRequestTemplateForName:@"AllOffers"];
+                                                      NSMutableArray *allOffers = [[self.managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+                                                      while ([allOffers count] > 5) {
+                                                          [self.managedObjectContext deleteObject:[allOffers lastObject]];
+                                                          [allOffers removeLastObject];
+                                                      }
                                                   }];
     
     [self.inboxArrayController addObserver:self forKeyPath:@"arrangedObjects" options:0 context:nil];
@@ -68,13 +73,9 @@
     [self.browser start];
     
     self.menuItemsByDestination = [NSMutableDictionary new];
-    self.destinationsByMenuItem = [NSMutableDictionary new];
-    self.pendingOffers = [NSMutableArray new];
-    self.pendingOffersByHash = [NSMutableDictionary new];
     
     NSUserNotificationCenter *nc = [NSUserNotificationCenter defaultUserNotificationCenter];
     nc.delegate = self;
-    [nc removeAllDeliveredNotifications];
 }
 
 - (BOOL)isInboxEmpty
@@ -87,7 +88,6 @@
     [self willChangeValueForKey:@"isInboxEmpty"];
     [self didChangeValueForKey:@"isInboxEmpty"];
     
-    NSLog(@"Change object: %@", change);
     for (NSMenuItem *menuItem in self.inboxMenuItems) {
         [self.statusMenu removeItem:menuItem];
     }
@@ -112,24 +112,12 @@
     offerAndNotification.offer = offer;
     offerAndNotification.notification = notification;
     
-    if ([self.pendingOffers count] >= 5) {
-        CHClipsieOfferAndNotification *offerToDestroy = [self.pendingOffers objectAtIndex:0];
-        [self.pendingOffers removeObjectAtIndex:0];
-        [self.pendingOffersByHash removeObjectForKey:offerToDestroy];
-        [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:offerToDestroy.notification];
-    }
-    
-    NSNumber *key = [NSNumber numberWithUnsignedInteger:[offer hash]];
-    
-    [self.pendingOffers addObject:offerAndNotification];
-    [self.pendingOffersByHash setObject:offerAndNotification forKey:key];
-
     notification.title = @"Incoming clipboard!";
     notification.informativeText = [NSString stringWithFormat:@"Click to copy “%@”", [offer.preview truncate:20 overflow:@"…"]];
     notification.hasActionButton = YES;
     notification.actionButtonTitle = @"Accept";
     notification.otherButtonTitle = @"Ignore";
-    notification.userInfo = @{@"key": key};
+    notification.userInfo = @{@"id": offer.objectID.URIRepresentation.absoluteString};
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
@@ -137,10 +125,10 @@
 - (void)foundDestination:(CHClipsieDestination *)destination moreComing:(BOOL)moreComing
 {
     NSMenuItem *menuItem = [NSMenuItem new];
+    menuItem.representedObject = destination;
     
     // Hax hax hax
     [self.menuItemsByDestination setObject:menuItem forKey:[NSValue valueWithPointer:(__bridge void *)(destination)]];
-    [self.destinationsByMenuItem setObject:destination forKey:[NSValue valueWithPointer:(__bridge void *)(menuItem)]];
     
     [menuItem setTitle:destination.name];
     menuItem.target = self;
@@ -153,7 +141,6 @@
     NSValue *key = [NSValue valueWithPointer:(__bridge void *)(destination)];
     NSMenuItem *menuItem = [self.menuItemsByDestination objectForKey:key];
     [self.menuItemsByDestination removeObjectForKey:key];
-    [self.destinationsByMenuItem removeObjectForKey:[NSValue valueWithPointer:(__bridge const void *)(menuItem)]];
     
     [self.statusMenu removeItem:menuItem];
 }
@@ -165,7 +152,7 @@
 
 - (void)sendMenuItemClicked:(NSMenuItem*)menuItem
 {
-    CHClipsieDestination *destination = [self.destinationsByMenuItem objectForKey:[NSValue valueWithPointer:(__bridge const void *)(menuItem)]];
+    CHClipsieDestination *destination = menuItem.representedObject;
 
     NSManagedObjectContext *managedObjectContext = [NSManagedObjectContext new];
     managedObjectContext.parentContext = self.managedObjectContext;
@@ -180,9 +167,9 @@
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
-    NSNumber *key = [notification.userInfo objectForKey:@"key"];
-    CHClipsieOfferAndNotification *offerAndNotification = [self.pendingOffersByHash objectForKey:key];
-    [offerAndNotification.offer accept];
+    NSManagedObjectID *objectID = [self.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:[NSURL URLWithString:notification.userInfo[@"id"]]];
+    CHClipsieOffer *offer = (CHClipsieOffer *)[self.managedObjectContext objectWithID:objectID];
+    [offer accept];
 }
 
 - (NSManagedObjectContext *)managedObjectContextForOffer {
