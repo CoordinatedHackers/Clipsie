@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CHClipsieListenerDelegate
     var managedObjectContext: NSManagedObjectContext = {
         let managedObjectModel = NSManagedObjectModel(
             contentsOfURL: NSBundle.mainBundle().URLForResource("Clipsie", withExtension: "momd")!
-        )!
+        )
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
         var err: NSError? = nil

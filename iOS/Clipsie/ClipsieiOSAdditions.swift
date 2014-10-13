@@ -33,7 +33,7 @@ extension CHClipsieTextOffer {
 
 extension CHClipsieURLOffer {
     override public func accept() {
-        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+        UIApplication.sharedApplication().openURL(NSURL(string: url))
 
     }
 }
