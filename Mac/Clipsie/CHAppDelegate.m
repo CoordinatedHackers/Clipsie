@@ -25,11 +25,17 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
+    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:24 ];
 	[self.statusItem setMenu:self.statusMenu];
 	[self.statusItem setHighlightMode:YES];
-    [self.statusItem setImage:[NSImage imageNamed:@"status-menu"]];
-    [self.statusItem setAlternateImage:[NSImage imageNamed:@"status-menu-inverted"]];
+    NSImage *menuImage = [NSImage imageNamed:@"StatusMenu"];
+    menuImage.size = NSMakeSize(menuImage.size.width / menuImage.size.height * 18, 18);
+    if ([self.statusItem respondsToSelector:@selector(button)]) {
+        self.statusItem.button.image = menuImage;
+    } else {
+        [self.statusItem setImage:menuImage];
+        [self.statusItem setAlternateImage:[NSImage imageNamed:@"status-menu-inverted"]];
+    }
     
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Clipsie" withExtension:@"momd"]];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
