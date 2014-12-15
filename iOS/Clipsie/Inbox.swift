@@ -39,14 +39,23 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as UITableViewCell
-        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as CHClipsieOffer
+        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as ClipsieOffer
         configureCell(cell, withOffer: offer)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as CHClipsieOffer
-        offer.accept()
+        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as ClipsieOffer
+        if let offer = offer as? ClipsieTextOffer {
+            let pasteboard = UIPasteboard.generalPasteboard()
+            pasteboard.string = offer.string
+        } else if let offer = offer as? ClipsieURLOffer {
+            if let urlString = offer.url {
+                if let url = NSURL(string: urlString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -57,8 +66,8 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         appDelegate().managedObjectContext.save(nil)
     }
     
-    func configureCell(cell: UITableViewCell, withOffer offer: CHClipsieOffer) {
-        cell.textLabel?.text = offer.preview
+    func configureCell(cell: UITableViewCell, withOffer offer: ClipsieOffer) {
+        cell.textLabel!.text = offer.preview
     }
     
     // MARK: - Core data stuff
@@ -67,7 +76,7 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: CHClipsieOffer, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: ClipsieOffer, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
         switch type {
         case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)

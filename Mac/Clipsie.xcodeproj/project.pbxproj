@@ -7,209 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E94135D8194CB1A90030BF9C /* CHClipsieBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D1194CB1A90030BF9C /* CHClipsieBrowser.m */; };
-		E94135D9194CB1A90030BF9C /* CHClipsieDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D3194CB1A90030BF9C /* CHClipsieDestination.m */; };
-		E94135DA194CB1A90030BF9C /* CHClipsieListener.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D5194CB1A90030BF9C /* CHClipsieListener.m */; };
-		E94135DB194CB1A90030BF9C /* CHClipsieOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135D7194CB1A90030BF9C /* CHClipsieOffer.m */; };
-		E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E94135EC194CB2270030BF9C /* CHStreamInterface.m */; };
-		E9420970191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
-		E942097A191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420978191570C1008DC784 /* InfoPlist.strings */; };
-		E942097C191570C1008DC784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E942097B191570C1008DC784 /* main.m */; };
-		E9420980191570C1008DC784 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E942097E191570C1008DC784 /* Credits.rtf */; };
-		E9420983191570C1008DC784 /* CHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9420982191570C1008DC784 /* CHAppDelegate.m */; };
-		E9420986191570C1008DC784 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9420984191570C1008DC784 /* MainMenu.xib */; };
-		E9420988191570C1008DC784 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9420987191570C1008DC784 /* Images.xcassets */; };
-		E942098F191570C1008DC784 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942098E191570C1008DC784 /* XCTest.framework */; };
-		E9420990191570C1008DC784 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E942096F191570C1008DC784 /* Cocoa.framework */; };
-		E9420998191570C1008DC784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9420996191570C1008DC784 /* InfoPlist.strings */; };
-		E942099A191570C1008DC784 /* ClipsieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9420999191570C1008DC784 /* ClipsieTests.m */; };
-		E96E70BE19A132F800547FFA /* NSString+CHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */; };
-		E98ED615196461E800AF9F24 /* CHClipsieMacAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E98ED614196461E800AF9F24 /* CHClipsieMacAdditions.m */; };
-		E9EFF02619C64341004B5A7E /* Clipsie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9EFF02419C64341004B5A7E /* Clipsie.xcdatamodeld */; };
+		E98C72881A436B7E003A8459 /* Clipsie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E98C72861A436B7E003A8459 /* Clipsie.xcdatamodeld */; };
+		E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922AC01A3D23EF0025D542 /* SharedUtil.swift */; };
+		E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2EFE91A369EA5005D271B /* AppDelegate.swift */; };
+		E9C2EFF11A369EA5005D271B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF01A369EA5005D271B /* Images.xcassets */; };
+		E9C2EFF41A369EA5005D271B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF21A369EA5005D271B /* Main.storyboard */; };
+		E9C2F0001A369EA5005D271B /* ClipsieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2EFFF1A369EA5005D271B /* ClipsieTests.swift */; };
+		E9C2F00E1A369F4A005D271B /* Clipsie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2F00D1A369F4A005D271B /* Clipsie.swift */; };
+		E9C2F0141A377B00005D271B /* ClipsieOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2F0131A377B00005D271B /* ClipsieOffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E9420991191570C1008DC784 /* PBXContainerItemProxy */ = {
+		E9C2EFFA1A369EA5005D271B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E9420964191570C1008DC784 /* Project object */;
+			containerPortal = E9C2EFDC1A369EA5005D271B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E942096B191570C1008DC784;
+			remoteGlobalIDString = E9C2EFE31A369EA5005D271B;
 			remoteInfo = Clipsie;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E94135D0194CB1A90030BF9C /* CHClipsieBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHClipsieBrowser.h; path = "../Objective-C/CHClipsieBrowser.h"; sourceTree = "<group>"; };
-		E94135D1194CB1A90030BF9C /* CHClipsieBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHClipsieBrowser.m; path = "../Objective-C/CHClipsieBrowser.m"; sourceTree = "<group>"; };
-		E94135D2194CB1A90030BF9C /* CHClipsieDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHClipsieDestination.h; path = "../Objective-C/CHClipsieDestination.h"; sourceTree = "<group>"; };
-		E94135D3194CB1A90030BF9C /* CHClipsieDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHClipsieDestination.m; path = "../Objective-C/CHClipsieDestination.m"; sourceTree = "<group>"; };
-		E94135D4194CB1A90030BF9C /* CHClipsieListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHClipsieListener.h; path = "../Objective-C/CHClipsieListener.h"; sourceTree = "<group>"; };
-		E94135D5194CB1A90030BF9C /* CHClipsieListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHClipsieListener.m; path = "../Objective-C/CHClipsieListener.m"; sourceTree = "<group>"; };
-		E94135D6194CB1A90030BF9C /* CHClipsieOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHClipsieOffer.h; path = "../Objective-C/CHClipsieOffer.h"; sourceTree = "<group>"; };
-		E94135D7194CB1A90030BF9C /* CHClipsieOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHClipsieOffer.m; path = "../Objective-C/CHClipsieOffer.m"; sourceTree = "<group>"; };
-		E94135EB194CB2270030BF9C /* CHStreamInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHStreamInterface.h; path = "../Objective-C/CHStreamInterface.h"; sourceTree = "<group>"; };
-		E94135EC194CB2270030BF9C /* CHStreamInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHStreamInterface.m; path = "../Objective-C/CHStreamInterface.m"; sourceTree = "<group>"; };
-		E942096C191570C1008DC784 /* Clipsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E942096F191570C1008DC784 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		E9420972191570C1008DC784 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		E9420973191570C1008DC784 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		E9420974191570C1008DC784 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E9420977191570C1008DC784 /* Clipsie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Clipsie-Info.plist"; sourceTree = "<group>"; };
-		E9420979191570C1008DC784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E942097B191570C1008DC784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E942097D191570C1008DC784 /* Clipsie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clipsie-Prefix.pch"; sourceTree = "<group>"; };
-		E942097F191570C1008DC784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		E9420981191570C1008DC784 /* CHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHAppDelegate.h; sourceTree = "<group>"; };
-		E9420982191570C1008DC784 /* CHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHAppDelegate.m; sourceTree = "<group>"; };
-		E9420985191570C1008DC784 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E9420987191570C1008DC784 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E942098D191570C1008DC784 /* ClipsieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipsieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E942098E191570C1008DC784 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E9420995191570C1008DC784 /* ClipsieTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClipsieTests-Info.plist"; sourceTree = "<group>"; };
-		E9420997191570C1008DC784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E9420999191570C1008DC784 /* ClipsieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClipsieTests.m; sourceTree = "<group>"; };
-		E96E70BC19A132F800547FFA /* NSString+CHAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CHAdditions.h"; sourceTree = "<group>"; };
-		E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CHAdditions.m"; sourceTree = "<group>"; };
-		E98ED613196461E800AF9F24 /* CHClipsieMacAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHClipsieMacAdditions.h; sourceTree = "<group>"; };
-		E98ED614196461E800AF9F24 /* CHClipsieMacAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHClipsieMacAdditions.m; sourceTree = "<group>"; };
-		E9EFF02519C64341004B5A7E /* Clipsie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clipsie.xcdatamodel; sourceTree = "<group>"; };
+		E98C72871A436B7E003A8459 /* Clipsie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clipsie.xcdatamodel; sourceTree = "<group>"; };
+		E9922AC01A3D23EF0025D542 /* SharedUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtil.swift; path = ../Apple/SharedUtil.swift; sourceTree = "<group>"; };
+		E9C2EFE41A369EA5005D271B /* Clipsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9C2EFE81A369EA5005D271B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9C2EFE91A369EA5005D271B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E9C2EFF01A369EA5005D271B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E9C2EFF31A369EA5005D271B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E9C2EFF91A369EA5005D271B /* ClipsieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipsieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9C2EFFE1A369EA5005D271B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9C2EFFF1A369EA5005D271B /* ClipsieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsieTests.swift; sourceTree = "<group>"; };
+		E9C2F00D1A369F4A005D271B /* Clipsie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clipsie.swift; path = ../Apple/Clipsie.swift; sourceTree = "<group>"; };
+		E9C2F0131A377B00005D271B /* ClipsieOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClipsieOffer.swift; path = ../Apple/ClipsieOffer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E9420969191570C1008DC784 /* Frameworks */ = {
+		E9C2EFE11A369EA5005D271B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9420970191570C1008DC784 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E942098A191570C1008DC784 /* Frameworks */ = {
+		E9C2EFF61A369EA5005D271B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9420990191570C1008DC784 /* Cocoa.framework in Frameworks */,
-				E942098F191570C1008DC784 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E94135DC194CB1AF0030BF9C /* Shared */ = {
+		E9C2EFDB1A369EA5005D271B = {
 			isa = PBXGroup;
 			children = (
-				E94135D0194CB1A90030BF9C /* CHClipsieBrowser.h */,
-				E94135D1194CB1A90030BF9C /* CHClipsieBrowser.m */,
-				E94135D2194CB1A90030BF9C /* CHClipsieDestination.h */,
-				E94135D3194CB1A90030BF9C /* CHClipsieDestination.m */,
-				E94135D4194CB1A90030BF9C /* CHClipsieListener.h */,
-				E94135D5194CB1A90030BF9C /* CHClipsieListener.m */,
-				E94135D6194CB1A90030BF9C /* CHClipsieOffer.h */,
-				E94135D7194CB1A90030BF9C /* CHClipsieOffer.m */,
-				E94135EB194CB2270030BF9C /* CHStreamInterface.h */,
-				E94135EC194CB2270030BF9C /* CHStreamInterface.m */,
-				E9EFF02419C64341004B5A7E /* Clipsie.xcdatamodeld */,
-			);
-			name = Shared;
-			sourceTree = "<group>";
-		};
-		E9420963191570C1008DC784 = {
-			isa = PBXGroup;
-			children = (
-				E94135DC194CB1AF0030BF9C /* Shared */,
-				E9420975191570C1008DC784 /* Clipsie */,
-				E9420993191570C1008DC784 /* ClipsieTests */,
-				E942096E191570C1008DC784 /* Frameworks */,
-				E942096D191570C1008DC784 /* Products */,
+				E9C2F0091A369EFE005D271B /* Shared */,
+				E9C2EFE61A369EA5005D271B /* Clipsie */,
+				E9C2EFFC1A369EA5005D271B /* ClipsieTests */,
+				E9C2EFE51A369EA5005D271B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E942096D191570C1008DC784 /* Products */ = {
+		E9C2EFE51A369EA5005D271B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E942096C191570C1008DC784 /* Clipsie.app */,
-				E942098D191570C1008DC784 /* ClipsieTests.xctest */,
+				E9C2EFE41A369EA5005D271B /* Clipsie.app */,
+				E9C2EFF91A369EA5005D271B /* ClipsieTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E942096E191570C1008DC784 /* Frameworks */ = {
+		E9C2EFE61A369EA5005D271B /* Clipsie */ = {
 			isa = PBXGroup;
 			children = (
-				E942096F191570C1008DC784 /* Cocoa.framework */,
-				E942098E191570C1008DC784 /* XCTest.framework */,
-				E9420971191570C1008DC784 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E9420971191570C1008DC784 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E9420972191570C1008DC784 /* AppKit.framework */,
-				E9420973191570C1008DC784 /* CoreData.framework */,
-				E9420974191570C1008DC784 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		E9420975191570C1008DC784 /* Clipsie */ = {
-			isa = PBXGroup;
-			children = (
-				E96E70BC19A132F800547FFA /* NSString+CHAdditions.h */,
-				E96E70BD19A132F800547FFA /* NSString+CHAdditions.m */,
-				E98ED613196461E800AF9F24 /* CHClipsieMacAdditions.h */,
-				E98ED614196461E800AF9F24 /* CHClipsieMacAdditions.m */,
-				E9420981191570C1008DC784 /* CHAppDelegate.h */,
-				E9420982191570C1008DC784 /* CHAppDelegate.m */,
-				E9420984191570C1008DC784 /* MainMenu.xib */,
-				E9420987191570C1008DC784 /* Images.xcassets */,
-				E9420976191570C1008DC784 /* Supporting Files */,
+				E9C2EFE91A369EA5005D271B /* AppDelegate.swift */,
+				E9C2EFF01A369EA5005D271B /* Images.xcassets */,
+				E9C2EFF21A369EA5005D271B /* Main.storyboard */,
+				E9C2EFE71A369EA5005D271B /* Supporting Files */,
 			);
 			path = Clipsie;
 			sourceTree = "<group>";
 		};
-		E9420976191570C1008DC784 /* Supporting Files */ = {
+		E9C2EFE71A369EA5005D271B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9420977191570C1008DC784 /* Clipsie-Info.plist */,
-				E9420978191570C1008DC784 /* InfoPlist.strings */,
-				E942097B191570C1008DC784 /* main.m */,
-				E942097D191570C1008DC784 /* Clipsie-Prefix.pch */,
-				E942097E191570C1008DC784 /* Credits.rtf */,
+				E9C2EFE81A369EA5005D271B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E9420993191570C1008DC784 /* ClipsieTests */ = {
+		E9C2EFFC1A369EA5005D271B /* ClipsieTests */ = {
 			isa = PBXGroup;
 			children = (
-				E9420999191570C1008DC784 /* ClipsieTests.m */,
-				E9420994191570C1008DC784 /* Supporting Files */,
+				E9C2EFFF1A369EA5005D271B /* ClipsieTests.swift */,
+				E9C2EFFD1A369EA5005D271B /* Supporting Files */,
 			);
 			path = ClipsieTests;
 			sourceTree = "<group>";
 		};
-		E9420994191570C1008DC784 /* Supporting Files */ = {
+		E9C2EFFD1A369EA5005D271B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9420995191570C1008DC784 /* ClipsieTests-Info.plist */,
-				E9420996191570C1008DC784 /* InfoPlist.strings */,
+				E9C2EFFE1A369EA5005D271B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9C2F0091A369EFE005D271B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E9C2F00D1A369F4A005D271B /* Clipsie.swift */,
+				E9C2F0131A377B00005D271B /* ClipsieOffer.swift */,
+				E9922AC01A3D23EF0025D542 /* SharedUtil.swift */,
+				E98C72861A436B7E003A8459 /* Clipsie.xcdatamodeld */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E942096B191570C1008DC784 /* Clipsie */ = {
+		E9C2EFE31A369EA5005D271B /* Clipsie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E942099D191570C1008DC784 /* Build configuration list for PBXNativeTarget "Clipsie" */;
+			buildConfigurationList = E9C2F0031A369EA5005D271B /* Build configuration list for PBXNativeTarget "Clipsie" */;
 			buildPhases = (
-				E9420968191570C1008DC784 /* Sources */,
-				E9420969191570C1008DC784 /* Frameworks */,
-				E942096A191570C1008DC784 /* Resources */,
+				E9C2EFE01A369EA5005D271B /* Sources */,
+				E9C2EFE11A369EA5005D271B /* Frameworks */,
+				E9C2EFE21A369EA5005D271B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -217,43 +143,46 @@
 			);
 			name = Clipsie;
 			productName = Clipsie;
-			productReference = E942096C191570C1008DC784 /* Clipsie.app */;
+			productReference = E9C2EFE41A369EA5005D271B /* Clipsie.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E942098C191570C1008DC784 /* ClipsieTests */ = {
+		E9C2EFF81A369EA5005D271B /* ClipsieTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E94209A0191570C1008DC784 /* Build configuration list for PBXNativeTarget "ClipsieTests" */;
+			buildConfigurationList = E9C2F0061A369EA5005D271B /* Build configuration list for PBXNativeTarget "ClipsieTests" */;
 			buildPhases = (
-				E9420989191570C1008DC784 /* Sources */,
-				E942098A191570C1008DC784 /* Frameworks */,
-				E942098B191570C1008DC784 /* Resources */,
+				E9C2EFF51A369EA5005D271B /* Sources */,
+				E9C2EFF61A369EA5005D271B /* Frameworks */,
+				E9C2EFF71A369EA5005D271B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E9420992191570C1008DC784 /* PBXTargetDependency */,
+				E9C2EFFB1A369EA5005D271B /* PBXTargetDependency */,
 			);
 			name = ClipsieTests;
 			productName = ClipsieTests;
-			productReference = E942098D191570C1008DC784 /* ClipsieTests.xctest */;
+			productReference = E9C2EFF91A369EA5005D271B /* ClipsieTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E9420964191570C1008DC784 /* Project object */ = {
+		E9C2EFDC1A369EA5005D271B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CH;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Coordinated Hackers";
 				TargetAttributes = {
-					E942098C191570C1008DC784 = {
-						TestTargetID = E942096B191570C1008DC784;
+					E9C2EFE31A369EA5005D271B = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					E9C2EFF81A369EA5005D271B = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = E9C2EFE31A369EA5005D271B;
 					};
 				};
 			};
-			buildConfigurationList = E9420967191570C1008DC784 /* Build configuration list for PBXProject "Clipsie" */;
+			buildConfigurationList = E9C2EFDF1A369EA5005D271B /* Build configuration list for PBXProject "Clipsie" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -261,112 +190,80 @@
 				en,
 				Base,
 			);
-			mainGroup = E9420963191570C1008DC784;
-			productRefGroup = E942096D191570C1008DC784 /* Products */;
+			mainGroup = E9C2EFDB1A369EA5005D271B;
+			productRefGroup = E9C2EFE51A369EA5005D271B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E942096B191570C1008DC784 /* Clipsie */,
-				E942098C191570C1008DC784 /* ClipsieTests */,
+				E9C2EFE31A369EA5005D271B /* Clipsie */,
+				E9C2EFF81A369EA5005D271B /* ClipsieTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E942096A191570C1008DC784 /* Resources */ = {
+		E9C2EFE21A369EA5005D271B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E942097A191570C1008DC784 /* InfoPlist.strings in Resources */,
-				E9420988191570C1008DC784 /* Images.xcassets in Resources */,
-				E9420980191570C1008DC784 /* Credits.rtf in Resources */,
-				E9420986191570C1008DC784 /* MainMenu.xib in Resources */,
+				E9C2EFF11A369EA5005D271B /* Images.xcassets in Resources */,
+				E9C2EFF41A369EA5005D271B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E942098B191570C1008DC784 /* Resources */ = {
+		E9C2EFF71A369EA5005D271B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9420998191570C1008DC784 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E9420968191570C1008DC784 /* Sources */ = {
+		E9C2EFE01A369EA5005D271B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94135D9194CB1A90030BF9C /* CHClipsieDestination.m in Sources */,
-				E942097C191570C1008DC784 /* main.m in Sources */,
-				E94135DA194CB1A90030BF9C /* CHClipsieListener.m in Sources */,
-				E9420983191570C1008DC784 /* CHAppDelegate.m in Sources */,
-				E96E70BE19A132F800547FFA /* NSString+CHAdditions.m in Sources */,
-				E98ED615196461E800AF9F24 /* CHClipsieMacAdditions.m in Sources */,
-				E94135ED194CB2270030BF9C /* CHStreamInterface.m in Sources */,
-				E94135DB194CB1A90030BF9C /* CHClipsieOffer.m in Sources */,
-				E94135D8194CB1A90030BF9C /* CHClipsieBrowser.m in Sources */,
-				E9EFF02619C64341004B5A7E /* Clipsie.xcdatamodeld in Sources */,
+				E98C72881A436B7E003A8459 /* Clipsie.xcdatamodeld in Sources */,
+				E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */,
+				E9C2F00E1A369F4A005D271B /* Clipsie.swift in Sources */,
+				E9C2F0141A377B00005D271B /* ClipsieOffer.swift in Sources */,
+				E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E9420989191570C1008DC784 /* Sources */ = {
+		E9C2EFF51A369EA5005D271B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E942099A191570C1008DC784 /* ClipsieTests.m in Sources */,
+				E9C2F0001A369EA5005D271B /* ClipsieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E9420992191570C1008DC784 /* PBXTargetDependency */ = {
+		E9C2EFFB1A369EA5005D271B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E942096B191570C1008DC784 /* Clipsie */;
-			targetProxy = E9420991191570C1008DC784 /* PBXContainerItemProxy */;
+			target = E9C2EFE31A369EA5005D271B /* Clipsie */;
+			targetProxy = E9C2EFFA1A369EA5005D271B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E9420978191570C1008DC784 /* InfoPlist.strings */ = {
+		E9C2EFF21A369EA5005D271B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E9420979191570C1008DC784 /* en */,
+				E9C2EFF31A369EA5005D271B /* Base */,
 			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E942097E191570C1008DC784 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E942097F191570C1008DC784 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		E9420984191570C1008DC784 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9420985191570C1008DC784 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		E9420996191570C1008DC784 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9420997191570C1008DC784 /* en */,
-			);
-			name = InfoPlist.strings;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E942099B191570C1008DC784 /* Debug */ = {
+		E9C2F0011A369EA5005D271B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -381,11 +278,13 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -398,13 +297,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		E942099C191570C1008DC784 /* Release */ = {
+		E9C2F0021A369EA5005D271B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -419,115 +320,110 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		E942099E191570C1008DC784 /* Debug */ = {
+		E9C2F0041A369EA5005D271B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Clipsie/Clipsie-Prefix.pch";
-				INFOPLIST_FILE = "Clipsie/Clipsie-Info.plist";
+				INFOPLIST_FILE = Clipsie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		E942099F191570C1008DC784 /* Release */ = {
+		E9C2F0051A369EA5005D271B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Clipsie/Clipsie-Prefix.pch";
-				INFOPLIST_FILE = "Clipsie/Clipsie-Info.plist";
+				INFOPLIST_FILE = Clipsie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		E94209A1191570C1008DC784 /* Debug */ = {
+		E9C2F0071A369EA5005D271B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Contents/MacOS/Clipsie";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Clipsie/Clipsie-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ClipsieTests/ClipsieTests-Info.plist";
+				INFOPLIST_FILE = ClipsieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Contents/MacOS/Clipsie";
 			};
 			name = Debug;
 		};
-		E94209A2191570C1008DC784 /* Release */ = {
+		E9C2F0081A369EA5005D271B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Contents/MacOS/Clipsie";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Clipsie/Clipsie-Prefix.pch";
-				INFOPLIST_FILE = "ClipsieTests/ClipsieTests-Info.plist";
+				INFOPLIST_FILE = ClipsieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Contents/MacOS/Clipsie";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E9420967191570C1008DC784 /* Build configuration list for PBXProject "Clipsie" */ = {
+		E9C2EFDF1A369EA5005D271B /* Build configuration list for PBXProject "Clipsie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E942099B191570C1008DC784 /* Debug */,
-				E942099C191570C1008DC784 /* Release */,
+				E9C2F0011A369EA5005D271B /* Debug */,
+				E9C2F0021A369EA5005D271B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E942099D191570C1008DC784 /* Build configuration list for PBXNativeTarget "Clipsie" */ = {
+		E9C2F0031A369EA5005D271B /* Build configuration list for PBXNativeTarget "Clipsie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E942099E191570C1008DC784 /* Debug */,
-				E942099F191570C1008DC784 /* Release */,
+				E9C2F0041A369EA5005D271B /* Debug */,
+				E9C2F0051A369EA5005D271B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E94209A0191570C1008DC784 /* Build configuration list for PBXNativeTarget "ClipsieTests" */ = {
+		E9C2F0061A369EA5005D271B /* Build configuration list for PBXNativeTarget "ClipsieTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E94209A1191570C1008DC784 /* Debug */,
-				E94209A2191570C1008DC784 /* Release */,
+				E9C2F0071A369EA5005D271B /* Debug */,
+				E9C2F0081A369EA5005D271B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -535,18 +431,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E9EFF02419C64341004B5A7E /* Clipsie.xcdatamodeld */ = {
+		E98C72861A436B7E003A8459 /* Clipsie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9EFF02519C64341004B5A7E /* Clipsie.xcdatamodel */,
+				E98C72871A436B7E003A8459 /* Clipsie.xcdatamodel */,
 			);
-			currentVersion = E9EFF02519C64341004B5A7E /* Clipsie.xcdatamodel */;
+			currentVersion = E98C72871A436B7E003A8459 /* Clipsie.xcdatamodel */;
 			name = Clipsie.xcdatamodeld;
-			path = "../Objective-C/Clipsie.xcdatamodeld";
+			path = ../Apple/Clipsie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = E9420964191570C1008DC784 /* Project object */;
+	rootObject = E9C2EFDC1A369EA5005D271B /* Project object */;
 }

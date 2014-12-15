@@ -8,18 +8,27 @@
 
 import UIKit
 import CoreData
+import MultipeerConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CHClipsieListenerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieAdvertiserDelegate {
                             
     var window: UIWindow?
-    let listener = CHClipsieListener()
+    let peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
+    let advertiser: ClipsieAdvertiser
+    
+    override init() {
+        advertiser = ClipsieAdvertiser(peerID)
+        super.init()
+        advertiser.delegate = self
+        advertiser.start()
+    }
     
     var managedObjectContext: NSManagedObjectContext = {
         let managedObjectModel = NSManagedObjectModel(
             contentsOfURL: NSBundle.mainBundle().URLForResource("Clipsie", withExtension: "momd")!
         )
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel!)
         
         var err: NSError? = nil
         
@@ -38,29 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CHClipsieListenerDelegate
         return managedObjectContext
     }()
     
-    override init() {
-        super.init()
-        listener.delegate = self
+    // MARK: ClipsieAdvertiser delegate
+    
+    func gotOffer(offer: ClipsieOffer) {
+        dispatch_after(0, dispatch_get_main_queue()) {
+            self.managedObjectContext.save(nil)
+            return
+        }
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        listener.start()
-        return true
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        listener.stop()
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        listener.start()
-    }
-
-    // MARK: CHClipsieListener delegate
-    
-    func managedObjectContextForOffer() -> NSManagedObjectContext {
-        return managedObjectContext
-    }
 }
 
 func appDelegate() -> AppDelegate {

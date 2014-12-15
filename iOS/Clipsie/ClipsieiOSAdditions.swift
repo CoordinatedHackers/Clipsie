@@ -1,39 +1,18 @@
-//
-//  ClipsieiOSAdditions.swift
-//  Clipsie
-//
-//  Created by Sidney San Martín on 8/12/14.
-//  Copyright (c) 2014 Coordinated Hackers. All rights reserved.
-//
-
 import UIKit
+import CoreData
 
-extension CHClipsieOffer {
-    class func offerWithClipboard(managedObjectContext: NSManagedObjectContext) -> CHClipsieOffer? {
+extension ClipsieOffer {
+    class func offerWithClipboard(managedObjectContext: NSManagedObjectContext) -> ClipsieOffer? {
         let pasteboard = UIPasteboard.generalPasteboard()
         if let url = pasteboard.URL {
-            let offer = CHClipsieURLOffer(inManagedObjectContext: managedObjectContext)
+            let offer = ClipsieURLOffer.inManagedObjectContext(managedObjectContext) as ClipsieURLOffer
             offer.url = url.absoluteString
             return offer
         } else if let string = pasteboard.string {
-            let offer = CHClipsieTextOffer(inManagedObjectContext: managedObjectContext)
+            let offer = ClipsieTextOffer.inManagedObjectContext(managedObjectContext) as ClipsieTextOffer
             offer.string = string
             return offer
         }
         return nil
-    }
-}
-
-extension CHClipsieTextOffer {
-    override public func accept() {
-        let pasteboard = UIPasteboard.generalPasteboard()
-        pasteboard.string = string
-    }
-}
-
-extension CHClipsieURLOffer {
-    override public func accept() {
-        UIApplication.sharedApplication().openURL(NSURL(string: url))
-
     }
 }
