@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Offer" representedClassName="Clipsie.ClipsieOffer" isAbstract="YES" syncable="YES">
         <attribute name="received" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="senderName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TextOffer" representedClassName="Clipsie.ClipsieTextOffer" parentEntity="Offer" syncable="YES">
         <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>

@@ -108,6 +108,7 @@ class ClipsieAdvertiser: NSObject, MCNearbyServiceAdvertiserDelegate {
         func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
             if let offer = ClipsieOffer.fromData(data, managedObjectContext) {
                 offer.received = NSDate()
+                offer.senderName = peerID.displayName
                 finish(offer)
             } else { finish(nil) }
         }

@@ -2,6 +2,7 @@ import CoreData
 
 class ClipsieOffer: NSManagedObject {
     @NSManaged var received: NSDate
+    @NSManaged var senderName: NSString
     var preview: String { get { return received.description } }
     var data: NSData { get { return NSData() } }
     class var entityName: String { get { return "Offer" } }
