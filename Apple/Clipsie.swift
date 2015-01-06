@@ -112,6 +112,12 @@ class ClipsieAdvertiser: NSObject, MCNearbyServiceAdvertiserDelegate {
             } else { finish(nil) }
         }
         
+        // Possibly fix some failures to connect: http://stackoverflow.com/a/19696074/84745
+        // At some point we should poke this to make sure it's necessary
+        func session(session: MCSession!, didReceiveCertificate certificate: [AnyObject]!, fromPeer peerID: MCPeerID!, certificateHandler: ((Bool) -> Void)!) {
+            certificateHandler(true)
+        }
+        
         func session(session: MCSession!, didReceiveStream stream: NSInputStream!, withName streamName: String!, fromPeer peerID: MCPeerID!) {}
         func session(session: MCSession!, didStartReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, withProgress progress: NSProgress!) {}
         func session(session: MCSession!, didFinishReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, atURL localURL: NSURL!, withError error: NSError!) {}
