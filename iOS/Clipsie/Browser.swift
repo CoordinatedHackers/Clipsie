@@ -19,7 +19,7 @@ class BrowserViewController: UITableViewController, ClipsieBrowserDelegate {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("peer", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel!.text = peers[indexPath.row].theirPeerID.displayName
+        cell.textLabel.text = peers[indexPath.row].theirPeerID.displayName
         return cell
     }
     

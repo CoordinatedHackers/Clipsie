@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68m" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
@@ -643,20 +643,32 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Clipsie" customModuleProvider="target">
                     <connections>
+                        <outlet property="clearReceivedMenuItem" destination="5Ky-KR-aWW" id="Grz-MC-i9S"/>
                         <outlet property="inboxArrayController" destination="JEL-MU-hgr" id="zmZ-5F-968"/>
                         <outlet property="inboxTitleMenuItem" destination="ibu-lA-ELa" id="OQD-LD-LwC"/>
+                        <outlet property="nearbyMenuItem" destination="VOE-SO-69d" id="cdv-40-vOe"/>
                         <outlet property="statusMenu" destination="hMi-ij-b11" id="knx-HG-Y1Y"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu id="hMi-ij-b11">
+                <menu autoenablesItems="NO" id="hMi-ij-b11">
                     <items>
+                        <menuItem title="Nearby" hidden="YES" enabled="NO" id="VOE-SO-69d">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="vKJ-g9-zUu"/>
-                        <menuItem title="Inbox" id="ibu-lA-ELa" userLabel="Inbox">
+                        <menuItem title="Received" hidden="YES" enabled="NO" id="ibu-lA-ELa">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="saz-vY-Pg2"/>
-                        <menuItem title="Quit" id="VdR-pJ-cof" userLabel="Quit">
+                        <menuItem title="Clear Received" enabled="NO" id="5Ky-KR-aWW">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="clearReceived:" target="Voe-Tx-rLC" id="C6q-ka-UDn"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="9Ug-Tk-qxa"/>
+                        <menuItem title="Quit Clipsie" id="VdR-pJ-cof">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="terminate:" target="hnw-xV-0zn" id="JSF-9I-eXb"/>

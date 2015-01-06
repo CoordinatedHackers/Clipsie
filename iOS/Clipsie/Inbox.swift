@@ -67,7 +67,7 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     
     func configureCell(cell: UITableViewCell, withOffer offer: ClipsieOffer) {
-        cell.textLabel!.text = offer.preview
+        cell.textLabel.text = offer.preview
     }
     
     // MARK: - Core data stuff
