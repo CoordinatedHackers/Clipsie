@@ -40,13 +40,9 @@ func offerFromClipboard(managedObjectContext: NSManagedObjectContext) -> Clipsie
 class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, ClipsieBrowserDelegate, NSUserNotificationCenterDelegate {
     
     @IBOutlet var statusMenu: NSMenu!
-    @IBOutlet var inboxArrayController: NSArrayController!
     @IBOutlet var nearbyMenuItem: NSMenuItem!
-    @IBOutlet var inboxTitleMenuItem: NSMenuItem!
-    @IBOutlet var clearReceivedMenuItem: NSMenuItem!
 
     let statusItem: NSStatusItem
-    var inboxMenuItems = [NSMenuItem]()
     var menuItemsByDestination = [ClipsiePeer: NSMenuItem]()
     
     let peerID = MCPeerID(displayName: NSHost.currentHost().localizedName)
@@ -102,36 +98,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         menuImage!.size = NSSize(width: menuImage!.size.width / menuImage!.size.height * 18, height: 18)
         statusItem.button!.image = menuImage
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            NSManagedObjectContextWillSaveNotification,
-            object: self.managedObjectContext,
-            queue: nil
-        ) { (notification: NSNotification!) -> () in
-            let fetchRequest = self.managedObjectModel.fetchRequestTemplateForName("AllOffers")!.copy() as NSFetchRequest
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "received", ascending: false)]
-            var allOffers = self.managedObjectContext.executeFetchRequest(fetchRequest, error: nil)! as [NSManagedObject]
-            let deletedObjectIds = NSMutableSet()
-            while allOffers.count > 5 {
-                let offer = allOffers.last!
-                deletedObjectIds.addObject(offer.objectID.URIRepresentation().absoluteString!)
-                self.managedObjectContext.deleteObject(offer)
-                allOffers.removeLast()
-            }
-            let userNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()
-            if deletedObjectIds.count != 0 {
-                for notification in userNotificationCenter.deliveredNotifications as [NSUserNotification] {
-                    if let id = notification.userInfo?["id"] as? String {
-                        if deletedObjectIds.containsObject(id) {
-                            userNotificationCenter.removeDeliveredNotification(notification)
-                        }
-                    }
-                }
-            }
-        }
-        
-        inboxArrayController!.addObserver(self, forKeyPath: "arrangedObjects", options: NSKeyValueObservingOptions(), context: nil)
-        
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        
+        pruneOffers()
         
         advertiser.start()
         browser.start()
@@ -155,55 +124,45 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         }
     }
     
+    // Only keep offers which exist as notifications, and only keep notifications which exist as offers
+    func pruneOffers() {
+        var leftoverNotificationsByObjectID = [NSManagedObjectID: NSUserNotification]()
+        let userNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()
+        
+        for notification in userNotificationCenter.deliveredNotifications as [NSUserNotification] {
+            if let idString = notification.userInfo?["id"] as? String {
+                if let idURL = NSURL(string: idString) {
+                    if let id = persistentStoreCoordinator.managedObjectIDForURIRepresentation(idURL) {
+                        leftoverNotificationsByObjectID[id] = notification
+                    }
+                }
+            }
+        }
+        
+        let fetchRequest = NSFetchRequest(entityName: "Offer")
+        fetchRequest.includesPropertyValues = false
+        if let offers = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) {
+            for offer in offers as [ClipsieOffer] {
+                if leftoverNotificationsByObjectID.removeValueForKey(offer.objectID) == nil {
+                    managedObjectContext.deleteObject(offer)
+                }
+            }
+            managedObjectContext.save(nil)
+        }
+        
+        for (id, leftoverNotification) in leftoverNotificationsByObjectID {
+            userNotificationCenter.removeDeliveredNotification(leftoverNotification)
+        }
+        
+    }
+    
+    // MARK: - Actions
+    
     func sendMenuItemClicked(sender: NSMenuItem) {
         let ephemeralManagedObjectContext = NSManagedObjectContext()
         ephemeralManagedObjectContext.parentContext = managedObjectContext
         if let offer = offerFromClipboard(ephemeralManagedObjectContext) {
             (sender.representedObject as ClipsiePeer).send(offer)
-        }
-    }
-    
-    // MARK: - KVO
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        onMainThread {
-            for menuItem in self.inboxMenuItems {
-                self.statusMenu.removeItem(menuItem)
-            }
-        
-            self.inboxMenuItems.removeAll()
-            
-            for offer in self.inboxArrayController.arrangedObjects as [ClipsieOffer] {
-                let offerMenuItem = NSMenuItem()
-                offerMenuItem.representedObject = offer
-                offerMenuItem.title = offer.preview.truncate(20, overflow:"…")
-                offerMenuItem.target = self
-                offerMenuItem.action = "offerMenuItemClicked:"
-                self.inboxMenuItems.append(offerMenuItem)
-                self.statusMenu.insertItem(offerMenuItem, atIndex: self.statusMenu.indexOfItem(self.inboxTitleMenuItem) + 1)
-            }
-            
-            let haveItems = self.inboxMenuItems.count != 0
-            self.clearReceivedMenuItem.enabled = haveItems
-            self.inboxTitleMenuItem.hidden = !haveItems
-        }
-    }
-    
-    // MARK: - Actions
-    
-    func offerMenuItemClicked(menuItem: NSMenuItem) {
-        acceptOffer(menuItem.representedObject as ClipsieOffer)
-    }
-    
-    @IBAction func clearReceived(sender: NSMenuItem) {
-        let fetchRequest = NSFetchRequest(entityName: "Offer")
-        fetchRequest.includesPropertyValues = false
-        if let offers = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) {
-            for offer in offers as [NSManagedObject] {
-                managedObjectContext.deleteObject(offer)
-            }
-            NSUserNotificationCenter.defaultUserNotificationCenter().removeAllDeliveredNotifications()
-            managedObjectContext.save(nil)
         }
     }
     
@@ -219,6 +178,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         notification.userInfo = ["id": offer.objectID.URIRepresentation().absoluteString!]
         
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        pruneOffers()
     }
     
     // MARK: - ClipsieBrowserDelegate
