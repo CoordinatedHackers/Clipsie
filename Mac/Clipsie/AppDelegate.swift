@@ -114,15 +114,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
                 pb.clearContents()
                 pb.writeObjects([string])
             }
+            Toast("Copied").present(0.5, 0.5)
         } else if let offer = offer as? ClipsieURLOffer {
             if let urlString = offer.url {
                 if let url = NSURL(string: urlString) {
-                    pb.clearContents()
-                    pb.writeObjects([url])
+                    NSWorkspace.sharedWorkspace().openURL(url)
                 }
             }
         }
-        Toast("Copied").present(0.5, 0.5)
     }
     
     // Only keep offers which exist as notifications, and only keep notifications which exist as offers
