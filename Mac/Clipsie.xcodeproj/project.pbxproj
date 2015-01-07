@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9184CD31A5DDA3200E3DCB8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9184CD21A5DDA3200E3DCB8 /* Toast.swift */; };
 		E98C72881A436B7E003A8459 /* Clipsie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E98C72861A436B7E003A8459 /* Clipsie.xcdatamodeld */; };
 		E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922AC01A3D23EF0025D542 /* SharedUtil.swift */; };
 		E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2EFE91A369EA5005D271B /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9184CD21A5DDA3200E3DCB8 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E98C72871A436B7E003A8459 /* Clipsie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clipsie.xcdatamodel; sourceTree = "<group>"; };
 		E9922AC01A3D23EF0025D542 /* SharedUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtil.swift; path = ../Apple/SharedUtil.swift; sourceTree = "<group>"; };
 		E9C2EFE41A369EA5005D271B /* Clipsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,7 @@
 		E9C2EFE61A369EA5005D271B /* Clipsie */ = {
 			isa = PBXGroup;
 			children = (
+				E9184CD21A5DDA3200E3DCB8 /* Toast.swift */,
 				E9C2EFE91A369EA5005D271B /* AppDelegate.swift */,
 				E9C2EFF01A369EA5005D271B /* Images.xcassets */,
 				E9C2EFF21A369EA5005D271B /* Main.storyboard */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E98C72881A436B7E003A8459 /* Clipsie.xcdatamodeld in Sources */,
+				E9184CD31A5DDA3200E3DCB8 /* Toast.swift in Sources */,
 				E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */,
 				E9C2F00E1A369F4A005D271B /* Clipsie.swift in Sources */,
 				E9C2F0141A377B00005D271B /* ClipsieOffer.swift in Sources */,

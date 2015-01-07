@@ -122,6 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
                 }
             }
         }
+        Toast("Copied").present(0.5, 0.5)
     }
     
     // Only keep offers which exist as notifications, and only keep notifications which exist as offers
