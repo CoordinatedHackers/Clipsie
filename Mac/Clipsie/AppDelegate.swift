@@ -1,38 +1,14 @@
 import Cocoa
 import MultipeerConnectivity
 
+let URLRegex = NSRegularExpression(pattern: "^https?://[^\\s]+$", options: .CaseInsensitive, error: nil)!
+
 func offerFromClipboard(managedObjectContext: NSManagedObjectContext) -> ClipsieOffer? {
-    if let pasteboardObjects = NSPasteboard.generalPasteboard().readObjectsForClasses(
-        [NSURL.self, NSString.self],
-        options: nil
-    ) {
-        if pasteboardObjects.isEmpty { return nil }
-        let pbItem: AnyObject = pasteboardObjects[0]
-        
-        if pbItem.isKindOfClass(NSURL.self) {
-            let offer = ClipsieURLOffer.inManagedObjectContext(managedObjectContext) as ClipsieURLOffer
-            offer.url = (pbItem as NSURL).absoluteString!
-            return offer
-        }
-        
-        if pbItem.isKindOfClass(NSString.self) {
-            let pbString = pbItem as String
-            let urlRegex = NSRegularExpression(pattern: "https?:.*", options: .CaseInsensitive, error: nil)!
-            
-            if urlRegex.numberOfMatchesInString(pbString, options: NSMatchingOptions(0), range: NSRange(location: 0, length: countElements(pbString))) != 0 {
-                if let url = NSURL(string: pbString) {
-                    let offer = ClipsieURLOffer.inManagedObjectContext(managedObjectContext) as ClipsieURLOffer
-                    offer.url = pbString
-                    return offer
-                }
-            }
-            
-            let offer = ClipsieTextOffer.inManagedObjectContext(managedObjectContext) as ClipsieTextOffer
-            offer.string = pbString
-            return offer
-        }      
+    if let pasteboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString) {
+        let offer = ClipsieTextOffer.inManagedObjectContext(managedObjectContext) as ClipsieTextOffer
+        offer.text = pasteboardString
+        return offer
     }
-    
     return nil
 }
 
@@ -107,19 +83,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
     }
     
     func acceptOffer(offer: ClipsieOffer) {
-        let pb = NSPasteboard.generalPasteboard()
         
         if let offer = offer as? ClipsieTextOffer {
-            if let string = offer.string {
+            if let string = offer.text as? String {
+                // For convenience, open http(s) URLs instead of copying them
+                if URLRegex.numberOfMatchesInString(string, options: NSMatchingOptions(0), range: NSRange(location: 0, length: countElements(string))) == 1 {
+                    if let url = NSURL(string: string) {
+                        NSWorkspace.sharedWorkspace().openURL(url)
+                        return
+                    }
+                }
+
+                let pb = NSPasteboard.generalPasteboard()
                 pb.clearContents()
                 pb.writeObjects([string])
-            }
-            Toast("Copied").present(0.5, 0.5)
-        } else if let offer = offer as? ClipsieURLOffer {
-            if let urlString = offer.url {
-                if let url = NSURL(string: urlString) {
-                    NSWorkspace.sharedWorkspace().openURL(url)
-                }
+                Toast("Copied").present(0.5, 0.5)
             }
         }
     }

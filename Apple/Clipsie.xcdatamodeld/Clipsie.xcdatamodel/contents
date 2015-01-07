@@ -5,15 +5,11 @@
         <attribute name="senderName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TextOffer" representedClassName="Clipsie.ClipsieTextOffer" parentEntity="Offer" syncable="YES">
-        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="URLOffer" representedClassName="Clipsie.ClipsieURLOffer" parentEntity="Offer" syncable="YES">
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <fetchRequest name="AllOffers" entity="Offer" predicateString="TRUEPREDICATE" includesPendingChanges="YES"/>
     <elements>
         <element name="Offer" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="TextOffer" positionX="-63" positionY="-9" width="128" height="58"/>
-        <element name="URLOffer" positionX="-54" positionY="0" width="128" height="58"/>
+        <element name="TextOffer" positionX="-63" positionY="-9" width="128" height="60"/>
     </elements>
 </model>
