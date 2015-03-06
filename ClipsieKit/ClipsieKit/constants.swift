@@ -1,0 +1,1 @@
+let CLIPSIE_NS_SERVICE_TYPE = "_clipsie._tcp"

@@ -1,40 +1,38 @@
 import Cocoa
-import MultipeerConnectivity
-
-let URLRegex = NSRegularExpression(pattern: "^https?://[^\\s]+$", options: .CaseInsensitive, error: nil)!
-
-func offerFromClipboard(managedObjectContext: NSManagedObjectContext) -> ClipsieOffer? {
-    if let pasteboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString) {
-        let offer = ClipsieTextOffer.inManagedObjectContext(managedObjectContext) as ClipsieTextOffer
-        offer.text = pasteboardString
-        return offer
-    }
-    return nil
-}
+import ClipsieKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, ClipsieBrowserDelegate, NSUserNotificationCenterDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, ClipsieKit.AdvertiserDelegate, ClipsieKit.BrowserDelegate, NSUserNotificationCenterDelegate {
     
     @IBOutlet var statusMenu: NSMenu!
     @IBOutlet var nearbyMenuItem: NSMenuItem!
 
     let statusItem: NSStatusItem
-    var menuItemsByDestination = [ClipsiePeer: NSMenuItem]()
+    var menuItemsByDestination = [PeerID: NSMenuItem]()
     
-    let peerID = MCPeerID(displayName: NSHost.currentHost().localizedName)
-    let advertiser: ClipsieAdvertiser
-    let browser: ClipsieBrowser
+    let uuid: String = {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let uuid = defaults.stringForKey("UUID") {
+            return uuid
+        }
+        let uuid = NSUUID().UUIDString
+        defaults.setObject(uuid, forKey: "UUID")
+        return uuid
+    }()
+    let peerID = ClipsieKit.PeerID()
+    let advertiser: ClipsieKit.Advertiser
+    let browser: ClipsieKit.Browser
     
     // MARK: - Core Data
     
     lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-        let appSupportURL = urls[urls.count - 1] as NSURL
-        return appSupportURL.URLByAppendingPathComponent(NSBundle.mainBundle().infoDictionary!["CFBundleIdentifier"] as String)
+        let appSupportURL = urls[urls.count - 1] as! NSURL
+        return appSupportURL.URLByAppendingPathComponent(NSBundle.mainBundle().infoDictionary!["CFBundleIdentifier"] as! String)
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = NSBundle.mainBundle().URLForResource("Clipsie", withExtension: "momd")!
+        let modelURL = NSBundle(identifier: "com.coordinatedhackers.ClipsieKit")!.URLForResource("Clipsie", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
@@ -60,8 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
     // MARK: -
     
     override init() {
-        advertiser = ClipsieAdvertiser(peerID)
-        browser = ClipsieBrowser(peerID)
+        advertiser = ClipsieKit.Advertiser(peerID)
+        browser = ClipsieKit.Browser(peerID)
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(24)
         super.init()
         advertiser.delegate = self
@@ -82,23 +80,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         browser.start()
     }
     
-    func acceptOffer(offer: ClipsieOffer) {
-        
-        if let offer = offer as? ClipsieTextOffer {
-            if let string = offer.text as? String {
-                // For convenience, open http(s) URLs instead of copying them
-                if URLRegex.numberOfMatchesInString(string, options: NSMatchingOptions(0), range: NSRange(location: 0, length: countElements(string))) == 1 {
-                    if let url = NSURL(string: string) {
-                        NSWorkspace.sharedWorkspace().openURL(url)
-                        return
-                    }
-                }
-
-                let pb = NSPasteboard.generalPasteboard()
-                pb.clearContents()
-                pb.writeObjects([string])
-                Toast("Copied").present(0.5, 0.5)
+    func acceptOffer(offer: ClipsieKit.Offer) {
+        switch offer {
+        case .Text(let string):
+            // For convenience, open http(s) URLs instead of copying them
+            if let url = string.asURL {
+                NSWorkspace.sharedWorkspace().openURL(url)
+                return
             }
+            
+            let pb = NSPasteboard.generalPasteboard()
+            pb.clearContents()
+            pb.writeObjects([string])
+            Toast("Copied").present(0.5, 0.5)
         }
     }
     
@@ -107,7 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         var leftoverNotificationsByObjectID = [NSManagedObjectID: NSUserNotification]()
         let userNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()
         
-        for notification in userNotificationCenter.deliveredNotifications as [NSUserNotification] {
+        for notification in userNotificationCenter.deliveredNotifications as! [NSUserNotification] {
             if let idString = notification.userInfo?["id"] as? String {
                 if let idURL = NSURL(string: idString) {
                     if let id = persistentStoreCoordinator.managedObjectIDForURIRepresentation(idURL) {
@@ -119,8 +113,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         
         let fetchRequest = NSFetchRequest(entityName: "Offer")
         fetchRequest.includesPropertyValues = false
-        if let offers = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) {
-            for offer in offers as [ClipsieOffer] {
+        if let offers = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject] {
+            for offer in offers {
                 if leftoverNotificationsByObjectID.removeValueForKey(offer.objectID) == nil {
                     managedObjectContext.deleteObject(offer)
                 }
@@ -137,23 +131,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
     // MARK: - Actions
     
     func sendMenuItemClicked(sender: NSMenuItem) {
-        let ephemeralManagedObjectContext = NSManagedObjectContext()
-        ephemeralManagedObjectContext.parentContext = managedObjectContext
-        if let offer = offerFromClipboard(ephemeralManagedObjectContext) {
-            (sender.representedObject as ClipsiePeer).send(offer)
+        if let peerID = sender.representedObject as? ClipsieKit.PeerID {
+            if let clipboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString) {
+                if let session = ClipsieKit.OutboundSession.with(peerID) {
+                    session.offerText(clipboardString)
+                        .catch { println("Failed to send an offer: \($0)") }
+                }
+            }
         }
     }
     
     // MARK: - ClipsieAdvertiserDelegate
     
-    func gotOffer(offer: ClipsieOffer) {
+    func gotOffer(offer: ClipsieKit.Offer) {
+        let storedOffer = offer.toStored(managedObjectContext)!
         managedObjectContext.save(nil)
         
         let notification = NSUserNotification()
-        notification.title = "From \(offer.senderName)"
-        let preview = offer.preview.truncate(20, overflow: "…")
-        notification.informativeText = "Clipboard: \"\(preview)\""
-        notification.userInfo = ["id": offer.objectID.URIRepresentation().absoluteString!]
+        notification.title = "Click to copy"
+        switch offer {
+        case .Text(let string):
+            let preview = string.truncate(20, overflow: "…")
+            notification.informativeText = "\"\(preview)\""
+        }
+        notification.userInfo = ["id": storedOffer.objectID.URIRepresentation().absoluteString!]
         
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         pruneOffers()
@@ -161,10 +162,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
     
     // MARK: - ClipsieBrowserDelegate
     
-    func foundPeer(peer: ClipsiePeer) {
+    func foundPeer(peer: ClipsieKit.PeerID) {
         let menuItem = NSMenuItem()
         menuItem.representedObject = peer
-        menuItem.title = peer.theirPeerID.displayName
+        menuItem.title = peer.displayName
         menuItem.target = self
         menuItem.action = "sendMenuItemClicked:"
         
@@ -174,7 +175,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
         nearbyMenuItem.hidden = false
     }
     
-    func lostPeer(peer: ClipsiePeer) {
+    func lostPeer(peer: ClipsieKit.PeerID) {
         if let menuItem = menuItemsByDestination.removeValueForKey(peer) {
             statusMenu.removeItem(menuItem)
             nearbyMenuItem.hidden = menuItemsByDestination.isEmpty
@@ -188,11 +189,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieAdvertiserDelegate, C
     }
     
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
-        acceptOffer(managedObjectContext.objectWithID(
+        acceptOffer((managedObjectContext.objectWithID(
             persistentStoreCoordinator.managedObjectIDForURIRepresentation(
-                NSURL(string: notification.userInfo!["id"] as String)!
+                NSURL(string: notification.userInfo!["id"] as! String)!
             )!
-        ) as ClipsieOffer)
+        ) as! ClipsieKit.StoredOffer).getOffer()!)
     }
 }
 

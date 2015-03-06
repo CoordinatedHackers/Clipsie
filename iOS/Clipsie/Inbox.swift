@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ClipsieKit
 
 class InboxViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
@@ -38,21 +39,20 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as UITableViewCell
-        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as ClipsieOffer
+        let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as! UITableViewCell
+        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as! ClipsieKit.StoredOffer
         configureCell(cell, withOffer: offer)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as ClipsieOffer
-        if let offer = offer as? ClipsieTextOffer {
-            let pasteboard = UIPasteboard.generalPasteboard()
-            pasteboard.string = offer.string
-        } else if let offer = offer as? ClipsieURLOffer {
-            if let urlString = offer.url {
-                if let url = NSURL(string: urlString) {
+        if let offer = (self.fetchedResultsController.objectAtIndexPath(indexPath) as? ClipsieKit.StoredOffer)?.getOffer() {
+            switch offer {
+            case .Text(let text):
+                if let url = text.asURL {
                     UIApplication.sharedApplication().openURL(url)
+                } else {
+                    UIPasteboard.generalPasteboard().string = text
                 }
             }
         }
@@ -61,13 +61,18 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         appDelegate().managedObjectContext.deleteObject(
-            self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+            self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
         )
         appDelegate().managedObjectContext.save(nil)
     }
     
-    func configureCell(cell: UITableViewCell, withOffer offer: ClipsieOffer) {
-        cell.textLabel.text = offer.preview
+    func configureCell(cell: UITableViewCell, withOffer storedOffer: ClipsieKit.StoredOffer) {
+        if let offer = storedOffer.getOffer() {
+            switch offer {
+            case .Text(let text):
+                cell.textLabel?.text = text
+            }
+        }
     }
     
     // MARK: - Core data stuff
@@ -76,17 +81,17 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: ClipsieOffer, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, withOffer: anObject)
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, withOffer: anObject as! ClipsieKit.StoredOffer)
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         default:
             return
         }

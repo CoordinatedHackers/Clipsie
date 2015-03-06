@@ -8,17 +8,17 @@
 
 import UIKit
 import CoreData
-import MultipeerConnectivity
+import ClipsieKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieAdvertiserDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieKit.AdvertiserDelegate {
                             
     var window: UIWindow?
-    let peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
-    let advertiser: ClipsieAdvertiser
+    let peerID = ClipsieKit.PeerID()
+    let advertiser: ClipsieKit.Advertiser
     
     override init() {
-        advertiser = ClipsieAdvertiser(peerID)
+        advertiser = ClipsieKit.Advertiser(peerID)
         super.init()
         advertiser.delegate = self
         advertiser.start()
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieAdvertiserDelegate
     
     var managedObjectContext: NSManagedObjectContext = {
         let managedObjectModel = NSManagedObjectModel(
-            contentsOfURL: NSBundle.mainBundle().URLForResource("Clipsie", withExtension: "momd")!
+            contentsOfURL: NSBundle(identifier: "com.coordinatedhackers.ClipsieKit")!.URLForResource("Clipsie", withExtension: "momd")!
         )
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel!)
         
@@ -47,17 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieAdvertiserDelegate
         return managedObjectContext
     }()
     
-    // MARK: ClipsieAdvertiser delegate
+    // MARK: ClipsieKit.AdvertiserDelegate
     
-    func gotOffer(offer: ClipsieOffer) {
-        dispatch_after(0, dispatch_get_main_queue()) {
-            self.managedObjectContext.save(nil)
-            return
-        }
+    func gotOffer(offer: ClipsieKit.Offer) {
+        offer.toStored(managedObjectContext)
+        managedObjectContext.save(nil)
     }
-    
 }
 
 func appDelegate() -> AppDelegate {
-    return UIApplication.sharedApplication().delegate as AppDelegate
+    return UIApplication.sharedApplication().delegate as! AppDelegate
 }

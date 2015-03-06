@@ -35,7 +35,7 @@ class ActionSheetHelper : Helper, UIActionSheetDelegate {
         actionSheet.delegate = self
         
     }
-    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         actionSheet.delegate = nil
         self.finish(buttonIndex)
     }
@@ -47,7 +47,7 @@ class AlertHelper : Helper, UIAlertViewDelegate {
         alertView.delegate = self
         
     }
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         alertView.delegate = nil
         self.finish(buttonIndex)
     }
