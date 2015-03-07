@@ -2,11 +2,15 @@ import Cocoa
 import ClipsieKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, ClipsieKit.AdvertiserDelegate, ClipsieKit.BrowserDelegate, NSUserNotificationCenterDelegate {
+class AppDelegate:
+    NSObject, NSApplicationDelegate, NSMenuDelegate, NSUserNotificationCenterDelegate,
+    ClipsieKit.AdvertiserDelegate, ClipsieKit.BrowserDelegate
+{
     
     @IBOutlet var statusMenu: NSMenu!
     @IBOutlet var nearbyMenuItem: NSMenuItem!
 
+    var clipboardString: String? = nil
     let statusItem: NSStatusItem
     var menuItemsByDestination = [PeerID: NSMenuItem]()
     
@@ -132,12 +136,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, ClipsieKit.AdvertiserDelegat
     
     func sendMenuItemClicked(sender: NSMenuItem) {
         if let peerID = sender.representedObject as? ClipsieKit.PeerID {
-            if let clipboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString) {
+            if let clipboardString = clipboardString {
                 if let session = ClipsieKit.OutboundSession.with(peerID) {
                     session.offerText(clipboardString)
                         .catch { println("Failed to send an offer: \($0)") }
                 }
             }
+        }
+    }
+    
+    func menuWillOpen(menu: NSMenu) {
+        clipboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString)
+        if let preview = clipboardString?.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        ).truncate(40, overflow: "…") {
+            nearbyMenuItem.title = "Share “\(preview)” with:"
+        } else {
+            nearbyMenuItem.title = "Clipboard Is Empty"
+        }
+    }
+    
+    override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+        return clipboardString != nil
+    }
+    
+    func menuDidClose(menu: NSMenu) {
+        // Let the action fire
+        dispatch_after(0, dispatch_get_main_queue()) {
+            self.clipboardString = nil
         }
     }
     
