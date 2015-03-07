@@ -40,7 +40,6 @@
 		E94135C6194BE8E50030BF9C /* ClipsieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsieTests.swift; sourceTree = "<group>"; };
 		E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClipsieKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug/ClipsieKit.framework"; sourceTree = "<group>"; };
 		E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E943BEE11AA96EF600CE5B39 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E95D4519199FE09900F52242 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E9616DE6199885770015CFEB /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		E966F61319988CF800AFCAE1 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		E94135A5194BE8E40030BF9C = {
 			isa = PBXGroup;
 			children = (
-				E943BEE11AA96EF600CE5B39 /* Accounts.framework */,
 				E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */,
 				E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */,
 				E94135DD194CB1C10030BF9C /* Shared */,
