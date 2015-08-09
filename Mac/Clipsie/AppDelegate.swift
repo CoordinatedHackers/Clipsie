@@ -8,7 +8,8 @@ class AppDelegate:
 {
     
     @IBOutlet var statusMenu: NSMenu!
-    @IBOutlet var nearbyMenuItem: NSMenuItem!
+    
+    weak var helpWindow: HelpWindowController? = nil
 
     var clipboardString: String? = nil
     let statusItem: NSStatusItem
@@ -147,17 +148,10 @@ class AppDelegate:
     
     func menuWillOpen(menu: NSMenu) {
         clipboardString = NSPasteboard.generalPasteboard().stringForType(NSPasteboardTypeString)
-        if let preview = clipboardString?.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        ).truncate(40, overflow: "…") {
-            nearbyMenuItem.title = "Share “\(preview)” with:"
-        } else {
-            nearbyMenuItem.title = "Clipboard Is Empty"
-        }
     }
     
     override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
-        return clipboardString != nil
+        return menuItem.representedObject == nil || clipboardString != nil
     }
     
     func menuDidClose(menu: NSMenu) {
@@ -165,6 +159,15 @@ class AppDelegate:
         dispatch_after(0, dispatch_get_main_queue()) {
             self.clipboardString = nil
         }
+    }
+    
+    @IBAction func showHelp(sender: AnyObject) {
+        if let helpWindow = helpWindow {
+            helpWindow.focus()
+            return
+        }
+        helpWindow = (NSStoryboard(name: "Main", bundle: nil)?.instantiateControllerWithIdentifier("help_window") as! HelpWindowController)
+        helpWindow!.focus()
     }
     
     // MARK: - ClipsieAdvertiserDelegate
@@ -197,14 +200,12 @@ class AppDelegate:
         
         menuItemsByDestination[peer] = menuItem
         
-        statusMenu.insertItem(menuItem, atIndex: statusMenu.indexOfItem(nearbyMenuItem) + 1)
-        nearbyMenuItem.hidden = false
+        statusMenu.insertItem(menuItem, atIndex: 0)
     }
     
     func lostPeer(peer: ClipsieKit.PeerID) {
         if let menuItem = menuItemsByDestination.removeValueForKey(peer) {
             statusMenu.removeItem(menuItem)
-            nearbyMenuItem.hidden = menuItemsByDestination.isEmpty
         }
     }
     

@@ -10,7 +10,7 @@ class Toast {
     
     class ToastTextView: NSTextField {
         
-        override init() {
+        init() {
             super.init(frame: CGRectZero)
             editable = false
             drawsBackground = false
@@ -30,7 +30,7 @@ class Toast {
         let textView = ToastTextView()
         var margin: CGFloat = 0
         
-        override init() {
+        init() {
             super.init(frame: CGRectZero)
             addSubview(textView)
             

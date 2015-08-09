@@ -10,6 +10,7 @@
 		E9184CD31A5DDA3200E3DCB8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9184CD21A5DDA3200E3DCB8 /* Toast.swift */; };
 		E943BEDC1AA96EBA00CE5B39 /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDB1AA96EBA00CE5B39 /* ClipsieKit.framework */; };
 		E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922AC01A3D23EF0025D542 /* SharedUtil.swift */; };
+		E9B60CA11B77C4A000A5862A /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B60CA01B77C4A000A5862A /* Help.swift */; };
 		E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2EFE91A369EA5005D271B /* AppDelegate.swift */; };
 		E9C2EFF11A369EA5005D271B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF01A369EA5005D271B /* Images.xcassets */; };
 		E9C2EFF41A369EA5005D271B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF21A369EA5005D271B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		E943BEDB1AA96EBA00CE5B39 /* ClipsieKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClipsieKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug/ClipsieKit.framework"; sourceTree = "<group>"; };
 		E95E44281A6F5EFD00E01F5E /* Clipsie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Clipsie.entitlements; sourceTree = "<group>"; };
 		E9922AC01A3D23EF0025D542 /* SharedUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtil.swift; path = ../Apple/SharedUtil.swift; sourceTree = "<group>"; };
+		E9B60CA01B77C4A000A5862A /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		E9C2EFE41A369EA5005D271B /* Clipsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C2EFE81A369EA5005D271B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C2EFE91A369EA5005D271B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				E95E44281A6F5EFD00E01F5E /* Clipsie.entitlements */,
 				E9184CD21A5DDA3200E3DCB8 /* Toast.swift */,
 				E9C2EFE91A369EA5005D271B /* AppDelegate.swift */,
+				E9B60CA01B77C4A000A5862A /* Help.swift */,
 				E9C2EFF01A369EA5005D271B /* Images.xcassets */,
 				E9C2EFF21A369EA5005D271B /* Main.storyboard */,
 				E9C2EFE71A369EA5005D271B /* Supporting Files */,
@@ -177,6 +180,7 @@
 			files = (
 				E9184CD31A5DDA3200E3DCB8 /* Toast.swift in Sources */,
 				E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */,
+				E9B60CA11B77C4A000A5862A /* Help.swift in Sources */,
 				E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +286,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug",
-					/Users/sidney/src/Clipsie/ClipsieKit/build/Release,
 				);
 				INFOPLIST_FILE = Clipsie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -300,7 +303,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug",
-					/Users/sidney/src/Clipsie/ClipsieKit/build/Release,
 				);
 				INFOPLIST_FILE = Clipsie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
