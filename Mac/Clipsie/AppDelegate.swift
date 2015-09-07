@@ -12,8 +12,23 @@ class AppDelegate:
     weak var helpWindow: HelpWindowController? = nil
 
     var clipboardString: String? = nil
-    let statusItem: NSStatusItem
+    var statusItem: NSStatusItem? = nil
     var menuItemsByDestination = [PeerID: NSMenuItem]()
+    
+    var showStatusItem: Bool = false {
+        didSet {
+            if showStatusItem && statusItem == nil {
+                let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(24)
+                self.statusItem = statusItem
+                statusItem.menu = self.statusMenu
+                let image = NSImage(named: "StatusMenu")!
+                image.setTemplate(true)
+                statusItem.button!.image = image
+            } else {
+                statusItem = nil
+            }
+        }
+    }
     
     let uuid: String = {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -22,6 +37,7 @@ class AppDelegate:
         }
         let uuid = NSUUID().UUIDString
         defaults.setObject(uuid, forKey: "UUID")
+        defaults.synchronize()
         return uuid
     }()
     let peerID = ClipsieKit.PeerID()
@@ -65,24 +81,28 @@ class AppDelegate:
     override init() {
         advertiser = ClipsieKit.Advertiser(peerID)
         browser = ClipsieKit.Browser(peerID)
-        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(24)
         super.init()
         advertiser.delegate = self
         browser.delegate = self
     }
     
     func applicationDidFinishLaunching(notification: NSNotification) {
-        statusItem.menu = self.statusMenu
-        let menuImage = NSImage(named: "StatusMenu")
-        menuImage!.size = NSSize(width: menuImage!.size.width / menuImage!.size.height * 18, height: 18)
-        statusItem.button!.image = menuImage
-        
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         
         pruneOffers()
         
         advertiser.start()
         browser.start()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.boolForKey(HasShownFirstLaunchHelpKey) == false {
+            showHelp()
+        }
+    }
+    
+    func applicationShouldHandleReopen(sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        showHelp()
+        return true
     }
     
     func acceptOffer(offer: ClipsieKit.Offer) {
@@ -161,13 +181,17 @@ class AppDelegate:
         }
     }
     
-    @IBAction func showHelp(sender: AnyObject) {
+    func showHelp() {
         if let helpWindow = helpWindow {
             helpWindow.focus()
             return
         }
         helpWindow = (NSStoryboard(name: "Main", bundle: nil)?.instantiateControllerWithIdentifier("help_window") as! HelpWindowController)
         helpWindow!.focus()
+    }
+    
+    @IBAction func showHelp(sender: AnyObject?) {
+        showHelp()
     }
     
     // MARK: - ClipsieAdvertiserDelegate
@@ -201,11 +225,15 @@ class AppDelegate:
         menuItemsByDestination[peer] = menuItem
         
         statusMenu.insertItem(menuItem, atIndex: 0)
+        showStatusItem = true
     }
     
     func lostPeer(peer: ClipsieKit.PeerID) {
         if let menuItem = menuItemsByDestination.removeValueForKey(peer) {
             statusMenu.removeItem(menuItem)
+        }
+        if menuItemsByDestination.count == 0 {
+            showStatusItem = false
         }
     }
     

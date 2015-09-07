@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A244d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A263e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <scenes>
@@ -341,16 +342,10 @@
                 <menu id="hMi-ij-b11">
                     <items>
                         <menuItem isSeparatorItem="YES" id="qAd-iD-GOI"/>
-                        <menuItem title="What’s this?" id="K3m-1j-ON5">
+                        <menuItem title="Clipsie Help…" id="K3m-1j-ON5">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="showHelp" target="Voe-Tx-rLC" id="vC5-EF-Ek8"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Quit Clipsie" id="VdR-pJ-cof">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="terminate:" target="hnw-xV-0zn" id="JSF-9I-eXb"/>
                             </connections>
                         </menuItem>
                     </items>
@@ -366,10 +361,10 @@
             <objects>
                 <customObject id="yZQ-uC-MvD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <windowController storyboardIdentifier="help_window" id="HPe-TY-5ep" customClass="HelpWindowController" customModule="Clipsie" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="What’s Clipsie?" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8BU-Cr-SKM">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8BU-Cr-SKM">
+                        <windowStyleMask key="styleMask" titled="YES"/>
                         <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="451" width="570" height="150"/>
+                        <rect key="contentRect" x="196" y="451" width="578" height="253"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <connections>
                             <outlet property="delegate" destination="HPe-TY-5ep" id="AD0-wG-PnM"/>
@@ -387,22 +382,13 @@
             <objects>
                 <viewController id="Csd-zf-8aV" customClass="HelpViewController" customModule="Clipsie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PTW-I0-eM1">
-                        <rect key="frame" x="0.0" y="0.0" width="570" height="146"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="578" height="253"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-Jh-Nzm">
-                                <rect key="frame" x="18" y="109" width="534" height="17"/>
-                                <animations/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You can send your clipboard to other computers!" id="Peg-oQ-SPs">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XlK-S1-NYl">
-                                <rect key="frame" x="14" y="13" width="542" height="32"/>
+                                <rect key="frame" x="124" y="13" width="93" height="32"/>
                                 <animations/>
-                                <buttonCell key="cell" type="push" title="Questions? Ideas? Email us." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OoX-Qg-sfT">
+                                <buttonCell key="cell" type="push" title="Email Us" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OoX-Qg-sfT">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -411,29 +397,93 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fJh-D5-z9I">
-                                <rect key="frame" x="25" y="82" width="9" height="12"/>
+                                <rect key="frame" x="25" y="184" width="9" height="12"/>
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="CpC-DO-YC8"/>
                             </imageView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-Xe-wOl">
-                                <rect key="frame" x="40" y="81" width="512" height="17"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FCa-Li-rwu">
+                                <rect key="frame" x="25" y="134" width="9" height="12"/>
                                 <animations/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="To send someone your clipboard, choose their computer from the menu." id="zne-kG-lY0">
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="DeL-8O-ln9"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDf-gp-og2">
+                                <rect key="frame" x="40" y="116" width="520" height="34"/>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You’ll get a notification when someone sends you their clipboard. Click the notification to copy the text or open the link." id="CmZ-xO-cuR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FCa-Li-rwu">
-                                <rect key="frame" x="25" y="62" width="9" height="12"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2D-dq-DjW">
+                                <rect key="frame" x="14" y="13" width="110" height="32"/>
                                 <animations/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="DeL-8O-ln9"/>
-                            </imageView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDf-gp-og2">
-                                <rect key="frame" x="40" y="61" width="512" height="17"/>
-                                <animations/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If someone sends you their clipboard, you'll get a notification — click to copy." id="CmZ-xO-cuR">
+                                <buttonCell key="cell" type="push" title="Quit Clipsie" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="muC-9Z-eXl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quit:" target="Csd-zf-8aV" id="Cu5-rw-k07"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ieY-4h-rwP">
+                                <rect key="frame" x="440" y="13" width="124" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Sounds good!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gPY-69-AXa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismiss:" target="Csd-zf-8aV" id="oJH-dS-YuY"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-Jh-Nzm">
+                                <rect key="frame" x="18" y="216" width="542" height="17"/>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Clipsie lets you send text and links to other computers." id="Peg-oQ-SPs">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="mY7-HM-615">
+                                <rect key="frame" x="288" y="22" width="145" height="18"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="Start Clipsie at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="pxY-L2-Ur8">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startAtLoginChanged:" target="Csd-zf-8aV" id="fjX-Bd-TuP"/>
+                                </connections>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4b-Mm-3HW">
+                                <rect key="frame" x="25" y="84" width="9" height="12"/>
+                                <animations/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="Ki0-c2-fnz"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fch-uo-RpG">
+                                <rect key="frame" x="40" y="66" width="520" height="34"/>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="RMo-1m-eed">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Clipsie is invisible when nobody is nearby. Launch Clipsie again if you want to bring this window back (say, to quit, or to email us).</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-Xe-wOl">
+                                <rect key="frame" x="40" y="166" width="520" height="34"/>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="zne-kG-lY0">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">You’ll see a Clipsie menu in the menu bar when a computer with Clipsie is nearby. Choose the computer’s name from the menu it to send your clipboard.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -443,27 +493,40 @@
                             <constraint firstItem="hwi-Xe-wOl" firstAttribute="leading" secondItem="fJh-D5-z9I" secondAttribute="trailing" constant="8" id="0BK-wp-Tec"/>
                             <constraint firstAttribute="trailing" secondItem="GDf-gp-og2" secondAttribute="trailing" constant="20" id="3un-Rz-LEl"/>
                             <constraint firstAttribute="trailing" secondItem="Cyx-Jh-Nzm" secondAttribute="trailing" constant="20" id="8yL-Xr-A29"/>
-                            <constraint firstItem="fJh-D5-z9I" firstAttribute="top" secondItem="Cyx-Jh-Nzm" secondAttribute="bottom" constant="15" id="CQZ-pf-aW8"/>
+                            <constraint firstItem="XlK-S1-NYl" firstAttribute="leading" secondItem="D2D-dq-DjW" secondAttribute="trailing" constant="12" id="9S8-1l-y9m"/>
+                            <constraint firstItem="fJh-D5-z9I" firstAttribute="top" secondItem="Cyx-Jh-Nzm" secondAttribute="bottom" constant="20" id="Bcn-Qe-CAa"/>
+                            <constraint firstItem="ieY-4h-rwP" firstAttribute="baseline" secondItem="mY7-HM-615" secondAttribute="baseline" id="DTA-Cu-qKQ"/>
                             <constraint firstItem="GDf-gp-og2" firstAttribute="leading" secondItem="FCa-Li-rwu" secondAttribute="trailing" constant="8" id="DvA-sV-okx"/>
+                            <constraint firstItem="ieY-4h-rwP" firstAttribute="leading" secondItem="mY7-HM-615" secondAttribute="trailing" constant="15" id="FUM-Qx-fkE"/>
                             <constraint firstAttribute="trailing" secondItem="hwi-Xe-wOl" secondAttribute="trailing" constant="20" id="FV7-Ux-a0P"/>
-                            <constraint firstAttribute="bottom" secondItem="XlK-S1-NYl" secondAttribute="bottom" constant="20" id="Kqj-pY-LsN"/>
-                            <constraint firstItem="XlK-S1-NYl" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="20" id="LIF-fi-p3w"/>
+                            <constraint firstItem="K4b-Mm-3HW" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="25" id="KJG-Ay-BLU"/>
+                            <constraint firstItem="Cyx-Jh-Nzm" firstAttribute="top" secondItem="PTW-I0-eM1" secondAttribute="top" constant="20" id="KUE-91-XgQ"/>
+                            <constraint firstItem="ieY-4h-rwP" firstAttribute="top" secondItem="fch-uo-RpG" secondAttribute="bottom" constant="25" id="RMa-ll-43y"/>
+                            <constraint firstItem="fch-uo-RpG" firstAttribute="leading" secondItem="K4b-Mm-3HW" secondAttribute="trailing" constant="8" id="S4j-fp-bNy"/>
+                            <constraint firstAttribute="trailing" secondItem="fch-uo-RpG" secondAttribute="trailing" constant="20" id="Tgb-1F-WzZ"/>
                             <constraint firstItem="hwi-Xe-wOl" firstAttribute="top" secondItem="fJh-D5-z9I" secondAttribute="top" constant="-4" id="Tqt-wl-iid"/>
-                            <constraint firstItem="FCa-Li-rwu" firstAttribute="top" secondItem="hwi-Xe-wOl" secondAttribute="bottom" constant="7" id="h7K-dj-KLs"/>
-                            <constraint firstItem="Cyx-Jh-Nzm" firstAttribute="top" secondItem="PTW-I0-eM1" secondAttribute="top" constant="20" id="kFv-iE-zY3"/>
+                            <constraint firstItem="D2D-dq-DjW" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="20" id="VWu-HW-SuF"/>
+                            <constraint firstItem="K4b-Mm-3HW" firstAttribute="top" secondItem="GDf-gp-og2" secondAttribute="bottom" constant="20" id="b9F-Qw-YfJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ieY-4h-rwP" secondAttribute="trailing" constant="20" id="h1K-Eh-Ow7"/>
+                            <constraint firstItem="FCa-Li-rwu" firstAttribute="top" secondItem="hwi-Xe-wOl" secondAttribute="bottom" constant="20" id="h7K-dj-KLs"/>
                             <constraint firstItem="FCa-Li-rwu" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="25" id="lWg-x6-JZ2"/>
                             <constraint firstItem="Cyx-Jh-Nzm" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="20" id="lwd-Es-ARQ"/>
                             <constraint firstItem="fJh-D5-z9I" firstAttribute="leading" secondItem="PTW-I0-eM1" secondAttribute="leading" constant="25" id="m9A-rC-pL6"/>
-                            <constraint firstAttribute="trailing" secondItem="XlK-S1-NYl" secondAttribute="trailing" constant="20" id="nrb-yb-MnS"/>
+                            <constraint firstItem="ieY-4h-rwP" firstAttribute="baseline" secondItem="D2D-dq-DjW" secondAttribute="baseline" id="mVm-eu-jDG"/>
+                            <constraint firstAttribute="bottom" secondItem="ieY-4h-rwP" secondAttribute="bottom" constant="20" id="nJY-3N-vfs"/>
                             <constraint firstItem="GDf-gp-og2" firstAttribute="top" secondItem="FCa-Li-rwu" secondAttribute="top" constant="-4" id="o6n-ea-aBa"/>
-                            <constraint firstItem="XlK-S1-NYl" firstAttribute="top" secondItem="GDf-gp-og2" secondAttribute="bottom" constant="20" id="ubR-Eb-73S"/>
+                            <constraint firstItem="fch-uo-RpG" firstAttribute="top" secondItem="K4b-Mm-3HW" secondAttribute="top" constant="-4" id="unb-6G-Ya9"/>
+                            <constraint firstItem="ieY-4h-rwP" firstAttribute="baseline" secondItem="XlK-S1-NYl" secondAttribute="baseline" id="zG9-bH-PIX"/>
                         </constraints>
                         <animations/>
                     </view>
+                    <connections>
+                        <outlet property="startAtLoginCheckbox" destination="mY7-HM-615" id="mhZ-gq-T0j"/>
+                    </connections>
                 </viewController>
                 <customObject id="0a4-qg-AY8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.5" y="250.5"/>
+            <point key="canvasLocation" x="681" y="255"/>
         </scene>
     </scenes>
     <resources>
