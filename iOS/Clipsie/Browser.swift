@@ -6,7 +6,7 @@ class BrowserViewController: UITableViewController, ClipsieKit.BrowserDelegate {
     var browser = ClipsieKit.Browser(appDelegate().peerID)
     var peers: [ClipsieKit.PeerID] = []
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         browser.delegate = self
         browser.start()
@@ -19,7 +19,7 @@ class BrowserViewController: UITableViewController, ClipsieKit.BrowserDelegate {
     // MARK: Table view data source
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("peer", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("peer", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = peers[indexPath.row].displayName
         return cell
     }
@@ -29,7 +29,7 @@ class BrowserViewController: UITableViewController, ClipsieKit.BrowserDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         let peer = self.peers[indexPath.row]
         
         showAlert(self, style: .ActionSheet, sourceView: cell, completion: {
@@ -39,7 +39,7 @@ class BrowserViewController: UITableViewController, ClipsieKit.BrowserDelegate {
                 if let pasteboardString = UIPasteboard.generalPasteboard().string {
                     if let session = ClipsieKit.OutboundSession.with(peer) {
                         session.offerText(pasteboardString)
-                            .catch { println("Failed to send an offer: \($0)") }
+                            .catchError { print("Failed to send an offer: \($0)") }
                         return
                     }
                 }

@@ -32,14 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieKit.AdvertiserDele
         
         var err: NSError? = nil
         
-        persistentStoreCoordinator.addPersistentStoreWithType(
+        try! persistentStoreCoordinator.addPersistentStoreWithType(
             NSSQLiteStoreType,
             configuration: nil,
             URL: NSFileManager.defaultManager().URLsForDirectory(
                 .DocumentDirectory, inDomains: .UserDomainMask
             )[0].URLByAppendingPathComponent("Clipsie.sqlite"),
-            options: nil,
-            error: &err
+            options: nil
         )
         
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
@@ -51,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieKit.AdvertiserDele
     
     func gotOffer(offer: ClipsieKit.Offer) {
         offer.toStored(managedObjectContext)
-        managedObjectContext.save(nil)
+        try! managedObjectContext.save()
     }
 }
 

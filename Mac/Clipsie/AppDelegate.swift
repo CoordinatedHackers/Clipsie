@@ -22,7 +22,7 @@ class AppDelegate:
                 self.statusItem = statusItem
                 statusItem.menu = self.statusMenu
                 let image = NSImage(named: "StatusMenu")!
-                image.setTemplate(true)
+                image.template = true
                 statusItem.button!.image = image
             } else {
                 statusItem = nil
@@ -48,7 +48,7 @@ class AppDelegate:
     
     lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-        let appSupportURL = urls[urls.count - 1] as! NSURL
+        let appSupportURL = urls[urls.count - 1]
         return appSupportURL.URLByAppendingPathComponent(NSBundle.mainBundle().infoDictionary!["CFBundleIdentifier"] as! String)
     }()
     
@@ -59,12 +59,12 @@ class AppDelegate:
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         let fileManager = NSFileManager.defaultManager()
-        fileManager.createDirectoryAtPath(self.applicationDocumentsDirectory.path!, withIntermediateDirectories: true, attributes: nil, error: nil)
+        try! fileManager.createDirectoryAtPath(self.applicationDocumentsDirectory.path!, withIntermediateDirectories: true, attributes: nil)
         
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Clipsie.storedata")
-        coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: nil)
+        try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
         
         return coordinator
     }()
@@ -126,7 +126,7 @@ class AppDelegate:
         var leftoverNotificationsByObjectID = [NSManagedObjectID: NSUserNotification]()
         let userNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()
         
-        for notification in userNotificationCenter.deliveredNotifications as! [NSUserNotification] {
+        for notification in userNotificationCenter.deliveredNotifications {
             if let idString = notification.userInfo?["id"] as? String {
                 if let idURL = NSURL(string: idString) {
                     if let id = persistentStoreCoordinator.managedObjectIDForURIRepresentation(idURL) {
@@ -138,16 +138,16 @@ class AppDelegate:
         
         let fetchRequest = NSFetchRequest(entityName: "Offer")
         fetchRequest.includesPropertyValues = false
-        if let offers = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject] {
+        if let offers = try! managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
             for offer in offers {
                 if leftoverNotificationsByObjectID.removeValueForKey(offer.objectID) == nil {
                     managedObjectContext.deleteObject(offer)
                 }
             }
-            managedObjectContext.save(nil)
+            try! managedObjectContext.save()
         }
         
-        for (id, leftoverNotification) in leftoverNotificationsByObjectID {
+        for (_, leftoverNotification) in leftoverNotificationsByObjectID {
             userNotificationCenter.removeDeliveredNotification(leftoverNotification)
         }
         
@@ -160,7 +160,7 @@ class AppDelegate:
             if let clipboardString = clipboardString {
                 if let session = ClipsieKit.OutboundSession.with(peerID) {
                     session.offerText(clipboardString)
-                        .catch { println("Failed to send an offer: \($0)") }
+                        .catchError { print("Failed to send an offer: \($0)") }
                 }
             }
         }
@@ -186,7 +186,7 @@ class AppDelegate:
             helpWindow.focus()
             return
         }
-        helpWindow = (NSStoryboard(name: "Main", bundle: nil)?.instantiateControllerWithIdentifier("help_window") as! HelpWindowController)
+        helpWindow = (NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("help_window") as! HelpWindowController)
         helpWindow!.focus()
     }
     
@@ -198,7 +198,7 @@ class AppDelegate:
     
     func gotOffer(offer: ClipsieKit.Offer) {
         let storedOffer = offer.toStored(managedObjectContext)!
-        managedObjectContext.save(nil)
+        try! managedObjectContext.save()
         
         let notification = NSUserNotification()
         notification.title = "Click to copy"
@@ -207,7 +207,7 @@ class AppDelegate:
             let preview = string.truncate(20, overflow: "…")
             notification.informativeText = "\"\(preview)\""
         }
-        notification.userInfo = ["id": storedOffer.objectID.URIRepresentation().absoluteString!]
+        notification.userInfo = ["id": storedOffer.objectID.URIRepresentation().absoluteString]
         
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         pruneOffers()

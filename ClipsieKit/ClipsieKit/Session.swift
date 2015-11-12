@@ -43,7 +43,7 @@ public class OutboundSession: Session {
     }
     
     public func offerText(text: String) -> Promise<()> {
-        let frames = map(["textoffer", text], proto.frameData)
+        let frames = ["textoffer", text].map(proto.frameData)
         return fenced {
             self.write(self.proto.frameCountData(UInt8(frames.count))).then { () -> Promise<()> in
                 var fence = Promise<()>.resolve()
@@ -87,7 +87,7 @@ public class InboundSession: Session {
         return fenced {
             self.read(self.proto.frameCountLength).then { data -> Promise<()> in
                 var fence = Promise<()>.resolve()
-                for i in 0..<self.proto.expectedFrames(data) {
+                for _ in 0..<self.proto.expectedFrames(data) {
                     fence = fence.then {
                         self.read(self.proto.frameLengthLength).then {
                             self.read(self.proto.frameLength($0)).then {

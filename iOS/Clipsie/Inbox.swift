@@ -10,6 +10,15 @@ import UIKit
 import CoreData
 import ClipsieKit
 
+class HeaderView: UIToolbar {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        for view in subviews {
+            print("subview: \(view)")
+        }
+    }
+}
+
 class InboxViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     let fetchedResultsController: NSFetchedResultsController = {
@@ -21,31 +30,40 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         )
     }()
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.fetchedResultsController.performFetch(nil)
+        try! self.fetchedResultsController.performFetch()
         self.fetchedResultsController.delegate = self
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return editing ? 1 : 2
     }
     
     // MARK: - Table view stuff
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 && !editing {
+            return 1
+        }
         return self.fetchedResultsController.fetchedObjects!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as! UITableViewCell
-        let offer = self.fetchedResultsController.objectAtIndexPath(indexPath) as! ClipsieKit.StoredOffer
+        if indexPath.section == 0 {
+            return UITableViewCell()
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("history", forIndexPath: indexPath) as UITableViewCell
+        let offer = self.fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as! ClipsieKit.StoredOffer
         configureCell(cell, withOffer: offer)
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if true || editing {
+            return
+        }
         if let offer = (self.fetchedResultsController.objectAtIndexPath(indexPath) as? ClipsieKit.StoredOffer)?.getOffer() {
             switch offer {
             case .Text(let text):
@@ -59,11 +77,31 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if editing {
+            tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: animated ? .Fade : .None)
+        } else {
+            tableView.insertSections(NSIndexSet(index: 0), withRowAnimation: animated ? .Fade : .None)
+        }
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         appDelegate().managedObjectContext.deleteObject(
             self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
         )
-        appDelegate().managedObjectContext.save(nil)
+        try! appDelegate().managedObjectContext.save()
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Nearby"
+        case 1:
+            return "Received"
+        default:
+            return nil
+        }
     }
     
     func configureCell(cell: UITableViewCell, withOffer storedOffer: ClipsieKit.StoredOffer) {
@@ -92,8 +130,6 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        default:
-            return
         }
     }
     

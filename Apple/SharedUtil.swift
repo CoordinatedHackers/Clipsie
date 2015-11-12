@@ -1,15 +1,15 @@
 import Foundation
 
-private let URLRegex = NSRegularExpression(pattern: "^https?://[^\\s]+$", options: .CaseInsensitive, error: nil)!
+private let URLRegex = try! NSRegularExpression(pattern: "^https?://[^\\s]+$", options: .CaseInsensitive)
 
 extension String {
     func truncate(length: Index.Distance, overflow: String) -> String {
-        if length >= count(self) { return self }
-        return self[startIndex...advance(startIndex, length-1)] + overflow
+        if length >= characters.count { return self }
+        return self[startIndex...startIndex.advancedBy(length-1)] + overflow
     }
     
     var asURL: NSURL? { get {
-        if URLRegex.numberOfMatchesInString(self, options: NSMatchingOptions(0), range: NSRange(location: 0, length: count(self))) == 1 {
+        if URLRegex.numberOfMatchesInString(self, options: NSMatchingOptions(rawValue: 0), range: NSRange(location: 0, length: characters.count)) == 1 {
             if let url = NSURL(string: self) {
                 return url
             }

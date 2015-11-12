@@ -53,7 +53,7 @@ class AlertHelper : Helper, UIAlertViewDelegate {
     }
 }
 
-func showAlert(viewController: UIViewController, style: UIAlertControllerStyle = .Alert, title: String? = nil, message: String? = nil, sourceView: UIView? = nil, completion: (() -> ())? = nil, buttons: (UIAlertActionStyle, String, (() -> ())?)...) {
+func showAlert(viewController: UIViewController, style: UIAlertControllerStyle = .Alert, title: String? = nil, message: String? = nil, sourceView: UIView? = nil, completion: (() -> ())? = nil, _ buttons: (UIAlertActionStyle, String, (() -> ())?)...) {
     
     if (NSClassFromString("UIAlertController") != nil) {
         // iOS 8+
@@ -93,7 +93,7 @@ func showAlert(viewController: UIViewController, style: UIAlertControllerStyle =
                     actionSheet.destructiveButtonIndex = actionSheet.numberOfButtons - 1
                 }
             }
-            ActionSheetHelper(actionSheet) {
+            _ = ActionSheetHelper(actionSheet) {
                 if let completion = completion { completion() }
                 if let cb = buttons[$0].2 { cb() }
             }
@@ -119,7 +119,7 @@ func showAlert(viewController: UIViewController, style: UIAlertControllerStyle =
                     break
                 }
             }
-            AlertHelper(alertView) {
+            _ = AlertHelper(alertView) {
                 if let completion = completion { completion() }
                 if let cb = buttons[$0].2 { cb() }
             }

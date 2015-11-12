@@ -66,7 +66,7 @@ public class Promise<T> {
         } }
     }
     
-    public func catch(f: NSError -> Promise) -> Promise {
+    public func catchError(f: NSError -> Promise) -> Promise {
         return Promise { resolve, reject in
             func forward(err: NSError) {
                 switch f(err).state {
@@ -91,13 +91,13 @@ public class Promise<T> {
         }
     }
     
-    public func catch(f: NSError -> T) -> Promise {
-        return catch { err in Promise { resolve, reject in
+    public func catchError(f: NSError -> T) -> Promise {
+        return catchError { err in Promise { resolve, reject in
             resolve(f(err))
         } }
     }
     
-    public class func defer() -> (Promise, T -> (), NSError -> ()) {
+    public class func new() -> (Promise, T -> (), NSError -> ()) {
         var resolve: (T -> ())? = nil
         var reject: (NSError -> ())? = nil
         

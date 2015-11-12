@@ -46,7 +46,7 @@ class Toast {
         func sizeToFit() {
             textView.sizeToFit()
             textView.frame = CGRect(origin: CGPoint(x: margin, y: margin), size: textView.frame.size)
-            frame = CGRect(origin: frame.origin, size: textView.frame.rectByInsetting(dx: -margin, dy: -margin).size)
+            frame = CGRect(origin: frame.origin, size: textView.frame.insetBy(dx: -margin, dy: -margin).size)
             
         }
     }
@@ -77,7 +77,7 @@ class Toast {
     
     let window = ToastWindow(
         contentRect: NSRect(x: 0, y: 0, width: 100, height: 100),
-        styleMask: NSBorderlessWindowMask, backing: .Buffered, defer: true
+        styleMask: NSBorderlessWindowMask, backing: .Buffered, `defer`: true
     )
     
     let view = ToastView()
@@ -87,9 +87,8 @@ class Toast {
         view.margin = 20
         view.sizeToFit()
         
-        window.setContentBorderThickness(0, forEdge: NSMinXEdge | NSMinYEdge | NSMaxXEdge | NSMaxYEdge)
         window.setFrame(view.frame, display: true)
-        window.level = kCGStatusWindowLevelKey
+        window.level = Int(CGWindowLevelKey.StatusWindowLevelKey.rawValue)
         window.ignoresMouseEvents = true
         window.backgroundColor = NSColor.clearColor()
         window.opaque = false
@@ -101,7 +100,7 @@ class Toast {
         window.center()
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(hold * NSTimeInterval(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            PresentationRunner(window: self.window, duration: fade)
+            _ = PresentationRunner(window: self.window, duration: fade)
             return
         }
     }

@@ -6,7 +6,7 @@ let HasShownFirstLaunchHelpKey = "HasShownFirstLaunchHelp"
 private let LauncherBundleID = "com.coordinatedhackers.Clipsie-Launcher"
 
 func setLaunchAtLogin(launch: Bool) {
-    SMLoginItemSetEnabled(LauncherBundleID, launch ? 1 : 0)
+    SMLoginItemSetEnabled(LauncherBundleID, launch)
 }
 
 func getLaunchAtLogin() -> Bool {

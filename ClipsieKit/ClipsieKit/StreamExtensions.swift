@@ -41,7 +41,7 @@ extension NSInputStream {
             init(stream: NSInputStream, length: Int) {
                 inputStream = stream
                 data = NSMutableData(length: length)!
-                (promise, resolve, reject) = Promise<NSData>.defer()
+                (promise, resolve, reject) = Promise<NSData>.new()
                 super.init(stream)
             }
             
@@ -83,7 +83,7 @@ extension NSOutputStream {
             init(stream: NSOutputStream, data: NSData) {
                 outputStream = stream
                 self.data = data
-                (promise, resolve, reject) = Promise<()>.defer()
+                (promise, resolve, reject) = Promise<()>.new()
                 super.init(stream)
             }
             
