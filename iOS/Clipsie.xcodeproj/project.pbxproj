@@ -13,7 +13,6 @@
 		E943BEE31AA96F0D00CE5B39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */; };
 		E95D451A199FE09900F52242 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D4519199FE09900F52242 /* Util.swift */; };
 		E9616DE7199885770015CFEB /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9616DE6199885770015CFEB /* Inbox.swift */; };
-		E966F61419988CF800AFCAE1 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966F61319988CF800AFCAE1 /* Browser.swift */; };
 		E9922ABF1A3D23C70025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922ABE1A3D23C70025D542 /* SharedUtil.swift */; };
 		E9DC3A211AA96F5900DCCBE9 /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */; };
 /* End PBXBuildFile section */
@@ -39,7 +38,6 @@
 		E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E95D4519199FE09900F52242 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		E9616DE6199885770015CFEB /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
-		E966F61319988CF800AFCAE1 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Browser.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E9922ABE1A3D23C70025D542 /* SharedUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtil.swift; path = ../Apple/SharedUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +87,6 @@
 				E94135B7194BE8E50030BF9C /* Main.storyboard */,
 				E95D4519199FE09900F52242 /* Util.swift */,
 				E94135B3194BE8E50030BF9C /* AppDelegate.swift */,
-				E966F61319988CF800AFCAE1 /* Browser.swift */,
 				E9616DE6199885770015CFEB /* Inbox.swift */,
 				E94135BA194BE8E50030BF9C /* Images.xcassets */,
 				E94135B1194BE8E40030BF9C /* Supporting Files */,
@@ -217,7 +214,6 @@
 			files = (
 				E9922ABF1A3D23C70025D542 /* SharedUtil.swift in Sources */,
 				E95D451A199FE09900F52242 /* Util.swift in Sources */,
-				E966F61419988CF800AFCAE1 /* Browser.swift in Sources */,
 				E9616DE7199885770015CFEB /* Inbox.swift in Sources */,
 				E94135B4194BE8E50030BF9C /* AppDelegate.swift in Sources */,
 			);
