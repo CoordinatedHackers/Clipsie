@@ -10,7 +10,6 @@
 		E94135B4194BE8E50030BF9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94135B3194BE8E50030BF9C /* AppDelegate.swift */; };
 		E94135B9194BE8E50030BF9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94135B7194BE8E50030BF9C /* Main.storyboard */; };
 		E94135BB194BE8E50030BF9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94135BA194BE8E50030BF9C /* Images.xcassets */; };
-		E94135C7194BE8E50030BF9C /* ClipsieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94135C6194BE8E50030BF9C /* ClipsieTests.swift */; };
 		E943BEE31AA96F0D00CE5B39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */; };
 		E95D451A199FE09900F52242 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D4519199FE09900F52242 /* Util.swift */; };
 		E9616DE7199885770015CFEB /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9616DE6199885770015CFEB /* Inbox.swift */; };
@@ -36,8 +35,6 @@
 		E94135B8194BE8E50030BF9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E94135BA194BE8E50030BF9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E94135C0194BE8E50030BF9C /* ClipsieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipsieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E94135C5194BE8E50030BF9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E94135C6194BE8E50030BF9C /* ClipsieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsieTests.swift; sourceTree = "<group>"; };
 		E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClipsieKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug/ClipsieKit.framework"; sourceTree = "<group>"; };
 		E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E95D4519199FE09900F52242 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -73,7 +70,6 @@
 				E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */,
 				E94135DD194CB1C10030BF9C /* Shared */,
 				E94135B0194BE8E40030BF9C /* Clipsie */,
-				E94135C3194BE8E50030BF9C /* ClipsieTests */,
 				E94135AF194BE8E40030BF9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,23 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				E94135B2194BE8E40030BF9C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E94135C3194BE8E50030BF9C /* ClipsieTests */ = {
-			isa = PBXGroup;
-			children = (
-				E94135C6194BE8E50030BF9C /* ClipsieTests.swift */,
-				E94135C4194BE8E50030BF9C /* Supporting Files */,
-			);
-			path = ClipsieTests;
-			sourceTree = "<group>";
-		};
-		E94135C4194BE8E50030BF9C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E94135C5194BE8E50030BF9C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -248,7 +227,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94135C7194BE8E50030BF9C /* ClipsieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
