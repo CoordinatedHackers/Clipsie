@@ -212,9 +212,11 @@
 				TargetAttributes = {
 					E969D92A1A7C523F001697E4 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = YT97T7Y78M;
 					};
 					E96FEC5B1AA96003006CBFE2 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = YT97T7Y78M;
 					};
 				};
 			};
@@ -378,6 +380,7 @@
 		E969D9421A7C523F001697E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -397,6 +400,7 @@
 		E969D9431A7C523F001697E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -416,6 +420,8 @@
 		E96FEC701AA96003006CBFE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -441,6 +447,8 @@
 		E96FEC711AA96003006CBFE2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;

@@ -7,67 +7,150 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90A61941BF4480000DBD3BA /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90A61931BF447F700DBD3BA /* ClipsieKit.framework */; };
+		E90A61951BF4480000DBD3BA /* ClipsieKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E90A61931BF447F700DBD3BA /* ClipsieKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E90A61B91BF44ACB00DBD3BA /* Send with Clipsie.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E90A61AF1BF44ACB00DBD3BA /* Send with Clipsie.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E90A61BE1BF44B2000DBD3BA /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A61BD1BF44B2000DBD3BA /* BrowserViewController.swift */; };
+		E90A61C01BF44B4F00DBD3BA /* Browser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90A61BF1BF44B4F00DBD3BA /* Browser.storyboard */; };
+		E90A61C11BF44BDA00DBD3BA /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922ABE1A3D23C70025D542 /* SharedUtil.swift */; };
+		E90A61C21BF44BED00DBD3BA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D4519199FE09900F52242 /* Util.swift */; };
 		E94135B4194BE8E50030BF9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94135B3194BE8E50030BF9C /* AppDelegate.swift */; };
 		E94135B9194BE8E50030BF9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94135B7194BE8E50030BF9C /* Main.storyboard */; };
 		E94135BB194BE8E50030BF9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94135BA194BE8E50030BF9C /* Images.xcassets */; };
-		E943BEE31AA96F0D00CE5B39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */; };
 		E95D451A199FE09900F52242 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D4519199FE09900F52242 /* Util.swift */; };
 		E9616DE7199885770015CFEB /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9616DE6199885770015CFEB /* Inbox.swift */; };
+		E9861E841BF4432800350E94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */; };
 		E9922ABF1A3D23C70025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922ABE1A3D23C70025D542 /* SharedUtil.swift */; };
-		E9DC3A211AA96F5900DCCBE9 /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */; };
+		E9AF213B1BF59C9000AA03B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94135BA194BE8E50030BF9C /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E94135C1194BE8E50030BF9C /* PBXContainerItemProxy */ = {
+		E90A61901BF447F700DBD3BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E969D92B1A7C523F001697E4;
+			remoteInfo = "ClipsieKit Mac";
+		};
+		E90A61921BF447F700DBD3BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E96FEC5C1AA96003006CBFE2;
+			remoteInfo = "ClipsieKit iOS";
+		};
+		E90A61961BF4480000DBD3BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E96FEC5B1AA96003006CBFE2;
+			remoteInfo = "ClipsieKit iOS";
+		};
+		E90A61B71BF44ACB00DBD3BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E94135A6194BE8E40030BF9C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E94135AD194BE8E40030BF9C;
-			remoteInfo = Clipsie;
+			remoteGlobalIDString = E90A61AE1BF44ACB00DBD3BA;
+			remoteInfo = "Send with Clipsie";
+		};
+		E9AF21391BF5954500AA03B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E96FEC5B1AA96003006CBFE2;
+			remoteInfo = "ClipsieKit iOS";
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E90A618A1BF447B000DBD3BA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E90A61951BF4480000DBD3BA /* ClipsieKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90A61AA1BF4499A00DBD3BA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E90A61B91BF44ACB00DBD3BA /* Send with Clipsie.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ClipsieKit.xcodeproj; path = ../ClipsieKit/ClipsieKit.xcodeproj; sourceTree = "<group>"; };
+		E90A61AF1BF44ACB00DBD3BA /* Send with Clipsie.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Send with Clipsie.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90A61B61BF44ACB00DBD3BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E90A61BD1BF44B2000DBD3BA /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowserViewController.swift; path = ../Clipsie/BrowserViewController.swift; sourceTree = "<group>"; };
+		E90A61BF1BF44B4F00DBD3BA /* Browser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Browser.storyboard; path = ../Browser.storyboard; sourceTree = "<group>"; };
 		E94135AE194BE8E40030BF9C /* Clipsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94135B2194BE8E40030BF9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94135B3194BE8E50030BF9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E94135B8194BE8E50030BF9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E94135BA194BE8E50030BF9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E94135C0194BE8E50030BF9C /* ClipsieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipsieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClipsieKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug/ClipsieKit.framework"; sourceTree = "<group>"; };
 		E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E95D4519199FE09900F52242 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		E95D4519199FE09900F52242 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Clipsie/Util.swift; sourceTree = "<group>"; };
 		E9616DE6199885770015CFEB /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		E9922ABE1A3D23C70025D542 /* SharedUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtil.swift; path = ../Apple/SharedUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E90A61AC1BF44ACB00DBD3BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E94135AB194BE8E40030BF9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9DC3A211AA96F5900DCCBE9 /* ClipsieKit.framework in Frameworks */,
-				E943BEE31AA96F0D00CE5B39 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E94135BD194BE8E50030BF9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				E9861E841BF4432800350E94 /* UIKit.framework in Frameworks */,
+				E90A61941BF4480000DBD3BA /* ClipsieKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E90A618C1BF447F700DBD3BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E90A61911BF447F700DBD3BA /* ClipsieKit.framework */,
+				E90A61931BF447F700DBD3BA /* ClipsieKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E90A61B01BF44ACB00DBD3BA /* Send with Clipsie */ = {
+			isa = PBXGroup;
+			children = (
+				E90A61BF1BF44B4F00DBD3BA /* Browser.storyboard */,
+				E90A61BD1BF44B2000DBD3BA /* BrowserViewController.swift */,
+				E90A61B61BF44ACB00DBD3BA /* Info.plist */,
+			);
+			path = "Send with Clipsie";
+			sourceTree = "<group>";
+		};
 		E94135A5194BE8E40030BF9C = {
 			isa = PBXGroup;
 			children = (
+				E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */,
 				E943BEDF1AA96EEA00CE5B39 /* UIKit.framework */,
-				E943BEDD1AA96EC600CE5B39 /* ClipsieKit.framework */,
 				E94135DD194CB1C10030BF9C /* Shared */,
 				E94135B0194BE8E40030BF9C /* Clipsie */,
+				E90A61B01BF44ACB00DBD3BA /* Send with Clipsie */,
 				E94135AF194BE8E40030BF9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				E94135AE194BE8E40030BF9C /* Clipsie.app */,
-				E94135C0194BE8E50030BF9C /* ClipsieTests.xctest */,
+				E90A61AF1BF44ACB00DBD3BA /* Send with Clipsie.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				E94135B7194BE8E50030BF9C /* Main.storyboard */,
-				E95D4519199FE09900F52242 /* Util.swift */,
 				E94135B3194BE8E50030BF9C /* AppDelegate.swift */,
 				E9616DE6199885770015CFEB /* Inbox.swift */,
 				E94135BA194BE8E50030BF9C /* Images.xcassets */,
@@ -106,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				E9922ABE1A3D23C70025D542 /* SharedUtil.swift */,
+				E95D4519199FE09900F52242 /* Util.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -113,6 +196,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E90A61AE1BF44ACB00DBD3BA /* Send with Clipsie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E90A61BA1BF44ACC00DBD3BA /* Build configuration list for PBXNativeTarget "Send with Clipsie" */;
+			buildPhases = (
+				E90A61AB1BF44ACB00DBD3BA /* Sources */,
+				E90A61AC1BF44ACB00DBD3BA /* Frameworks */,
+				E90A61AD1BF44ACB00DBD3BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E9AF213A1BF5954500AA03B6 /* PBXTargetDependency */,
+			);
+			name = "Send with Clipsie";
+			productName = "Send with Clipsie";
+			productReference = E90A61AF1BF44ACB00DBD3BA /* Send with Clipsie.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E94135AD194BE8E40030BF9C /* Clipsie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E94135CA194BE8E50030BF9C /* Build configuration list for PBXNativeTarget "Clipsie" */;
@@ -120,33 +221,19 @@
 				E94135AA194BE8E40030BF9C /* Sources */,
 				E94135AB194BE8E40030BF9C /* Frameworks */,
 				E94135AC194BE8E40030BF9C /* Resources */,
+				E90A618A1BF447B000DBD3BA /* Embed Frameworks */,
+				E90A61AA1BF4499A00DBD3BA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E90A61971BF4480000DBD3BA /* PBXTargetDependency */,
+				E90A61B81BF44ACB00DBD3BA /* PBXTargetDependency */,
 			);
 			name = Clipsie;
 			productName = Clipsie;
 			productReference = E94135AE194BE8E40030BF9C /* Clipsie.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E94135BF194BE8E50030BF9C /* ClipsieTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E94135CD194BE8E50030BF9C /* Build configuration list for PBXNativeTarget "ClipsieTests" */;
-			buildPhases = (
-				E94135BC194BE8E50030BF9C /* Sources */,
-				E94135BD194BE8E50030BF9C /* Frameworks */,
-				E94135BE194BE8E50030BF9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E94135C2194BE8E50030BF9C /* PBXTargetDependency */,
-			);
-			name = ClipsieTests;
-			productName = ClipsieTests;
-			productReference = E94135C0194BE8E50030BF9C /* ClipsieTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -155,17 +242,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Coordinated Hackers";
 				TargetAttributes = {
+					E90A61AE1BF44ACB00DBD3BA = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = YT97T7Y78M;
+					};
 					E94135AD194BE8E40030BF9C = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = YT97T7Y78M;
-					};
-					E94135BF194BE8E50030BF9C = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = E94135AD194BE8E40030BF9C;
 					};
 				};
 			};
@@ -180,15 +267,47 @@
 			mainGroup = E94135A5194BE8E40030BF9C;
 			productRefGroup = E94135AF194BE8E40030BF9C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E90A618C1BF447F700DBD3BA /* Products */;
+					ProjectRef = E90A618B1BF447F700DBD3BA /* ClipsieKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E94135AD194BE8E40030BF9C /* Clipsie */,
-				E94135BF194BE8E50030BF9C /* ClipsieTests */,
+				E90A61AE1BF44ACB00DBD3BA /* Send with Clipsie */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		E90A61911BF447F700DBD3BA /* ClipsieKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ClipsieKit.framework;
+			remoteRef = E90A61901BF447F700DBD3BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E90A61931BF447F700DBD3BA /* ClipsieKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ClipsieKit.framework;
+			remoteRef = E90A61921BF447F700DBD3BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		E90A61AD1BF44ACB00DBD3BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9AF213B1BF59C9000AA03B6 /* Images.xcassets in Resources */,
+				E90A61C01BF44B4F00DBD3BA /* Browser.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E94135AC194BE8E40030BF9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,16 +317,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E94135BE194BE8E50030BF9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E90A61AB1BF44ACB00DBD3BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E90A61C11BF44BDA00DBD3BA /* SharedUtil.swift in Sources */,
+				E90A61BE1BF44B2000DBD3BA /* BrowserViewController.swift in Sources */,
+				E90A61C21BF44BED00DBD3BA /* Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E94135AA194BE8E40030BF9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,20 +341,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E94135BC194BE8E50030BF9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E94135C2194BE8E50030BF9C /* PBXTargetDependency */ = {
+		E90A61971BF4480000DBD3BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E94135AD194BE8E40030BF9C /* Clipsie */;
-			targetProxy = E94135C1194BE8E50030BF9C /* PBXContainerItemProxy */;
+			name = "ClipsieKit iOS";
+			targetProxy = E90A61961BF4480000DBD3BA /* PBXContainerItemProxy */;
+		};
+		E90A61B81BF44ACB00DBD3BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E90A61AE1BF44ACB00DBD3BA /* Send with Clipsie */;
+			targetProxy = E90A61B71BF44ACB00DBD3BA /* PBXContainerItemProxy */;
+		};
+		E9AF213A1BF5954500AA03B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ClipsieKit iOS";
+			targetProxy = E9AF21391BF5954500AA03B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -248,6 +373,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E90A61BB1BF44ACC00DBD3BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Send with Clipsie/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coordinatedhackers.Clipsie.Send-with-Clipsie";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E90A61BC1BF44ACC00DBD3BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Send with Clipsie/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coordinatedhackers.Clipsie.Send-with-Clipsie";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		E94135C8194BE8E50030BF9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -332,18 +492,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug",
-				);
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Clipsie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coordinatedhackers.$(PRODUCT_NAME:rfc1034identifier).ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coordinatedhackers.Clipsie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -355,65 +511,32 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Clipsie-gglxpclpjcinjcaakqhllaljyozj/Build/Products/Debug",
-				);
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Clipsie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coordinatedhackers.$(PRODUCT_NAME:rfc1034identifier).ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coordinatedhackers.Clipsie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		E94135CE194BE8E50030BF9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Clipsie";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ClipsieTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coordinatedhackers.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		E94135CF194BE8E50030BF9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clipsie.app/Clipsie";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ClipsieTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coordinatedhackers.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E90A61BA1BF44ACC00DBD3BA /* Build configuration list for PBXNativeTarget "Send with Clipsie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E90A61BB1BF44ACC00DBD3BA /* Debug */,
+				E90A61BC1BF44ACC00DBD3BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E94135A9194BE8E40030BF9C /* Build configuration list for PBXProject "Clipsie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -428,15 +551,6 @@
 			buildConfigurations = (
 				E94135CB194BE8E50030BF9C /* Debug */,
 				E94135CC194BE8E50030BF9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E94135CD194BE8E50030BF9C /* Build configuration list for PBXNativeTarget "ClipsieTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E94135CE194BE8E50030BF9C /* Debug */,
-				E94135CF194BE8E50030BF9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

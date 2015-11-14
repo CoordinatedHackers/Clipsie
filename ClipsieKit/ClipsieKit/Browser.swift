@@ -8,13 +8,14 @@ public protocol BrowserDelegate {
 public class Browser: NSObject, NSNetServiceBrowserDelegate {
     public var delegate: BrowserDelegate? = nil
     
-    let myPeerID: PeerID
+    let myPeerID: PeerID?
     let browser: NSNetServiceBrowser
     var peersByName = [String: PeerID]()
     
-    public init(_ myPeerID: PeerID) {
+    public init(_ myPeerID: PeerID? = nil) {
         self.myPeerID = myPeerID
         browser = NSNetServiceBrowser()
+        browser.includesPeerToPeer = true
         super.init()
         browser.delegate = self
     }

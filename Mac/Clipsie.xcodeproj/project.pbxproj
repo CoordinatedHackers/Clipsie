@@ -13,13 +13,13 @@
 		E95E70BB1B7D5877002AEA39 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E70BA1B7D5877002AEA39 /* Util.swift */; };
 		E9922AC11A3D23EF0025D542 /* SharedUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922AC01A3D23EF0025D542 /* SharedUtil.swift */; };
 		E99B341F1B7905B9005EBDA8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B341E1B7905B9005EBDA8 /* main.swift */; };
+		E9AF21381BF594CF00AA03B6 /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E492151B7984960070DDEC /* ClipsieKit.framework */; };
 		E9B60CA11B77C4A000A5862A /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B60CA01B77C4A000A5862A /* Help.swift */; };
 		E9C2EFEA1A369EA5005D271B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2EFE91A369EA5005D271B /* AppDelegate.swift */; };
 		E9C2EFF11A369EA5005D271B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF01A369EA5005D271B /* Images.xcassets */; };
 		E9C2EFF41A369EA5005D271B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2EFF21A369EA5005D271B /* Main.storyboard */; };
 		E9E492261B7985030070DDEC /* ClipsieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E492151B7984960070DDEC /* ClipsieKit.framework */; };
 		E9E492271B7985030070DDEC /* ClipsieKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9E492151B7984960070DDEC /* ClipsieKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E9E4922B1B7985C60070DDEC /* Clipsie Launcher.app in Resources */ = {isa = PBXBuildFile; fileRef = E9B60CC91B77D68F00A5862A /* Clipsie Launcher.app */; };
 		E9E492301B79882B0070DDEC /* Clipsie Launcher.app in Copy Login Items */ = {isa = PBXBuildFile; fileRef = E9B60CC91B77D68F00A5862A /* Clipsie Launcher.app */; };
 /* End PBXBuildFile section */
 
@@ -51,13 +51,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E969D92A1A7C523F001697E4;
 			remoteInfo = "ClipsieKit Mac";
-		};
-		E9E4922C1B7985DF0070DDEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9C2EFDC1A369EA5005D271B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E9B60CC81B77D68F00A5862A;
-			remoteInfo = "Clipsie Launcher";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -111,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9AF21381BF594CF00AA03B6 /* ClipsieKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +232,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E9E4922D1B7985DF0070DDEC /* PBXTargetDependency */,
 				E9E492201B7984DD0070DDEC /* PBXTargetDependency */,
 				E9E492291B7985030070DDEC /* PBXTargetDependency */,
 			);
@@ -331,7 +324,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E4922B1B7985C60070DDEC /* Clipsie Launcher.app in Resources */,
 				E900082B1B7F953200B1A3AC /* StatusMenu@2x.png in Resources */,
 				E9C2EFF11A369EA5005D271B /* Images.xcassets in Resources */,
 				E900082A1B7F953200B1A3AC /* StatusMenu.png in Resources */,
@@ -374,11 +366,6 @@
 			isa = PBXTargetDependency;
 			name = "ClipsieKit Mac";
 			targetProxy = E9E492281B7985030070DDEC /* PBXContainerItemProxy */;
-		};
-		E9E4922D1B7985DF0070DDEC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E9B60CC81B77D68F00A5862A /* Clipsie Launcher */;
-			targetProxy = E9E4922C1B7985DF0070DDEC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

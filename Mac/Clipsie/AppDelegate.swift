@@ -17,7 +17,8 @@ class AppDelegate:
     
     var showStatusItem: Bool = false {
         didSet {
-            if showStatusItem && statusItem == nil {
+            if showStatusItem {
+                if self.statusItem != nil { return }
                 let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(24)
                 self.statusItem = statusItem
                 statusItem.menu = self.statusMenu

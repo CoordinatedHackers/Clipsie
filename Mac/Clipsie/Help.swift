@@ -13,14 +13,14 @@ class HelpWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func focus() {
-        (NSApp as! NSApplication).setActivationPolicy(.Regular)
-        (NSApp as! NSApplication).activateIgnoringOtherApps(true)
+        NSApp.setActivationPolicy(.Regular)
+        NSApp.activateIgnoringOtherApps(true)
         window!.makeKeyAndOrderFront(nil)
     }
     
     func windowWillClose(notification: NSNotification) {
         holdSelf = nil
-        (NSApp as! NSApplication).setActivationPolicy(.Prohibited)
+        NSApp.setActivationPolicy(.Prohibited)
     }
     
 }

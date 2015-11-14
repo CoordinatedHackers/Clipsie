@@ -30,6 +30,13 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         navigationItem.leftBarButtonItem = self.editButtonItem()
         browser.delegate = self
         browser.start()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillEnterForeground", name: UIApplicationWillEnterForegroundNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -165,4 +172,15 @@ class InboxViewController: UITableViewController, NSFetchedResultsControllerDele
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Automatic)
     }
     
+    // MARK: - Notification observers
+    
+    func applicationDidEnterBackground() {
+        browser.stop()
+        peers = []
+        tableView.reloadData()
+    }
+    
+    func applicationWillEnterForeground() {
+        browser.start()
+    }
 }

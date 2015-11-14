@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ClipsieKit.AdvertiserDele
         return managedObjectContext
     }()
     
+    func applicationDidEnterBackground(application: UIApplication) {
+        advertiser.stop()
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+        advertiser.start()
+    }
+    
     // MARK: ClipsieKit.AdvertiserDelegate
     
     func gotOffer(offer: ClipsieKit.Offer) {
